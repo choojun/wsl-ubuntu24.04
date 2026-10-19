@@ -471,7 +471,7 @@ $ ssh localhost
 
 ## E8. Run a sample MapReduce Job in Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Ensure that you are login with the hduser 
+1. Ensure that you are login with the **hduser** 
 
 2. Copy the input files into the distributed file system
 ~~~bash
@@ -509,7 +509,7 @@ $ jps
 
 ## E9. Attention: At the beginning of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Login as hduser or switch account to hduser
+1. Login as **hduser** or switch account to **hduser**
 ~~~bash
 $ su - hduser
 ~~~
@@ -546,14 +546,19 @@ $ jps
 
 ## E10. Attention: At the end of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Stop the YARN service
+1. Ensue that you have login as **hduser** or switch account to **hduser**
+~~~bash
+$ su - hduser
+~~~
+
+2. Stop the YARN service
 ~~~bash
 $ cd ~
 $ cd hadoop3
 $ sbin/stop-yarn.sh
 ~~~
 
-2. Stop the HDFS service
+3. Stop the HDFS service
 ~~~bash
 $ cd ~
 $ cd hadoop3
@@ -561,7 +566,7 @@ $ sbin/stop-dfs.sh
 ~~~
 > Issue command top to examine all expected services terminated, and use Ctrl-c to exit from command top
 
-3. Exit from your user account(s) 
+4. Exit from your user account(s) 
 ~~~bash
 exit
 ~~~
