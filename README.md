@@ -3,8 +3,8 @@
 Data engineering involves building systems to collect and utilize data, which supports subsequent analysis and data science. Note that this website only contains the practical activities and WSL distro (https://github.com/choojun/wsl/releases). 
 
 Read more required details at URLs
-  1. Setup from the scratch - all sections of https://choojun.github.io/wsl-UBuntu[version]
-  2. Restore from the pre-setup WSL distro - donwnload the latest release from URL https://github.com/choojun/wsl/releases and perform those steps in the section D of https://choojun.github.io/wsl-UBuntu[version]
+  1. Setup from the scratch - all sections of https://choojun.github.io/wsl-UBuntu24.04
+  2. Restore from the pre-setup WSL distro - donwnload the latest release from URL https://github.com/choojun/wsl/releases and perform those steps in the section D of https://choojun.github.io/wsl-UBuntu24.04
 
 [P0](https://github.com/choojun/wsl-ubuntu24.04/blob/main/P0.md) Required preparatory steps for each practical session
 
