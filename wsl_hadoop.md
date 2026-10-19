@@ -304,7 +304,7 @@ $ ssh localhost
  export HADOOP_HOME=/home/hduser/hadoop3
  export PATH=$PATH:$HADOOP_HOME/bin
  ~~~
-> Remember to save the edited file by ctrl-x.
+ > Remember to save the edited file by ctrl-x.
 
 3. Source the file:
  ~~~bash
@@ -323,7 +323,7 @@ $ ssh localhost
  export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
  export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
  ~~~
-> Remember to save the edited file by ctrl-x.
+ > Remember to save the edited file by ctrl-x.
 
 6. Verify if the installation was successful
  ~~~bash
@@ -340,7 +340,7 @@ $ ssh localhost
       </property>
     </configuration>
  ~~~
-> Remember to save the edited file by ctrl-x.
+ > Remember to save the edited file by ctrl-x.
 
 8. Edit the etc/hadoop/hdfs-site.xml file by adding the following configuration.
  ~~~xml
@@ -361,6 +361,7 @@ $ ssh localhost
        </property>
     </configuration>
  ~~~
+ > Remember to save the edited file by ctrl-x.
 
 9. Edit the etc/hadoop/mapred-site.xml file by adding the following configuration.
  ~~~xml
@@ -375,6 +376,7 @@ $ ssh localhost
       </property>
     </configuration>
  ~~~
+ > Remember to save the edited file by ctrl-x.
 
 10. Edit the etc/hadoop/yarn-site.xml file by adding the following configuration.
  ~~~xml
@@ -393,12 +395,13 @@ $ ssh localhost
       </property>
     </configuration>
  ~~~
+ > Remember to save the edited file by ctrl-x.
 
 11. Format the namenode 
  ~~~bash
  $ bin/hdfs namenode -format
  ~~~
- > Running the above command should display information on formating the namenode of Hadoop with installed Java. You should observe the namenode formated and terminated without any error. 
+ > Running the above command should display information on formating the namenode of Hadoop with installed Java. You should observe the namenode formated and **terminated without any error**. 
 
 12. Start the Distributed File System (DFS) service
  ~~~bash
@@ -415,7 +418,7 @@ $ ssh localhost
  > NameNode
  > SecondaryNameNode
  > ~~~
- > Browse any web browser for the NameNode, by default, and it is available at URL http://localhost:9870/
+ > Browse any web browser for the NameNode, by default, and it is available at URL **http://localhost:9870/**
 
 13. Start the Yet Another Resource Negotiator (YARN) service
  ~~~bash
@@ -430,7 +433,7 @@ $ ssh localhost
  > ResourceManager
  > NodeManager
  > ~~~
- > Browse any web browser for the ResourceManager, by default, and it is available at URL http://localhost:8088/
+ > Browse any web browser for the ResourceManager, by default, and it is available at URL **http://localhost:8088/**
 
 14. Create HDFS directories required to execute MapReduce jobs
  ~~~bash
