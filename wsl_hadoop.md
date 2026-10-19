@@ -496,8 +496,11 @@ Output:
 
 5. Stop all the daemons
 ~~~bash
+$ cd ~
+$ cd hadoop3
 $ sbin/stop-yarn.sh
 $ sbin/stop-dfs.sh
+$ jps
 ~~~
 
 6. Logout from the hduser account and your tarumt account.
@@ -518,6 +521,8 @@ $ sudo service ssh start
 
 3. Start the HDFS service
 ~~~bash
+$ cd ~
+$ cd hadoop3
 $ sbin/start-dfs.sh
 $ jps
 ~~~
@@ -532,6 +537,8 @@ $ jps
 
 4. Start the YARN service
 ~~~bash
+$ cd ~
+$ cd hadoop3
 $ sbin/start-yarn.sh
 $ jps
 ~~~
@@ -541,11 +548,15 @@ $ jps
 
 1. Stop the YARN service
 ~~~bash
+$ cd ~
+$ cd hadoop3
 $ sbin/stop-yarn.sh
 ~~~
 
 2. Stop the HDFS service
 ~~~bash
+$ cd ~
+$ cd hadoop3
 $ sbin/stop-dfs.sh
 ~~~
 > Issue command top to examine all expected services terminated, and use Ctrl-c to exit from command top
