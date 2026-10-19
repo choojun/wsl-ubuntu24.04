@@ -121,7 +121,7 @@ export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
 $ source ~/.bashrc
 ~~~
 
-11. Install pip (if necessary)
+11. Install pip or upgrade pip (if necessary)
 ~~~bash
 $ sudo apt update
 $ sudo apt install python3-pip
@@ -137,8 +137,9 @@ $ java -version
 13. Install targeted OpenJDK
 ~~~bash
 $ sudo apt-get install openjdk-17-jdk
+$ java -version
 ~~~
-> After this, check if the correct version of Java is installed.
+> After this, remember to check if the correct version of Java is installed.
 
 
 
@@ -146,13 +147,14 @@ $ sudo apt-get install openjdk-17-jdk
 
 ## E3. Setup SSH and PDSH [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-Run the following commands from Ubuntu with user hduser
+Run the following commands from Ubuntu with user **hduser**
 > Secure Shell (SSH), also sometimes called Secure Socket Shell, is a protocol for securely accessing your site’s server over an unsecured network. In other words, it’s a way to safely log in to your server remotely using your preferred command-line interface.
 
 1. Check if the SSH service is running
 ~~~bash
 $ service ssh status
 ~~~
+> Ctrl-C to terminate the examination of ssh status.
 
 2. Start SSH
 ~~~bash
@@ -160,8 +162,10 @@ $ sudo service ssh start
 ~~~
 > Note that WSL does not automatic start sshd (SSH daemon) occasionally. Please start the sshd manually
 
-3. Open the SSH port (if necessary)
+3. Install the ufw and open the SSH port (if necessary)
 ~~~bash
+$ sudo apt update
+$ sudo apt install ufw -y
 $ sudo ufw allow ssh
 ~~~
 > Ubuntu comes with a firewall configuration tool, known as UFW. If the firewall is enabled on your system, make sure to open the targeted SSH port, i.e. port 22.
@@ -176,10 +180,11 @@ $ sudo /etc/init.d/ssh reload
 $ pdsh -q -w localhost
 ~~~
 
-6. Modify pdsh’s default rcmd to ssh, by adding the following command  to ~/.bashrc file (for hduser)
+6. Modify pdsh’s default rcmd to ssh, **by adding** the following command to **~/.bashrc** file (for **hduser**)
 ~~~bash
 export PDSH_RCMD_TYPE=ssh
 ~~~
+> Remember to save the edited file by ctrl-x.
 
 7. Run the following command to ensure the settings applied.
 ~~~bash
@@ -190,7 +195,7 @@ $ source ~/.bashrc
 
 ## E4. Disable IPv6 [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-Run the following commands from Ubuntu with user hduser
+Run the following commands from Ubuntu with user **hduser**
 
 1. Edit the /etc/sysctl.conf file with the following command.
 ~~~bash
@@ -204,6 +209,7 @@ net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 ~~~
+> Remember to save the edited file by ctrl-x.
 
 3. To reload the /etc/sysctl.conf settings, issue the following command.
 ~~~bash
@@ -214,9 +220,9 @@ $ sudo sysctl -p
 ~~~bash
 $ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 ~~~
-> 0 means IPv6 is enabled; 1 means IPv6 is disabled.
+> 0 means IPv6 is enabled; **1 means IPv6 is disabled**.
 
-5. Suppose that IPv6 is still enabled after rebooting, you must carry out the following:
+5. **Suppose that IPv6 is still enabled after rebooting**, you must carry out the following:
 
    - Create (with root privileges) the file /etc/rc.local 
    ~~~bash
@@ -237,11 +243,12 @@ $ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 
 ## E5. Install Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Switch to the hduser account
+1. Switch to the **hduser** account
 
 2. Download the Hadoop binary by finding the appropriate Hadoop binary from the Hadoop releases page.
 > We will use Hadoop 3.4.1 to avoid problems with HBase in a later practical. Read more at URL https://hbase.apache.org/book.html#hadoop
 ~~~bash
+$ cd ~
 $ wget https://downloads.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz
 ~~~
 > Or, you may copy the downloaded tar.gz file manually to destination ~/hduser/
@@ -260,11 +267,18 @@ $ sudo chmod g+w -R hadoop3
 
 ## E6. Configure passphraseless ssh for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Ensure that you are login with the hduser 
+1. Ensure that you are login with the **hduser** 
 
-2. Ensure that you can SSH to the localhost in Ubuntu
+2. Ensure that you can SSH to the localhost in Ubuntu, try
+> ~~~bash
+> $ ssh localhost
+> ~~~
+> Remember to issue the following command to exit after the above test.
+> ~~~bash
+> $ exit
+> ~~~
 
-3. To ssh to localhost without a passphrase, run the following command to initialize your private and public keys:
+4. To ssh to localhost without a passphrase, run the following command to initialize your private and public keys:
 ~~~bash
 $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
@@ -275,11 +289,14 @@ $ chmod 0600 ~/.ssh/authorized_keys
 ~~~bash
 $ ssh localhost
 ~~~
-> Exit the ssh by issuing command exit.
+> Remember to exit the ssh by issuing the following command.
+> ~~~bash
+> $ exit
+> ~~~
 
 ## E7. Configure Pseudo-distributed Mode for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Ensure that you are login with the hduser 
+1. Ensure that you are login with the **hduser** 
 
 2. Setup the environment variables in the ~/.bashrc file (for hduser) by adding the environment variables to the end of the file
  ~~~bash
@@ -287,6 +304,7 @@ $ ssh localhost
  export HADOOP_HOME=/home/hduser/hadoop3
  export PATH=$PATH:$HADOOP_HOME/bin
  ~~~
+> Remember to save the edited file by ctrl-x.
 
 3. Source the file:
  ~~~bash
@@ -295,6 +313,7 @@ $ ssh localhost
 
 4. Change directory to the Hadoop folder
  ~~~bash
+ $ cd ~
  $ cd hadoop3
  ~~~
 
@@ -304,6 +323,7 @@ $ ssh localhost
  export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
  export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
  ~~~
+> Remember to save the edited file by ctrl-x.
 
 6. Verify if the installation was successful
  ~~~bash
@@ -320,6 +340,7 @@ $ ssh localhost
       </property>
     </configuration>
  ~~~
+> Remember to save the edited file by ctrl-x.
 
 8. Edit the etc/hadoop/hdfs-site.xml file by adding the following configuration.
  ~~~xml
