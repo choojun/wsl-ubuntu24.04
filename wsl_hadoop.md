@@ -319,6 +319,13 @@ $ ssh localhost
 
 5. Edit the etc/hadoop/hadoop-env.sh file by adding the following environment variables at the end of file
  ~~~bash
+ # Add Java 17 compatibility opens flags for Hadoop
+ export HADOOP_OPTS="$HADOOP_OPTS --add-opens=java.base/java.lang=ALL-UNNAMED"
+ export HADOOP_OPTS="$HADOOP_OPTS --add-opens=java.base/java.util=ALL-UNNAMED"
+ export HADOOP_OPTS="$HADOOP_OPTS --add-opens=java.base/java.io=ALL-UNNAMED"
+ export HADOOP_OPTS="$HADOOP_OPTS --add-opens=java.base/java.net=ALL-UNNAMED"
+ export HADOOP_OPTS="$HADOOP_OPTS --add-opens=java.base/java.util.concurrent=ALL-UNNAMED"
+
  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
  export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
  export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
@@ -374,6 +381,14 @@ $ ssh localhost
         <name>mapreduce.application.classpath</name>      
         <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
       </property>
+      <property>
+        <name>mapreduce.map.java.opts</name>
+        <value>-Xmx1024m --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</value>
+      </property>
+      <property>
+        <name>mapreduce.reduce.java.opts</name>
+        <value>-Xmx1024m --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</value>
+      </property>
     </configuration>
  ~~~
  > Remember to save the edited file by ctrl-x.
@@ -386,8 +401,12 @@ $ ssh localhost
          <value>mapreduce_shuffle</value>
       </property>
       <property>
+         <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+         <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+      </property>
+      <property>
          <name>yarn.nodemanager.env-whitelist</name>    
-         <value>JAVA_HOME, HADOOP_COMMON_HOME, HADOOP_HDFS_HOME, HADOOP_CONF_DIR, CLASSPATH_PREPEND_DISTCACHE, HADOOP_YARN_HOME, HADOOP_MAPRED_HOME</value>
+         <value>JAVA_HOME,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_CONF_DIR,CLASSPATH_PREPEND_DISTCACHE,HADOOP_YARN_HOME,HADOOP_MAPRED_HOME</value>
       </property>
       <property>
          <name>yarn.resourcemanager.address</name>
@@ -397,13 +416,22 @@ $ ssh localhost
  ~~~
  > Remember to save the edited file by ctrl-x.
 
-11. Format the namenode 
+11. Edit the etc/hadoop/yarn-env.sh file by adding the following configuration.
+ ~~~bash
+ # Force YARN to pass modular opens flags to its JVM instances
+ export YARN_OPTS="$YARN_OPTS --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED"
+ ~~~
+ > Remember to save the edited file by ctrl-x.
+
+
+
+12. Format the namenode 
  ~~~bash
  $ bin/hdfs namenode -format
  ~~~
  > Running the above command should display information on formating the namenode of Hadoop with installed Java. You should observe the namenode formated and **terminated without any error**. 
 
-12. Start the Distributed File System (DFS) service
+13. Start the Distributed File System (DFS) service
  ~~~bash
  $ sbin/start-dfs.sh
  ~~~
@@ -420,7 +448,7 @@ $ ssh localhost
  > ~~~
  > Browse any web browser for the NameNode, by default, and it is available at URL **http://localhost:9870/**
 
-13. Start the Yet Another Resource Negotiator (YARN) service
+14. Start the Yet Another Resource Negotiator (YARN) service
  ~~~bash
  $ sbin/start-yarn.sh
  ~~~
@@ -435,7 +463,7 @@ $ ssh localhost
  > ~~~
  > Browse any web browser for the ResourceManager, by default, and it is available at URL **http://localhost:8088/**
 
-14. Create HDFS directories required to execute MapReduce jobs
+15. Create HDFS directories required to execute MapReduce jobs
  ~~~bash
  $ hdfs dfs -mkdir /user
  $ hdfs dfs -mkdir /user/hduser
