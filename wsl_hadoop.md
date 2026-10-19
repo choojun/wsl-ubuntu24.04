@@ -39,29 +39,41 @@ $ sudo usermod -a -G hadoop student
 5.	Switch to the user account hduser (if applicable)
 ~~~bash
 $ su - hduser
+$ exit
 $ su - student
+$ exit
 ~~~
-
-6.	If you want to go back to your original user session
+> If you want to go back to your original user session
 ~~~bash
 $ exit
 ~~~
 
 ## E2. Setup Operating System Environment [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1.	Reboot/terminate Ubuntu in WSL, and run the following commands from Ubuntu with user hduser
+1.	Reboot/terminate Ubuntu in WSL, and run the following commands from Ubuntu with user **hduser**
 
 2. Check if ssh has been installed
 ~~~bash
 $ service ssh status
 ~~~
+> Ctrl-C to terminate the examination of ssh status.
 
-3. If ssh has not been installed, install ssh
+3. If ssh has not been installed, install ssh before examining its status
 ~~~bash
 $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install ssh
+$ service ssh status
 ~~~
+> Ctrl-C to terminate the examination of ssh status.
+> Test the ssh to localhost
+> ~~~bash
+> $ ssh localhost
+> ~~~
+> Issue the following command to exit from the test.
+> ~~~bash
+> $ exit
+> ~~~
 
 4. Install pdsh
 ~~~bash
@@ -84,6 +96,7 @@ $ sudo apt install python3-wheel
 ~~~bash
 $ ls -l /usr/bin/python* 
 ~~~
+> Ensure that links are pointed to targeted version of Python as Step 5.
 
 7. Set environment variables by editing your ~/.bashrc file (for hduser):
 ~~~bash
@@ -94,21 +107,21 @@ $ nano ~/.bashrc
 ~~~bash
 alias python=python3
 ~~~
+> Ctrl-x to save after edited the file.
 
 9. In ~/.bashrc file, add the following lines at the end of the file based on the python3.x from your installation:
 ~~~bash
 export CPATH=/usr/include/python3.10m:$CPATH
 export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
 ~~~
+> Ctrl-x to save after edited the file.
 
-10. Save the ~/.bashrc file.
-
-11. Source the file:
+10. Source the file:
 ~~~bash
 $ source ~/.bashrc
 ~~~
 
-12. Install pip (if necessary)
+11. Install pip (if necessary)
 ~~~bash
 $ sudo apt update
 $ sudo apt install python3-pip
@@ -116,12 +129,12 @@ $ pip3 --version
 $ sudo pip3 install --upgrade pip
 ~~~~
 
-13. Check which Java version is installed in the distro
+12. Check which Java version is installed in the distro
 ~~~bash
 $ java -version
 ~~~
 
-14. Install targeted OpenJDK
+13. Install targeted OpenJDK
 ~~~bash
 $ sudo apt-get install openjdk-17-jdk
 ~~~
