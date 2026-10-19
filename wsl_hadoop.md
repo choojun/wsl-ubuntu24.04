@@ -490,6 +490,8 @@ $ hdfs dfs -cat output/*
 Output:
 1      dfsadmin
 1      dfs.replication
+1      dfs.namenode.name.dir
+1      dfs.datanode.data.dir
 ~~~
 
 5. Stop all the daemons
