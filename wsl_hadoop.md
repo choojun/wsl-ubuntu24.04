@@ -481,7 +481,7 @@ $ hdfs dfs -put etc/hadoop/*.xml input
 
 3. Run a MapReduce job from an example
 ~~~bash
-$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.4.`.jar grep input output 'dfs[a-z.]+'
+$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.4.1.jar grep input output 'dfs[a-z.]+'
 ~~~
 
 4. View the output files on the distributed system
