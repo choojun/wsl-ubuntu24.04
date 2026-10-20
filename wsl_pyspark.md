@@ -97,19 +97,17 @@ Python virtual environments create a self-contained and isolated environment for
    
    * To logout from JupyterLab, click **File** and then select **Log Out**
 
-   * To shut down the jupyterlab server, go to the terminal where you ran the command to start JupyterLab, i.e., in Step 3.1. Press <Ctrl><C> and type ‘y’ to confirm that you want to shut down the server.
+   * To shut down the jupyterlab server, go to the terminal where you ran the command to start JupyterLab, i.e., in Step 3.1. Press Ctrl-C and type ‘y’ to confirm that you want to shut down the server.
 
-   3.3 **To delete any unwanted venv**, if needed, try the command with 
-      > Syntax: jupyter kernelspec uninstall unwanted-kernel
-      > 
-      > Example 1:
-      > 
-      > (de-test-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
-      > 
-      > Example 2:
-      > 
+   3.3 **To delete any unwanted venv**, if needed, try the command with Syntax: jupyter kernelspec uninstall unwanted-kernel
+
+   * Example 1: 
+      > (my-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
+   
+   * Example 2:
       > (de-test-venv) hduserMyPC:~$ jupyter kernelspec uninstall de-test-venv
-      > 
+
+   > Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
       
    3.4 **Deactivate the virtual environment**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
       ~~~bash
