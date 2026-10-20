@@ -332,12 +332,17 @@ $ hdfs dfs -head spark_wc/part-00000
 
 1.	Change directory to the SparkApp folder, and review the code in app.py
 ~~~bash
+$ sudo cp -r /mnt/c/de/SparkApp /home/hduser
 $ cd /home/hduser/SparkApp
 $ cat app.py | more
 ~~~
+> 
 
 2.	Copy the folder with the data files to the distributed file system, and make a copy of the source file 
 ~~~bash
+$ hdfs dfs -mkdir SparkApp
+$ hdfs dfs -mkdir SparkApp/ontime
+
 $ hdfs dfs -put SparkApp/ontime
 $ sudo cp app.py app2.py
 ~~~
