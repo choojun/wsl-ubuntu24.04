@@ -15,7 +15,7 @@
 2.	Download the correct version of Spark from the Apache Spark downloads page (http://spark.apache.org/downloads.html), and check the compatible with your installed Hadoop
 ~~~bash
 $ cd ~
-$ wget https://dlcdn.apache.org/spark/spark-4.0.4/spark-4.0.4-bin-hadoop3.tgz
+$ wget dlcdn.apache.org/spark/spark-4.0.4/spark-4.0.4-bin-hadoop3.tgz
 $ wget dlcdn.apache.org/spark/spark-4.0.4/spark-4.0.4-bin-hadoop3-connect.tgz
 ~~~
 
