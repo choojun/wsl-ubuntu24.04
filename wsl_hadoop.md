@@ -10,7 +10,7 @@
 4. The HDFS file system consists of a set of Master services (NameNode, secondary NameNode, and DataNodes). The **NameNode** and **secondary NameNode** manage the HDFS metadata. The **DataNodes** host the underlying HDFS data. The **NameNode** tracks which DataNodes contain the contents of a given file in HDFS. HDFS divides files into blocks and stores each block on a DataNode. Multiple DataNodes are linked to the cluster. The NameNode then distributes replicas of these data blocks across the cluster. It also instructs the user or application where to locate wanted information.
 5. Read more on Hadoop at URL https://en.wikipedia.org/wiki/Apache_Hadoop and https://hadoop.apache.org/
 
-## E1. Setup User Environment [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E1. Setup User Environment [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Create a new group named hadoop
 ~~~bash
@@ -48,7 +48,7 @@ $ exit
 $ exit
 ~~~
 
-## E2. Setup Operating System Environment [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E2. Setup Operating System Environment [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Reboot/terminate Ubuntu in WSL, and run the following commands from Ubuntu with user **hduser**
 
@@ -145,7 +145,7 @@ $ java -version
 
 
 
-## E3. Setup SSH and PDSH [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E3. Setup SSH and PDSH [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 Run the following commands from Ubuntu with user **hduser**
 > Secure Shell (SSH), also sometimes called Secure Socket Shell, is a protocol for securely accessing your site’s server over an unsecured network. In other words, it’s a way to safely log in to your server remotely using your preferred command-line interface.
@@ -193,7 +193,7 @@ $ source ~/.bashrc
 
 
 
-## E4. Disable IPv6 [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E4. Disable IPv6 [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 Run the following commands from Ubuntu with user **hduser**
 
@@ -241,7 +241,7 @@ $ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
    ~~~
 
 
-## E5. Install Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E5. Install Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Switch to the **hduser** account
 
@@ -265,7 +265,7 @@ $ sudo chown -R hduser:hadoop hadoop3
 $ sudo chmod g+w -R hadoop3
 ~~~
 
-## E6. Configure passphraseless ssh for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E6. Configure passphraseless ssh for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Ensure that you are login with the **hduser** 
 
@@ -294,7 +294,7 @@ $ ssh localhost
 > $ exit
 > ~~~
 
-## E7. Configure Pseudo-distributed Mode for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E7. Configure Pseudo-distributed Mode for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Ensure that you are login with the **hduser** 
 
@@ -469,7 +469,7 @@ $ ssh localhost
  $ hdfs dfs -mkdir /user/hduser
  ~~~
 
-## E8. Run a sample MapReduce Job in Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E8. Run a sample MapReduce Job in Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Ensure that you are login with the **hduser** 
 
@@ -507,7 +507,7 @@ $ jps
 
 
 
-## E9. Attention: At the beginning of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E9. Attention: At the beginning of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Login as **hduser** or switch account to **hduser**
 ~~~bash
@@ -544,7 +544,7 @@ $ jps
 ~~~
 > Suppose you need to observe at least six (6) services in the total, refer steps 12 and 13 of G7.
 
-## E10. Attention: At the end of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## E10. Attention: At the end of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Ensue that you have login as **hduser** or switch account to **hduser**
 ~~~bash
