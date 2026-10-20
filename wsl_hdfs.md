@@ -3,7 +3,7 @@
 # F. HDFS File Operations and MapReduce [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. This practical introduces the basic Hadoop Distributed File System (HDFS) operations.
-2. Login as hduser, and the HDFS shell can be invoked using 
+2. Login as **hduser**, and the HDFS shell can be invoked using 
 ~~~bash
 $ hdfs dfs <args>  
 ~~~
@@ -13,14 +13,10 @@ $ hdfs dfs <args>
 $ hdfs dfs -help
 ~~~
 
-4. [WordCount.zip](https://github.com/choojun/choojun.github.io/files/14274971/WordCount.zip)
-
-5. [StreamingOn-time.zip](https://github.com/choojun/choojun.github.io/files/14274973/StreamingOn-time.zip)
-
 
 ## F1. Basic File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1.	Download a remote file from Google Drive
+1.	Login as **hduser**, download a remote file from Google Drive
 ~~~bash
 $ cd ~
 $ wget --no-check-certificate 'https://drive.google.com/file/d/1qjxR3xLs6MVidyO5TRxBtI4zMVdeDdz2/view' -O shakespeare.txt
@@ -75,7 +71,7 @@ $ wget --no-check-certificate 'https://drive.google.com/file/d/155Sra6cu3AmSQ1oy
 
 ## F2. Advanced File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1.	To view the contents of your current directory
+1.	Login as **hduser**, and to view the contents of your current directory
 ~~~bash
 $ hdfs dfs -ls
 ~~~
@@ -169,12 +165,15 @@ $ hdfs dfs -ls
 2.	Input and Output types of a MapReduce job:
 > (input) <k1, v1> -> map -> <k2, v2> -> combine -> <k2, v2> -> reduce -> <k3, v3> (output)
 
-3.	Read more on MapReduce at URLs https://hadoop.apache.org/docs/r3.3.6/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html and https://en.wikipedia.org/wiki/MapReduce
+3.	Read more on MapReduce at URLs https://hadoop.apache.org/docs/r3.3.6/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html , https://en.wikipedia.org/wiki/MapReduce and download file [WordCount.zip](https://github.com/choojun/choojun.github.io/files/14274971/WordCount.zip) for exercise as follows.
 
-4.	Login as hduser, and make a copy of the C:\de\WordCount folder in the local hduser’s home directory
+4.	Login as **hduser**, and make a copy of the C:\de\WordCount folder in the local hduser’s home directory
 ~~~bash
+$ cd ~
 $ sudo cp -r /mnt/c/de/WordCount /home/hduser
+$ ls
 $ sudo chown hduser:hduser -R /home/hduser/WordCount
+$ ls
 ~~~
 
 5. Change directory to the WordCount directory
@@ -190,7 +189,7 @@ $ jar cf wc.jar WordCount*.class
 $ ls ~/WordCount
 ~~~
 
-7. Make sure file shakespeare.txt exist in the distributed file system before submitting the job to the Hadoop cluster 
+7. To use the MapReduce, make sure file shakespeare.txt exist in the distributed file system before submitting the job to the Hadoop cluster 
 ~~~bash
 $ hdfs dfs -ls /user/hduser
 $ hadoop jar wc.jar WordCount shakespeare.txt wordcounts
@@ -211,9 +210,11 @@ $ hdfs dfs -cat wordcounts/part-r-00000 | less
 $ mapred job -list
 ~~~
 
+10. Repeat the Steps 7 to 9 with the two downloaded files, HarryPotter1.txt and HarryPotter2.txt, as an exercise.
+
 ## F4. MapReduce with Python - On-time Performance of Flights [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1.	Login as hduser, and make a copy of the C:\de\StreamingOn-time folder in the local hduser’s home directory
+1.	Login as **hduser**, download file [StreamingOn-time.zip](https://github.com/choojun/choojun.github.io/files/14274973/StreamingOn-time.zip) , and make a copy of the C:\de\StreamingOn-time folder in the local hduser’s home directory
 ~~~bash
 $ sudo cp -r /mnt/c/de/StreamingOn-time /home/hduser
 $ sudo chown hduser:hduser -R /home/hduser/StreamingOn-time
@@ -224,7 +225,7 @@ $ sudo chown hduser:hduser -R /home/hduser/StreamingOn-time
 $ cd StreamingOn-time
 $ cat flights.csv | ./mapper.py | sort | ./reducer.py
 ~~~
-> Suppose that you may issue the following commands if you have observed the error of /usr/bin/env: ‘python’: No such file or directory. Re-execute the same command to retrying
+> Suppose that you may issue the following commands **if you have observed the error of /usr/bin/env: ‘python’: No such file or directory**. Re-execute the same command to retrying
 > ~~~bash
 > $ sudo apt update
 > $ sudo apt install python-is-python3
