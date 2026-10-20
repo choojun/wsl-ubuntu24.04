@@ -79,7 +79,7 @@ Python virtual environments create a self-contained and isolated environment for
      ~~~bash
      hduser@MyPC:~$ cd ~
      hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
-     (de-test-venv) hduser@MyPC:~$ pip install scikit-learn matplotlib pyspark==4.0.4
+     (de-test-venv) hduser@MyPC:~$ pip install scikit-learn matplotlib seaborn
      (de-test-venv) hduser@MyPC:~$ jupyter lab
      ~~~
      > Note that you need to activate the venv in order to install python packages within the venv (preferable way), or
