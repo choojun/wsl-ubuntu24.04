@@ -361,7 +361,7 @@ flights = sc.textFile("ontime/flights.csv").map(split).map(parse)
 $ spark-submit app.py
 ~~~
 
-5.	You may check the results directory in the HDFS 
+5.	You may check the print out results. 
 
 
 
@@ -446,7 +446,7 @@ $ hdfs dfs -put sf_parking_clean.json /user/hduser/data/
 
 
 
-## G8. Spark SQL and Jupyter Notebook [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G9. Spark SQL and Jupyter Notebook [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Apache Arrow is a development platform for in-memory analytics. It contains a set of technologies that enable big data systems to store, process and move data fast. Pyarrow has integred with NumPy, pandas, and built-in Python objects. They are based on the C++ implementation of Arrow (https://arrow.apache.org/).
 
@@ -495,7 +495,7 @@ $ pip3 install traitlets==5.9.0
 > Suppose that you have learned some essential codes in G4 to G7 before attempting the G8
 
 
-## G9. JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G10. JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	JupyterLab is a highly extensible, feature-rich notebook authoring application and editing environment, and is a part of Project Jupyter, a large umbrella project centered around the goal of providing tools (and standards) for interactive computing with computational notebooks. It is a sibling to other notebook authoring applications under the Project Jupyter umbrella, like Jupyter Notebook and Jupyter Desktop. JupyterLab offers a more advanced, feature rich, customizable experience compared to Jupyter Notebook.
 
