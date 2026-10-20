@@ -40,6 +40,192 @@ export PATH=$SPARK_HOME/bin:$PATH
 source ~/.bashrc
 ~~~
 
+
+
+
+
+
+## G2. Setup Python venv with JupyterLab for PySpark interactive shell/interpreter
+
+Python virtual environments create a self-contained and isolated environment for different Python projects. This would enable you to install a specific version of a module on a per project basis which will not affect your other Python projects.
+
+1. Login as the user hduser, to create a virtual environment
+    ~~~bash
+    hduser@MyPC:~$ su - hduser
+    ~~~
+    
+    2.1 Create a project directory (e.g., de-test)
+      ~~~bash
+      hduser@MyPC:~$ mkdir de-test
+      ~~~
+      > It is advisable to utilize distinct directories for each project development.
+
+    2.2 Create a virtual environment for your project (e.g., de-test-venv):
+      ~~~bash
+      $ sudo apt install python3.12-venv
+      $ python3 -m venv de-test/de-test-venv
+      $ de-test/de-test-venv/bin/python -m pip install -U --quiet pip wheel setuptools 
+      $ de-test/de-test-venv/bin/python -m pip install -U --quiet ipykernel
+      $ de-test/de-test-venv/bin/python -m pip install -U --quiet grpcio-status numpy pandas
+      $ de-test/de-test-venv/bin/python -m pip install -U --quiet pyspark==4.0.4
+      $ de-test/de-test-venv/bin/python -m ipykernel install --user --name "de-test-venv" --display-name  "de-test-venv"
+      ~~~
+
+3. Using JupyterLab
+
+   3.1 Activate the virtual environment, install python packages in created venv, and run JupyterLab with commands
+     ~~~bash
+     hduser@MyPC:~$ cd ~
+     hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+     
+     (de-test-venv) hduser@MyPC:~$ pip install -U pip wheel setuptools
+     (de-test-venv) hduser@MyPC:~$ pip install numpy pandas pyspark==4.0.4
+     
+     (de-test-venv) hduser@MyPC:~$ jupyter lab
+     ~~~
+     > Note that you need to activate the venv in order to install python packages within the venv, or
+     > Run Python files from the command-line interface (CLI) using the environment's dependencies.
+
+   3.2 Access JupyterLab
+       From the output shown in your terminal, **copy and paste one of the URLs in a web browser**.
+       <img width="606" alt="Screenshot 2025-06-22 at 9 48 28 PM" src="https://github.com/user-attachments/assets/4458026b-29ad-4626-9363-ed388d11a0ac" />
+
+       
+   * To create a jupyter notebook based on your virtual environment, under the **Notebook**, just click on the kernel with your virtual environment name, e.g., de-venv.
+     
+     <img width="268" alt="Screenshot 2025-06-22 at 9 50 52 PM" src="https://github.com/user-attachments/assets/d19e699c-8abb-4661-974a-be0b83a9ee63" />
+
+   
+   * To close a jupyter notebook and shut down the kernel (i.e., de_venv), under the jupyter notebook as the active tab, click **File** and then select **Close** and **Shut Down Notebook…**
+
+     <img width="253" alt="Screenshot 2025-06-22 at 9 52 36 PM" src="https://github.com/user-attachments/assets/cdd72232-02a7-4871-959f-eb07a01f9f7a" />
+
+     > Merely closing the tab does not shut down the notebook, and therefore it is still running in the background. Therefore, be sure to click Close and Shut Down Notebook as highlighted above.
+   
+   * To logout from JupyterLab, click **File** and then select **Log Out**
+
+     <img width="280" alt="Screenshot 2025-06-22 at 9 55 31 PM" src="https://github.com/user-attachments/assets/fd90f440-cc3f-4cee-9f1c-d2d94bed9f26" />
+
+
+   * To shut down the jupyterlab server, go to the terminal where you ran the command to start JupyterLab, i.e., in Step 3.1. Press <Ctrl><C> and type ‘y’ to confirm that you want to shut down the server.
+
+   3.3 To delete any unwanted venv, if needed, try the command with 
+      > Syntax: jupyter kernelspec uninstall unwanted-kernel
+      > 
+      > Example 1:
+      > 
+      > student@MyPC:~$ jupyter kernelspec uninstall alpha-venv
+      > 
+      > Example 2:
+      > 
+      > student@MyPC:~$ jupyter kernelspec uninstall de-venv
+      > 
+
+4. Installing python packages in your virtual environment
+
+   4.1 Activate the virtual environment
+      ~~~bash
+      student@MyPC:~$ source de-prj/de-venv/bin/activate
+      ~~~
+
+   4.2 Update the python build packages
+      ~~~bash
+      (de-venv) student@MyPC:~$ pip install -U pip wheel setuptools
+      ~~~
+     
+   4.3 Install packages (examples)
+      ~~~bash
+      (de-venv) student@MyPC:~$ pip install numpy pandas pyspark==3.5.3
+      (de-venv) student@MyPC:~$ pip install scikit-learn
+      ~~~
+      > Please be aware that the download and installation process will be time-consuming. Ensure the PySpark version corresponds with your Apache Spark installation
+      
+   4.4 Deactivate the virtual environment. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
+      ~~~bash
+      (de-venv) student@MyPC:~$ deactivate
+      ~~~
+
+## Exercise
+To create a venv using the shell script create_venv.sh provided in the Google Classroom’s sample_code folder:
+
+1. Login as the user student.
+
+2. Copy create_venv.sh script to the destination directory ~/de-prj
+
+3. Navigate to the directory, where the create_venv.sh script is stored
+   ~~~bash
+   student@MyPC:~$ cd ~/de-prj
+   ~~~
+
+4. Run the script to create a venv:
+   ~~~bash
+   student@MyPC:~/de-prj$ ./create_venv.sh
+   ~~~  
+
+5. Enter the following information as propmpted
+    - name of the venv (e.g., fyp-venv)
+    - path to the directory where the venv folder should be located (e.g., /home/student)
+  
+   Example:
+      > ~~~bash
+      > student@MyPC:~$ cd de-prj
+      > student@MyPC:~/de-prj$ pwd
+      > /home/student/de-prj
+      > student@MyPC:~/de-prj$ mkdir fyp-venv
+      > 
+      > student@MyPC:~/de-prj$ ./create_venv.sh
+      > Enter new virtual environment (venv) name:
+      > fyp-venv
+      > 
+      > Enter absolute path where the venv directory should be created:
+      > E.g., /home/student):
+      > /home/student/de-prj
+      > 
+      > Creating new venv named fyp-venv
+      > Updating fyp-venv
+      > Installing jupyter kernel into fyp-venv
+      > Installing numpy and pyspark into fyp-venv
+      > Installing kernel fyp-venv to Jupyter Lab
+      > Installed kernelspec fyp-venv in /home/student/.local/share/jupyter/kernels/fyp-venv
+      > New venv fyp-venv created and installed. Please refresh your Jupyter Lab.
+      > 
+      > student@MyPC:~/de-prj$
+      > ~~~
+
+6. Return to student’s home directory:
+   ~~~bash
+   student@PC25:~/de-prj$ cd ~
+   student@PC25:~$ 
+   ~~~
+
+7. Activate the create venv 
+   ~~~bash
+   student@MyPC:~$ source <path to  where the venv folder should be located>/<name of venv>/bin/activate
+   ~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 7.	Launch the PySpark interactive shell/interpreter
 ~~~bash
 pip3 install grpcio-status
@@ -56,7 +242,7 @@ $ cp $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.propert
 > rootLogger.appenderRef.stdout.ref = console  
 
 
-## G2. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G2x. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1.	Launch PySpark’s interactive shell using user hduser
 2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
