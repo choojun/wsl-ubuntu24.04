@@ -47,6 +47,27 @@ Read more required details at URLs
 [P7.2](https://github.com/choojun/wsl-ubuntu24.04/blob/main/P7.2.md) Hadoop in Secure Mode
 
 
+
+### Experimental Version (not stable yet)
+
+| Requirement\Section |  [E](wsl_hadoop_2)  |  [F](wsl_hdfs_2) |  [G](wsl_pyspark_2) | [H](wsl_pyspark_ml_2)  |  [I](wsl_pyspark_viz_2)  |  [J](wsl_kafka_2)  |  [K](wsl_hbase_2)  |  [L](wsl_happybase_2)  |  [M](wsl_hive_2) |
+|---------------------|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|
+| Hadoop              | 3.4.1 (> JDK8) | *1 | *1                  | *1 | *1 | *1                        | *1                   | *1     | *1        |
+| Spark               |                |    | 4.0.4 (must jdk17)  | *1 | *1 |                           | *1                   |        | *1        |
+| Scala               |                |    | Targeted on 2.13.x  |    |    | 2.13.x                    | Targeted on 2.13.x   |        |           |
+| Jupyter Lab         |                |    |                     |    | *1 |                           |                      |        |           |
+| Kafka               |                |    |                     |    |    | kafka_2.13-4.3.1 (jdk17)  | *1                   | *1     |           |
+| HBase               |                |    |                     |    |    |                           | 3.x (jdk17)          | *1     |           |
+| ?HappyBase          |                |    |                     |    |    |                           |                      | ?1.2.0 |           |
+| aiohappybase        |                |    |                     |    |    |                           |                      | 1.4.0  |           |
+| Derby               |                |    |                     |    |    |                           |                      |        | 10.16.x (jdk17) |
+| Hive                |                |    |                     |    |    |                           |                      |        | 4.2.1 (matched Hadoop 3.4.1) |
+
+> Needed WSL2, Web browser and Internet connection, SSH and PDSH, OpenJDK 17, Python 3.?.?
+> 
+-----------------------------------------------------------
+
+
 ## References:
 
 https://www.kaggle.com/datasets/moxxis/harry-potter-lstm
