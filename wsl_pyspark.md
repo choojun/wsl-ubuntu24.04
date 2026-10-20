@@ -49,18 +49,18 @@ source ~/.bashrc
 
 Python virtual environments create a self-contained and isolated environment for different Python projects. This would enable you to install a specific version of a module on a per project basis which will not affect your other Python projects.
 
-1. Login as the user hduser, to create a virtual environment
+1. Login as the user **hduser**, to create a virtual environment
     ~~~bash
     hduser@MyPC:~$ su - hduser
     ~~~
     
-    2.1 Create a project directory (e.g., de-test)
+    1.1 Create a project directory (e.g., de-test)
       ~~~bash
       hduser@MyPC:~$ mkdir de-test
       ~~~
       > It is advisable to utilize distinct directories for each project development.
 
-    2.2 Create a virtual environment for your project (e.g., de-test-venv):
+    1.2 Create a virtual environment for your project (e.g., de-test-venv):
       ~~~bash
       $ sudo apt install python3-full
       $ sudo apt install jupyter-core
@@ -73,9 +73,11 @@ Python virtual environments create a self-contained and isolated environment for
       $ de-test/de-test-venv/bin/python -m ipykernel install --user --name "de-test-venv" --display-name  "de-test-venv"
       ~~~
 
-3. Setup JupyterLab 
+2. Setup JupyterLab 
 
-   3.1 Activate the virtual environment, install python packages in created venv (e.g. scikit-learn and etc)), and run JupyterLab with commands
+   JupyterLab is a highly extensible, feature-rich notebook authoring application and editing environment, and is a part of Project Jupyter, a large umbrella project centered around the goal of providing tools (and standards) for interactive computing with computational notebooks. It is a sibling to other notebook authoring applications under the Project Jupyter umbrella, like Jupyter Notebook and Jupyter Desktop. JupyterLab offers a more advanced, feature rich, customizable experience compared to Jupyter Notebook. Read more from URL https://jupyterlab.readthedocs.io/en/latest/
+
+   2.1 Activate the virtual environment, install python packages in created venv (e.g. scikit-learn and etc)), and run JupyterLab with commands
      ~~~bash
      hduser@MyPC:~$ cd ~
      hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
@@ -86,7 +88,7 @@ Python virtual environments create a self-contained and isolated environment for
      > Run Python files from the command-line interface (CLI) using the environment's dependencies (not recommended).
      > Please be aware that the download and installation process will be time-consuming. Ensure the PySpark version corresponds with your Apache Spark installation
 
-   3.2 Access JupyterLab with Web borser
+   2.2 Access JupyterLab with Web borser
        From the output shown in your terminal, **copy and paste one of the URLs in a web browser**.
 
    * To create a jupyter notebook based on your virtual environment, under the **Notebook**, just click on the kernel with your virtual environment name, e.g., de-test-venv. **Note that new created jupyter notebook is ready with PySpark under the de-test-venv**.
@@ -99,7 +101,7 @@ Python virtual environments create a self-contained and isolated environment for
 
    * To shut down the jupyterlab server, go to the terminal where you ran the command to start JupyterLab, i.e., in Step 3.1. Press Ctrl-C and type ‘y’ to confirm that you want to shut down the server.
 
-   3.3 **To delete any unwanted venv**, if needed, try the command with Syntax: jupyter kernelspec uninstall unwanted-kernel
+   2.3 **To delete any unwanted venv**, if needed, try the command with Syntax: jupyter kernelspec uninstall unwanted-kernel
 
    * Example 1: 
       > (my-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
@@ -110,7 +112,7 @@ Python virtual environments create a self-contained and isolated environment for
    > Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
 
 
-   3.4	Launch the PySpark interactive shell/interpreter. 
+   2.4	Launch the PySpark interactive shell/interpreter. 
       ~~~bash
       pyspark
       ~~~
@@ -125,14 +127,15 @@ Python virtual environments create a self-contained and isolated environment for
       > rootLogger.level = warn  
       > rootLogger.appenderRef.stdout.ref = console  
 
-   3.5 **Important: Remember to deactivate the virtual environment**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
+   2.5 **Important: Remember to deactivate the virtual environment**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
       ~~~bash
       (de-test-venv) hduserMyPC@MyPC:~$ deactivate
       ~~~
 
 ## G3. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Launch PySpark’s interactive shell using user hduser
+1.	Launch PySpark’s interactive shell using user **hduser**
+
 2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
 ~~~bash
 >>> text = sc.textFile("shakespeare.txt")
@@ -163,15 +166,14 @@ $ hdfs dfs -head wc/part-00000
 
 
 
-## G3. Using the PySpark Interactive Shell - Numerical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G4. Using the PySpark Interactive Shell - Numerical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Install numpy using user hduser, and launch numpy with 4 cores
+1.	Login using user **hduser**, activate your virtual environment (e.g, de-test-venv), and launch PySpark with 4 cores
 ~~~bash
-$ pip3 install numpy
-$ pyspark --executor-cores 4
+(de-test-venv) hduserMyPC:~$ pyspark --executor-cores 4
 ~~~
 
-2.	Launch PySpark’s interactive shell and try the following codes. The codes generate a list of random integers and create an RDD by parallelizing num_list with library numpy.
+2.	Try the following codes. The codes generate a list of random integers and create an RDD by parallelizing num_list with library numpy.
 ~~~bash
 >>> import numpy as np
 >>> num_list = np.random.randint(0, 10, 20)
@@ -251,7 +253,7 @@ $ pyspark --executor-cores 4
 
 
 
-## G4. Using the PySpark Interactive Shell - Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G5. Using the PySpark Interactive Shell - Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Find the longest word in a sentence
 ~~~bash
@@ -299,7 +301,7 @@ or
 
 
 
-## G5. Using the PySpark Interactive Shell - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G6. Using the PySpark Interactive Shell - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Make a copy of the C:\de\SparkApp folder in the local hduser’s home directory
 ~~~bash
@@ -326,7 +328,7 @@ $ hdfs dfs -head spark_wc/part-00000
 ~~~
 
 
-## G6. Using the PySpark Interactive Shell - Flight Delay (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G7. Using the PySpark Interactive Shell - Flight Delay (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Change directory to the SparkApp folder, and review the code in app.py
 ~~~bash
@@ -360,7 +362,7 @@ $ spark-submit app.py
 
 
 
-## G7. Spark SQL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G8. Spark SQL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Spark SQL is a module in Apache Spark that provides a relational interface to work with structured data using SQL-based operations in Spark through either JDBC/ODBC connectors, a built-in interactive Hive console, or Spark SQL API. This practical covers the Spark SQL API, which runs as a library on top of Spark’s Core engine and APIs. The Spark SQL API may be accessed using the same programming interface that was used for Spark’s RDD APIs  
 ![sparksql](https://github.com/choojun/choojun.github.io/assets/6356054/538f24de-c002-44a0-8b57-e17b107ce1c8)
@@ -490,7 +492,7 @@ $ pip3 install traitlets==5.9.0
 > Suppose that you have learned some essential codes in G4 to G7 before attempting the G8
 
 
-## G9. JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G9. JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	JupyterLab is a highly extensible, feature-rich notebook authoring application and editing environment, and is a part of Project Jupyter, a large umbrella project centered around the goal of providing tools (and standards) for interactive computing with computational notebooks. It is a sibling to other notebook authoring applications under the Project Jupyter umbrella, like Jupyter Notebook and Jupyter Desktop. JupyterLab offers a more advanced, feature rich, customizable experience compared to Jupyter Notebook.
 
