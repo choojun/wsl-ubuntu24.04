@@ -159,8 +159,8 @@ Python virtual environments create a self-contained and isolated environment for
 
 4.	Check the HDFS current working directory for the newly created directory’s contents, and use the head command to view one of the part files
 ~~~bash
-$ hdfs dfs -ls wc
-$ hdfs dfs -head wc/part-00000
+$ hdfs dfs -ls /user/hduser/wc
+$ hdfs dfs -head /user/hduser/wc/part-00000
 ~~~
 
 
@@ -255,7 +255,12 @@ $ hdfs dfs -head wc/part-00000
 
 ## G5. Using the PySpark Interactive Shell - Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Find the longest word in a sentence
+1.	Login using user **hduser**, activate your virtual environment (e.g, de-test-venv), and launch PySpark with 4 cores
+~~~bash
+(de-test-venv) hduserMyPC:~$ pyspark --executor-cores 4
+~~~
+
+2.	Find the longest word in a sentence
 ~~~bash
 >>> words = 'It is not that I am so smart but I stay with the questions much longer Albert Einstein'.split()
 >>> print(words)
@@ -273,7 +278,7 @@ or
 >>> words_RDD.reduce(findLongestWord)
 ~~~
 
-2.	Find the lexicographically largest word in a sentence
+3.	Find the lexicographically largest word in a sentence
 ~~~bash
 >>> def findLargestWord(x, y):
 ...     if x > y:
@@ -284,12 +289,12 @@ or
 >>> words_RDD.reduce(findLargestWord)
 ~~~
 
-3.	Find the lexicographically smallest word in a sentence using lambda expression
+4.	Find the lexicographically smallest word in a sentence using lambda expression
 ~~~bash
 >>> words_RDD.reduce(lambda w, v: w if w < v else v)
 ~~~
 
-4.	Count the number of lines in a text file with certain letters. Note the cache() function pulls data sets into a cluster-wide in-memory cache, which is very useful when data is accessed repeatedly
+5.	Count the number of lines in a text file with certain letters. Note the cache() function pulls data sets into a cluster-wide in-memory cache, which is very useful when data is accessed repeatedly
 ~~~bash
 >>> logFile = "file:///home/hduser/shakespeare.txt"
 >>> logData = sc.textFile(logFile).cache()
