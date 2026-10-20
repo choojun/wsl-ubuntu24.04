@@ -73,7 +73,7 @@ Python virtual environments create a self-contained and isolated environment for
       $ de-test/de-test-venv/bin/python -m ipykernel install --user --name "de-test-venv" --display-name  "de-test-venv"
       ~~~
 
-3. Using JupyterLab
+3. Setup JupyterLab 
 
    3.1 Activate the virtual environment, install python packages in created venv (e.g. scikit-learn, matplotlib and etc)), and run JupyterLab with commands
      ~~~bash
@@ -86,10 +86,10 @@ Python virtual environments create a self-contained and isolated environment for
      > Run Python files from the command-line interface (CLI) using the environment's dependencies (not recommended).
      > Please be aware that the download and installation process will be time-consuming. Ensure the PySpark version corresponds with your Apache Spark installation
 
-   3.2 Access JupyterLab
+   3.2 Access JupyterLab with Web borser
        From the output shown in your terminal, **copy and paste one of the URLs in a web browser**.
 
-   * To create a jupyter notebook based on your virtual environment, under the **Notebook**, just click on the kernel with your virtual environment name, e.g., de-test-venv.
+   * To create a jupyter notebook based on your virtual environment, under the **Notebook**, just click on the kernel with your virtual environment name, e.g., de-test-venv. **Note that new created jupyter notebook is ready with PySpark under the de-test-venv**.
 
    * To close a jupyter notebook and shut down the kernel (i.e., de-test-venv), under the jupyter notebook as the active tab, click **File** and then select **Close** and **Shut Down Notebook…**
      
@@ -108,41 +108,26 @@ Python virtual environments create a self-contained and isolated environment for
       > (de-test-venv) hduserMyPC:~$ jupyter kernelspec uninstall de-test-venv
 
    > Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
-      
-   3.4 **Deactivate the virtual environment**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
+
+
+   3.4	Launch the PySpark interactive shell/interpreter. 
+      ~~~bash
+      pyspark
+      ~~~
+      > To exit the pyspark shell with command exit()
+      >
+      > To minimize the verbosity of Spark , you need to configure the settings of log4j after duplicating the template file (optional).
+      ~~~bash
+      $ cp $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
+      ~~~
+      > Edit the newly created log4j file, by replacing every occurrence of INFO with WARN, e.g.
+      > rootLogger.level = warn  
+      > rootLogger.appenderRef.stdout.ref = console  
+
+   3.5 **Important: Remember to deactivate the virtual environment**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
       ~~~bash
       (de-test-venv) hduserMyPC@MyPC:~$ deactivate
       ~~~
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7.	Launch the PySpark interactive shell/interpreter
-~~~bash
-pip3 install grpcio-status
-pyspark
-~~~
-> To exit the pyspark shell with command exit()
-
-8. To minimize the verbosity of Spark , you need to configure the settings of log4j after duplicating the template file (optional).
-~~~bash
-$ cp $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
-~~~
-> Edit the newly created log4j file, by replacing every occurrence of INFO with WARN, e.g.
-> rootLogger.level = warn  
-> rootLogger.appenderRef.stdout.ref = console  
-
 
 ## G2x. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
