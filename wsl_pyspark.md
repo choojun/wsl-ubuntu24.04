@@ -303,7 +303,7 @@ or
 
 ## G6. Using the PySpark Interactive Shell - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Make a copy of the C:\de\SparkApp folder in the local hduser’s home directory
+1.	Login using user **hduser**,, and make a copy of the C:\de\SparkApp folder in the local hduser’s home directory
 ~~~bash
 $ sudo cp -r /mnt/c/de/SparkApp /home/hduser
 $ sudo chown -r hduser:hduser /home/hduser/SparkApp
@@ -330,24 +330,22 @@ $ hdfs dfs -head spark_wc/part-00000
 
 ## G7. Using the PySpark Interactive Shell - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Change directory to the SparkApp folder, and review the code in app.py
+1.	Remain login using user **hduser**, make a copy of the C:\de\SparkApp folder in the local hduser’s home directory, change directory to the SparkApp directory, and review the code in app.py
 ~~~bash
 $ sudo cp -r /mnt/c/de/SparkApp /home/hduser
+$ sudo chown hduser:hduser -R /home/hduser/SparkApp
 $ cd /home/hduser/SparkApp
 $ cat app.py | more
 ~~~
-> 
+> To terminate the review of code with Ctrl-x
 
-2.	Copy the folder with the data files to the distributed file system, and make a copy of the source file 
+2.	Make a copy of the source file 
 ~~~bash
-$ hdfs dfs -mkdir SparkApp
-$ hdfs dfs -mkdir SparkApp/ontime
-
-$ hdfs dfs -put SparkApp/ontime
-$ sudo cp app.py app2.py
+$ cd /home/hduser/SparkApp
+$ cp app.py app2.py
 ~~~
 
-3.	Modify the file path in app.py, which has the codes of loading the airlines lookup dictionary and reading the CSV data into an RDD,  as follows
+3.	Modify the file path in app.py, which has the codes of loading the airlines lookup dictionary and reading the CSV data into an RDD, as follows
 ~~~bash
 airlines = dict(sc.textFile("file:///home/hduser/SparkApp/ontime/airlines.csv").map(split).collect())
 flights = sc.textFile("file:///home/hduser/SparkApp/ontime/flights.csv").map(split).map(parse)
