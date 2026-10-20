@@ -8,7 +8,7 @@
 4. [sparksql.zip](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip)
 
 
-## G1. Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G1. Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Login as **hduser**. Ensure that the SSH, DFS, and YARN services are started sequentially. Then, examine them using the jps command
 
@@ -45,7 +45,7 @@ source ~/.bashrc
 
 
 
-## G2. Setup Python venv with JupyterLab for PySpark interactive shell/interpreter
+## G2. Setup Python venv with JupyterLab for PySpark interactive shell/interpreter [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 Python virtual environments create a self-contained and isolated environment for different Python projects. This would enable you to install a specific version of a module on a per project basis which will not affect your other Python projects.
 
@@ -130,7 +130,7 @@ Python virtual environments create a self-contained and isolated environment for
       (de-test-venv) hduserMyPC@MyPC:~$ deactivate
       ~~~
 
-## G2x. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G3. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Launch PySpark’s interactive shell using user hduser
 2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
@@ -163,7 +163,7 @@ $ hdfs dfs -head wc/part-00000
 
 
 
-## G3. Using the PySpark Interactive Shell - Numerical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## G3. Using the PySpark Interactive Shell - Numerical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Install numpy using user hduser, and launch numpy with 4 cores
 ~~~bash
