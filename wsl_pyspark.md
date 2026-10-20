@@ -75,7 +75,7 @@ Python virtual environments create a self-contained and isolated environment for
 
 3. Setup JupyterLab 
 
-   3.1 Activate the virtual environment, install python packages in created venv (e.g. scikit-learn, matplotlib and etc)), and run JupyterLab with commands
+   3.1 Activate the virtual environment, install python packages in created venv (e.g. scikit-learn and etc)), and run JupyterLab with commands
      ~~~bash
      hduser@MyPC:~$ cd ~
      hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
