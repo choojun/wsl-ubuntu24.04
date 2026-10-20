@@ -328,7 +328,7 @@ $ hdfs dfs -head spark_wc/part-00000
 ~~~
 
 
-## G7. Using the PySpark Interactive Shell - Flight Delay (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G7. Using the PySpark Interactive Shell - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Change directory to the SparkApp folder, and review the code in app.py
 ~~~bash
