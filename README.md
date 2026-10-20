@@ -45,3 +45,10 @@ Read more required details at URLs
 [P7.1](https://github.com/choojun/wsl-ubuntu24.04/blob/main/P7.1.md) Basic Security
 
 [P7.2](https://github.com/choojun/wsl-ubuntu24.04/blob/main/P7.2.md) Hadoop in Secure Mode
+
+
+## References:
+
+https://www.kaggle.com/datasets/moxxis/harry-potter-lstm
+
+
