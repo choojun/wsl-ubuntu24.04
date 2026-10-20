@@ -20,9 +20,10 @@ $ hdfs dfs -help
 
 ## F1. Basic File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1.	Download a file with file ID 122PnuKaSaA_OyYOKnxQOdlMc5awdyf5v from Google Drive
+1.	Download a remote file from Google Drive
 ~~~bash
-$ wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=122PnuKaSaA_OyYOKnxQOdlMc5awdyf5v' -O shakespeare.txt
+$ cd ~
+$ wget --no-check-certificate 'https://drive.google.com/file/d/1qjxR3xLs6MVidyO5TRxBtI4zMVdeDdz2/view' -O shakespeare.txt
 ~~~
 
 2.	Copy the downloaded file shakespeare.txt to the distributed file system
@@ -49,15 +50,28 @@ $ hdfs dfs -cat shakespeare.txt | less
 ~~~bash
 $ hdfs dfs -get shakespeare.txt ./shakespeare-dfs.txt
 ~~~
+> You may apply the option -f to force overwrite the destination file in the local file system, e.g.
+> ~~~bash
+> $ hdfs dfs -get -f shakespeare.txt ./shakespeare-dfs.txt
+> ~~~~
 
 6.	To change the permission of the file shakespeare.txt to 664
 ~~~bash
-$ hdfs dfs -chmod 664 shakespeare.txt 
+$ hdfs dfs -ls shakespeare.txt 
+$ hdfs dfs -chmod 664 shakespeare.txt
+$ hdfs dfs -ls shakespeare.txt 
 ~~~
-> 664 is an octal representation of the flags to set for the permission triple. The above statement  changes the permissions to -rw-rw-r--.  
+> Note that 664 is an octal representation of the flags to set for the permission triple. The above statement  changes the permissions to -rw-rw-r--.  
 > 6 is 110, which means read and write, but not execute.  
 > 7 is 111, which means complete permissions.  
 > 4 is 100, which means read-only.  
+
+7.	Download the following two remote files from Google Drive and repeat Steps 2 through 6 as an exercise
+~~~bash
+$ cd ~
+$ wget --no-check-certificate 'https://drive.google.com/file/d/1skRa_0NTu-XmthVsot3NtHL8SYYaLzkD/view' -O HarryPotter1.txt
+$ wget --no-check-certificate 'https://drive.google.com/file/d/155Sra6cu3AmSQ1oyh8kLAl_KdPzY7PrY/view' -O HarryPotter2.txt
+~~~
 
 ## F2. Advanced File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
