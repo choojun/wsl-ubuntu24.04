@@ -233,6 +233,7 @@ $ cat flights.csv | ./mapper.py | sort | ./reducer.py
 
 3. Create a required directory in the distributed file system, and you may review the created directory before copying the required file flights.csv to the destination directory
 ~~~bash
+$ hdfs dfs -ls /user/hduser
 $ hdfs dfs -mkdir /user/hduser/StreamingOn-time
 $ hdfs dfs -ls /user/hduser
 $ hdfs dfs -ls /user/hduser/StreamingOn-time
