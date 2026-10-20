@@ -121,6 +121,7 @@ Python virtual environments create a self-contained and isolated environment for
       $ cp $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
       ~~~
       > Edit the newly created log4j file, by replacing every occurrence of INFO with WARN, e.g.
+      > 
       > rootLogger.level = warn  
       > rootLogger.appenderRef.stdout.ref = console  
 
