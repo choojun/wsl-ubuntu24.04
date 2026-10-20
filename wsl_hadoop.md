@@ -412,6 +412,10 @@ $ ssh localhost
          <name>yarn.resourcemanager.address</name>
          <value>127.0.0.1:8032</value>
       </property>
+      <property>
+         <name>yarn.log-aggregation.retain-seconds</name>
+         <value>604800</value>
+      </property>
     </configuration>
  ~~~
  > Remember to save the edited file by ctrl-x.
