@@ -352,19 +352,23 @@ $ ssh localhost
 8. Edit the etc/hadoop/hdfs-site.xml file by adding the following configuration.
  ~~~xml
     <configuration>
-      <property>
-        <name>dfs.replication</name>
-        <value>1</value>
-      </property>
-      <property>
-        <name>dfs.datanode.data.dir</name>
-        <value>/home/hduser/hadoopData/dfs/data</value>
-        <final>true</final>
+       <property>
+          <name>dfs.replication</name>
+          <value>1</value>
        </property>
        <property>
-        <name>dfs.namenode.name.dir</name>
-        <value>/home/hduser/hadoopName/dfs/data</value>
-        <final>true</final>
+          <name>dfs.datanode.data.dir</name>
+          <value>/home/hduser/hadoopData/dfs/data</value>
+          <final>true</final>
+       </property>
+       <property>
+          <name>dfs.namenode.name.dir</name>
+          <value>/home/hduser/hadoopName/dfs/data</value>
+          <final>true</final>
+       </property>
+       <property>
+          <name>dfs.webhdfs.enabled</name>
+          <value>true</value>
        </property>
     </configuration>
  ~~~
