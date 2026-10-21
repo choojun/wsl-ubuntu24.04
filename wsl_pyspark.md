@@ -356,7 +356,7 @@ Python virtual environments create a self-contained and isolated environment for
     $ cd /home/hduser/SparkApp
     $ cat app.py | more
     ~~~
-> To terminate the review of code with Ctrl-x
+    > To terminate the review of code with Ctrl-x
 
 2.	Make a copy of the source file 
     ~~~bash
@@ -512,7 +512,7 @@ Python virtual environments create a self-contained and isolated environment for
    > To terminate the Jupyter notebook server with Ctrl-C
 
 8. Open up the Practical3c_SparkSQL_and_DataFrames.ipynb notebook and do the Spark SQL exercises there.
-> Suppose that you have learned some essential codes in G4 to G7 before attempting the G8
+   > Suppose that you have learned some essential codes in G4 to G7 before attempting the G8
 
 
 ## G10. JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
