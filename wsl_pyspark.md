@@ -74,7 +74,7 @@ Python virtual environments create a self-contained and isolated environment for
 
    JupyterLab is a highly extensible, feature-rich notebook authoring application and editing environment, and is a part of Project Jupyter, a large umbrella project centered around the goal of providing tools (and standards) for interactive computing with computational notebooks. It is a sibling to other notebook authoring applications under the Project Jupyter umbrella, like Jupyter Notebook and Jupyter Desktop. JupyterLab offers a more advanced, feature rich, customizable experience compared to Jupyter Notebook. Read more from URL https://jupyterlab.readthedocs.io/en/latest/
 
-   2.1 Activate the virtual environment, install python packages in created venv (e.g. scikit-learn and etc)), and run JupyterLab with commands
+   2.1 Activate the virtual environment, install python optional packages in created venv (e.g. scikit-learn and etc)), and run JupyterLab with commands
      ~~~bash
      hduser@MyPC:~$ cd ~
      hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
