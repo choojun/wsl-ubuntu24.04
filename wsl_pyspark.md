@@ -102,6 +102,8 @@ Python virtual environments create a self-contained and isolated environment for
    >
    > (my-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
    >
+   > (de-prj-venv) hduserMyPC:~$ jupyter kernelspec uninstall de-prj-venv
+   >
    > (de-test-venv) hduserMyPC:~$ jupyter kernelspec uninstall de-test-venv
    >
    Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
