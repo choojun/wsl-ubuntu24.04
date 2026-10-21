@@ -132,6 +132,9 @@ Python virtual environments create a self-contained and isolated environment for
 ## G3. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Launch PySpark’s interactive shell using user **hduser**
+    ~~~bash
+    (de-test-venv) hduserMyPC@MyPC:~$ pyspark
+    ~~~
 
 2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
 ~~~bash
