@@ -98,15 +98,13 @@ Python virtual environments create a self-contained and isolated environment for
 
    * To shut down the jupyterlab server, go to the terminal where you ran the command to start JupyterLab, i.e., in Step 3.1. Press Ctrl-C and type ‘y’ to confirm that you want to shut down the server.
 
-   2.3 **To delete any unwanted venv**, if needed, try the command with Syntax: jupyter kernelspec uninstall unwanted-kernel
-
-   * Example 1: 
-     > (my-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
-   
-    * Example 2:
-      > (de-test-venv) hduserMyPC:~$ jupyter kernelspec uninstall de-test-venv
-
-   > Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
+   2.3 **To delete any unwanted venv**, if needed, try the command with Syntax: jupyter kernelspec uninstall unwanted-kernel. Examples:
+   >
+   > (my-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
+   >
+   > (de-test-venv) hduserMyPC:~$ jupyter kernelspec uninstall de-test-venv
+   >
+   Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
 
 
    2.4	Launch the PySpark interactive shell/interpreter. 
@@ -114,6 +112,20 @@ Python virtual environments create a self-contained and isolated environment for
    (de-test-venv) hduserMyPC@MyPC:~$ pyspark
    ~~~
    > To exit the pyspark shell with command exit()
+   ~~~bash
+   Welcome to
+         ____              __
+        / __/__  ___ _____/ /__
+       _\ \/ _ \/ _ `/ __/  '_/
+      /__ / .__/\_,_/_/ /_/\_\   version 4.0.4
+         /_/
+   Using Python version 3.12.3 (main, Aug 31 2026 10:18:26)
+   Spark context Web UI available at http://172.31.77.100:4040
+   Spark context available as 'sc' (master = local[*], app id = local-1792576061544).
+   SparkSession available as 'spark'.
+   >>>
+   >>> exit()
+   ~~~
    >
    > To minimize the verbosity of Spark , you need to configure the settings of log4j after duplicating the template file (optional).
    ~~~bash
