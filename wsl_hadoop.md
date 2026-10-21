@@ -66,7 +66,7 @@ $ sudo apt install ssh
 $ service ssh status
 ~~~
 > Ctrl-C to terminate the examination of ssh status.
-> Test the ssh to localhost
+> Test the ssh to localhost for created user, e.g. tarumt, hduser and student
 > ~~~bash
 > $ ssh localhost
 > ~~~
