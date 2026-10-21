@@ -50,10 +50,7 @@ source ~/.bashrc
 Python virtual environments create a self-contained and isolated environment for different Python projects. This would enable you to install a specific version of a module on a per project basis which will not affect your other Python projects.
 
 1. Login as the user **hduser**, to create a virtual environment
-    ~~~bash
-    hduser@MyPC:~$ su - hduser
-    ~~~
-    
+
     1.1 Create a project directory (e.g., de-test)
       ~~~bash
       hduser@MyPC:~$ mkdir de-test
