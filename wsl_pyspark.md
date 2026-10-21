@@ -13,32 +13,32 @@
 1.	Login as **hduser**. Ensure that the SSH, DFS, and YARN services are started sequentially. Then, examine them using the jps command
 
 2.	Download the correct version of Spark from the Apache Spark downloads page (http://spark.apache.org/downloads.html), and check the compatible with your installed Hadoop
-~~~bash
-$ cd ~
-$ wget dlcdn.apache.org/spark/spark-4.0.4/spark-4.0.4-bin-hadoop3.tgz
-$ wget dlcdn.apache.org/spark/spark-4.0.4/spark-4.0.4-bin-hadoop3-connect.tgz
-~~~
+    ~~~bash
+    $ cd ~
+    $ wget dlcdn.apache.org/spark/spark-4.0.4/spark-4.0.4-bin-hadoop3.tgz
+    $ wget dlcdn.apache.org/spark/spark-4.0.4/spark-4.0.4-bin-hadoop3-connect.tgz
+    ~~~
 
 3.	Uncompress the file
-~~~bash
-$ tar -xvzf spark-4.0.4-bin-hadoop3-connect.tgz
-~~~
+    ~~~bash
+    $ tar -xvzf spark-4.0.4-bin-hadoop3-connect.tgz
+    ~~~
 
 4.	Rename the Spark folder as spark
-~~~bash
-$ mv spark-4.0.4-bin-hadoop3-connect spark
-~~~
+    ~~~bash
+    $ mv spark-4.0.4-bin-hadoop3-connect spark
+    ~~~
 
 5.	Edit the file ~/.bashrc with the the following lines
-~~~bash
-export SPARK_HOME=/home/hduser/spark
-export PATH=$SPARK_HOME/bin:$PATH
-~~~
+    ~~~bash
+    export SPARK_HOME=/home/hduser/spark
+    export PATH=$SPARK_HOME/bin:$PATH
+    ~~~
 
 6.	Re-load the environment
-~~~bash
-source ~/.bashrc
-~~~
+    ~~~bash
+    source ~/.bashrc
+    ~~~
 
 
 
@@ -101,28 +101,28 @@ Python virtual environments create a self-contained and isolated environment for
    2.3 **To delete any unwanted venv**, if needed, try the command with Syntax: jupyter kernelspec uninstall unwanted-kernel
 
    * Example 1: 
-      > (my-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
+     > (my-venv) hduserMyPC:~$ jupyter kernelspec uninstall my-venv
    
-   * Example 2:
+    * Example 2:
       > (de-test-venv) hduserMyPC:~$ jupyter kernelspec uninstall de-test-venv
 
    > Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
 
 
    2.4	Launch the PySpark interactive shell/interpreter. 
-      ~~~bash
-      pyspark
-      ~~~
-      > To exit the pyspark shell with command exit()
-      >
-      > To minimize the verbosity of Spark , you need to configure the settings of log4j after duplicating the template file (optional).
-      ~~~bash
-      $ cp $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
-      ~~~
-      > Edit the newly created log4j file, by replacing every occurrence of INFO with WARN, e.g.
-      > 
-      > rootLogger.level = warn  
-      > rootLogger.appenderRef.stdout.ref = console  
+   ~~~bash
+   (de-test-venv) hduserMyPC@MyPC:~$ pyspark
+   ~~~
+   > To exit the pyspark shell with command exit()
+   >
+   > To minimize the verbosity of Spark , you need to configure the settings of log4j after duplicating the template file (optional).
+   ~~~bash
+   $ cp $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
+   ~~~
+   > Edit the newly created log4j file, by replacing every occurrence of INFO with WARN, e.g.
+   > 
+   > rootLogger.level = warn  
+   > rootLogger.appenderRef.stdout.ref = console  
 
    2.5 **Important: Remember to deactivate the virtual environment**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
       ~~~bash
