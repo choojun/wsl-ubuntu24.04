@@ -471,10 +471,11 @@ $ ssh localhost
  > ~~~
  > Browse any web browser for the ResourceManager, by default, and it is available at URL **http://localhost:8088/**
 
-15. Create HDFS directories required to execute MapReduce jobs
+15. Create HDFS directories required to execute MapReduce jobs for all created users, e.g. hduser and student
  ~~~bash
  $ hdfs dfs -mkdir /user
  $ hdfs dfs -mkdir /user/hduser
+ $ hdfs dfs -mkdir /user/student
  ~~~
 
 ## E8. Run a sample MapReduce Job in Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
