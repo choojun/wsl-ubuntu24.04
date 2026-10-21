@@ -377,22 +377,22 @@ $ ssh localhost
 9. Edit the etc/hadoop/mapred-site.xml file by adding the following configuration.
  ~~~xml
     <configuration>
-      <property>
-        <name>mapreduce.framework.name</name>
-        <value>yarn</value>
-      </property>
-      <property>  
-        <name>mapreduce.application.classpath</name>      
-        <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
-      </property>
-      <property>
-        <name>mapreduce.map.java.opts</name>
-        <value>-Xmx1024m --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</value>
-      </property>
-      <property>
-        <name>mapreduce.reduce.java.opts</name>
-        <value>-Xmx1024m --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</value>
-      </property>
+       <property>
+          <name>mapreduce.framework.name</name>
+          <value>yarn</value>
+       </property>
+       <property>  
+          <name>mapreduce.application.classpath</name>      
+          <value>$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*:$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/lib/*</value>
+       </property>
+       <property>
+          <name>mapreduce.map.java.opts</name>
+          <value>-Xmx1024m --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</value>
+       </property>
+       <property>
+          <name>mapreduce.reduce.java.opts</name>
+          <value>-Xmx1024m --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</value>
+       </property>
     </configuration>
  ~~~
  > Remember to save the edited file by ctrl-x.
