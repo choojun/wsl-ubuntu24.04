@@ -137,31 +137,31 @@ Python virtual environments create a self-contained and isolated environment for
     ~~~
 
 2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
-~~~bash
->>> text = sc.textFile("shakespeare.txt")
->>> print(text)
->>> from operator import add
->>> def tokenize(text): return text.split()
-...
->>> words = text.flatMap(tokenize)
-~~~
+    ~~~bash
+    >>> text = sc.textFile("shakespeare.txt")
+    >>> print(text)
+    >>> from operator import add
+    >>> def tokenize(text): return text.split()
+    ...
+    >>> words = text.flatMap(tokenize)
+    ~~~
 
 3.	Apply the map, and then apply the reduceByKey action to obtain the word counts before saving the results in file
-~~~bash
->>> wc = words.map(lambda x: (x, 1))
->>> print(wc.toDebugString())
->>> counts = wc.reduceByKey(add)
->>> counts.saveAsTextFile("hdfs://localhost:9000/user/hduser/wc")
->>> exit()
-~~~
-> Apache spark version 3.3.6 does not need to have the hdfs directory path (hdfs://localhost:9000/user/hduser/) explicitly indicated to write in the local path, i.e., /home/hduser. Example:
-> counts.saveAsTextFile("wc")
+    ~~~bash
+    >>> wc = words.map(lambda x: (x, 1))
+    >>> print(wc.toDebugString())
+    >>> counts = wc.reduceByKey(add)
+    >>> counts.saveAsTextFile("hdfs://localhost:9000/user/hduser/wc")
+    >>> exit()
+    ~~~
+    > In certain occasion, Apache spark does not need to have the hdfs directory path (hdfs://localhost:9000/user/hduser/) explicitly indicated to write in the local path, i.e., /home/hduser. Example:
+    > counts.saveAsTextFile("wc")
 
 4.	Check the HDFS current working directory for the newly created directory’s contents, and use the head command to view one of the part files
-~~~bash
-$ hdfs dfs -ls /user/hduser/wc
-$ hdfs dfs -head /user/hduser/wc/part-00000
-~~~
+    ~~~bash
+    $ hdfs dfs -ls /user/hduser/wc
+    $ hdfs dfs -head /user/hduser/wc/part-00000
+    ~~~
 
 
 
