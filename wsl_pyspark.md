@@ -150,10 +150,6 @@ Python virtual environments (venv) create a self-contained and isolated environm
     hduser@MyPC:~$ cd ~
     hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
     (de-test-venv) hduserMyPC@MyPC:~$ pyspark
-    ~~~
-
-2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
-    ~~~bash
     Welcome to
           ____              __
          / __/__  ___ _____/ /__
@@ -165,6 +161,10 @@ Python virtual environments (venv) create a self-contained and isolated environm
     Spark context available as 'sc' (master = local[*], app id = local-1792576061544).
     SparkSession available as 'spark'.
     >>>
+    ~~~
+
+2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
+    ~~~bash
     >>> text = sc.textFile("shakespeare.txt")
     >>> print(text)
     >>> from operator import add
@@ -204,10 +204,6 @@ Python virtual environments (venv) create a self-contained and isolated environm
     hduser@MyPC:~$ cd ~
     hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
     (de-test-venv) hduserMyPC:~$ pyspark --executor-cores 4
-    ~~~
-
-2.	Try the following codes. The codes generate a list of random integers and create an RDD by parallelizing num_list with library numpy.
-    ~~~bash
     Welcome to
           ____              __
          / __/__  ___ _____/ /__
@@ -219,6 +215,10 @@ Python virtual environments (venv) create a self-contained and isolated environm
     Spark context available as 'sc' (master = local[*], app id = local-1792576061544).
     SparkSession available as 'spark'.
     >>>
+    ~~~
+
+2.	Try the following codes. The codes generate a list of random integers and create an RDD by parallelizing num_list with library numpy.
+    ~~~bash
     >>> import numpy as np
     >>> num_list = np.random.randint(0, 10, 20)
     >>> numbers_RDD = sc.parallelize(num_list)
@@ -299,7 +299,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     >>> cartesian_RDD.collect()
     ~~~
 
-11. Note that cartesian() generates a Cartesian product of two collections and returns all the possible combinations of pairs between the elements in both collections
+11. Note that cartesian() generates a Cartesian product of two collections and returns all the possible combinations of pairs between the elements in both collections. Try it again.
     ~~~bash
     >>> numbers_RDD.cartesian(numbers_RDD).collect()
     ~~~
@@ -311,11 +311,24 @@ Python virtual environments (venv) create a self-contained and isolated environm
     hduserMyPC@MyPC:~$
     ~~~
 
-## G5. Using the PySpark Interactive Shell - Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G5. Using the PySpark Shell - Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Login using user **hduser**, activate your virtual environment (e.g, de-test-venv), and launch PySpark with 4 cores
+1.	Login using user **hduser**, activate your venv (e.g, de-test-venv), and launch PySpark Shell with 4 CPU cores
     ~~~bash
+    hduser@MyPC:~$ cd ~
+    hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
     (de-test-venv) hduserMyPC:~$ pyspark --executor-cores 4
+    Welcome to
+          ____              __
+         / __/__  ___ _____/ /__
+        _\ \/ _ \/ _ `/ __/  '_/
+       /__ / .__/\_,_/_/ /_/\_\   version 4.0.4
+          /_/
+    Using Python version 3.12.3 (main, Aug 31 2026 10:18:26)
+    Spark context Web UI available at http://172.31.77.100:4040
+    Spark context available as 'sc' (master = local[*], app id = local-1792576061544).
+    SparkSession available as 'spark'.
+    >>>
     ~~~
 
 2.	Find the longest word in a sentence
@@ -361,51 +374,58 @@ Python virtual environments (venv) create a self-contained and isolated environm
     >>> print("Lines with 'c':{}, lines with 'w':{}".format(number_of_c, number_of_w))
     ~~~
 
+6. Exit the Pyspark and deactivate the virtual environment for ending the exercise.
+   ~~~bash
+   >>> exit()
+   (de-test-venv) hduserMyPC@MyPC:~$ deactivate
+   hduserMyPC@MyPC:~$
+   ~~~
 
 
-
-## G6. Using the Spark Command-Line utility (spark-submit) with Python - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G6. Using the spark-submit (an Spark Command-Line utility) with Python - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Login using user **hduser**,, and make a copy of the C:\de\SparkApp folder in the local hduser’s home directory
     ~~~bash
-    $ sudo cp -r /mnt/c/de/SparkApp /home/hduser
-    $ sudo chown -r hduser:hduser /home/hduser/SparkApp
+    hduserMyPC@MyPC:~$ cd ~
+    hduserMyPC@MyPC:~$ sudo cp -r /mnt/c/de/SparkApp /home/hduser
+    hduserMyPC@MyPC:~$ sudo chown -r hduser:hduser /home/hduser/SparkApp
     ~~~
 
 2.	Change directory to the SparkApp folder, and review the code in wordcount.py
     ~~~bash
-    $ cd /home/hduser/SparkApp
-    $ cat wordcount.py | more
+    hduserMyPC@MyPC:~$ cd /home/hduser/SparkApp
+    hduserMyPC@MyPC:~/SparkApp$ cat wordcount.py | more
     ~~~
 
 3.	Submit the wordcount.py job to Spark (directly to the YARN resource manager)
     ~~~bash
-    $ spark-submit wordcount.py shakespeare.txt hdfs://localhost:9000/user/hduser/spark_wc
+    hduserMyPC@MyPC:~/SparkApp$ spark-submit wordcount.py shakespeare.txt hdfs://localhost:9000/user/hduser/spark_wc
     ~~~
 > May always re-submit the same job by using different directory name, e.g. give a new name instead of **spark_wc**
 
 4.	You may check the results directory in the HDFS system and view the beginning portion of the output file part-00000
     ~~~bash
-    $ hdfs dfs -ls spark_wc
-    $ hdfs dfs -head spark_wc/part-00000 
+    hduserMyPC@MyPC:~/SparkApp$ hdfs dfs -ls spark_wc
+    hduserMyPC@MyPC:~/SparkApp$ hdfs dfs -head spark_wc/part-00000 
     ~~~
 
 
-## G7. Using the Spark Command-Line utility (spark-submit) with Python - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G7. Using the spark-submit an Spark Command-Line utility) with Python - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Remain login using user **hduser**, make a copy of the C:\de\SparkApp folder in the local hduser’s home directory, change directory to the SparkApp directory, and review the code in app.py
     ~~~bash
-    $ sudo cp -r /mnt/c/de/SparkApp /home/hduser
-    $ sudo chown hduser:hduser -R /home/hduser/SparkApp
-    $ cd /home/hduser/SparkApp
-    $ cat app.py | more
+    hduserMyPC@MyPC:~$ cd ~
+    hduserMyPC@MyPC:~$ sudo cp -r /mnt/c/de/SparkApp /home/hduser
+    hduserMyPC@MyPC:~$ sudo chown hduser:hduser -R /home/hduser/SparkApp
+    hduserMyPC@MyPC:~$ cd /home/hduser/SparkApp
+    hduserMyPC@MyPC:~/SparkApp$ cat app.py | more
     ~~~
     > To terminate the review of code with Ctrl-x
 
 2.	Make a copy of the source file 
     ~~~bash
-    $ cd /home/hduser/SparkApp
-    $ cp app.py app2.py
+    hduserMyPC@MyPC:~$ cd /home/hduser/SparkApp
+    hduserMyPC@MyPC:~/SparkApp$ cp app.py app2.py
     ~~~
 
 3.	Modify the file path in app.py, which has the codes of loading the airlines lookup dictionary and reading the CSV data into an RDD, as follows
@@ -421,8 +441,8 @@ Python virtual environments (venv) create a self-contained and isolated environm
 
 4.	Submit the wordcount.py job to Spark (directly to the YARN resource manager)
     ~~~bash
-    $ cd /home/hduser/SparkApp
-    $ spark-submit app.py
+    hduserMyPC@MyPC:~$ cd /home/hduser/SparkApp
+    hduserMyPC@MyPC:~/SparkApp$ spark-submit app.py
     ~~~
 
 5.	You may check the print out results. 
