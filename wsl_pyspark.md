@@ -1,6 +1,6 @@
 ![spark](https://github.com/choojun/choojun.github.io/assets/6356054/ed7bd2cd-1ce6-43db-8ebd-18d56f351a43)
 
-# G. Spark, PySpark, Spark SQL and Jupyter Notebook [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+# G. Spark, PySpark Shell, Spark SQL and JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. Spark is an in-memory distributed computing engine especially designed for the Hadoop cluster. 
 2. Read more on Apache Spark at URLs https://spark.apache.org and https://en.wikipedia.org/wiki/Apache_Spark
