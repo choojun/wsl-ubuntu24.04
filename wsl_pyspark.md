@@ -320,7 +320,7 @@ Python virtual environments create a self-contained and isolated environment for
 
 
 
-## G6. Using the PySpark Interactive Shell - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G6. Using the Spark Command-Line utility (spark-submit) with Python - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Login using user **hduser**,, and make a copy of the C:\de\SparkApp folder in the local hduser’s home directory
     ~~~bash
