@@ -347,7 +347,7 @@ Python virtual environments create a self-contained and isolated environment for
     ~~~
 
 
-## G7. Using the Spark Command-Line utility with Python - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G7. Using the Spark Command-Line utility (spark-submit) with Python - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Remain login using user **hduser**, make a copy of the C:\de\SparkApp folder in the local hduser’s home directory, change directory to the SparkApp directory, and review the code in app.py
     ~~~bash
