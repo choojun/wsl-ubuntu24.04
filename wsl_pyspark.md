@@ -451,32 +451,44 @@ Python virtual environments (venv) create a self-contained and isolated environm
 
 ## G8. Using the PySpark Shell with Spark SQL[Spark SQL](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Spark SQL is a module in Apache Spark that provides a relational interface to work with structured data using SQL-based operations in Spark through either JDBC/ODBC connectors, a built-in interactive Hive console, or Spark SQL API. This practical covers the Spark SQL API, which runs as a library on top of Spark’s Core engine and APIs. The Spark SQL API may be accessed using the same programming interface that was used for Spark’s RDD APIs  
+1.	Spark SQL is a module in Apache Spark that provides a relational interface to work with structured data using SQL-based operations in Spark through either JDBC/ODBC connectors, a built-in interactive Hive console, or Spark SQL API. This practical covers the Spark SQL API, which runs as a library on top of Spark’s Core engine and APIs. The Spark SQL API may be accessed using the same programming interface that was used for Spark’s RDD APIs. Read more on Apache Spark at URLs https://spark.apache.org/sql/ and https://en.wikipedia.org/wiki/Apache_Spark#Spark_SQL
 ![sparksql](https://github.com/choojun/choojun.github.io/assets/6356054/538f24de-c002-44a0-8b57-e17b107ce1c8)
 
-3. Read more on Apache Spark at URLs https://spark.apache.org/sql/ and https://en.wikipedia.org/wiki/Apache_Spark#Spark_SQL
 
-4. Login as **hduser**, and install the Jupyter notebook, pandas, and reverse geocoder (https://pypi.org/project/reverse_geocoder/) packages 
-   ~~~bash
-   $ sudo apt install jupyter-notebook
-   $ pip3 install pandas
-   $ pip3 install reverse_geocoder
-   ~~~
-
-4.	Make a copy of the C:\de\sparksql folder in the local hduser’s home directory
+1.	Login using user **hduser**, and make a copy of the C:\de\sparksql folder in the local hduser’s home directory.
     ~~~bash
-    $ sudo cp -r /mnt/c/de/sparksql /home/hduser
-    $ sudo chown -r hduser:hduser -R /home/hduser/sparksql
+    hduser@MyPC:~$ cd ~
+    hduser@MyPC:~$ sudo cp -r /mnt/c/de/sparksql /home/hduser
+    hduser@MyPC:~$ sudo chown -R hduser:hduser /home/hduser/sparksql
     ~~~
 
-5.	Change directory to the sparksql folder, and review the code in wordcount.py
+2.	Change directory to the sparksql folder, and review the code in wordcount.py
     ~~~bash
-    $ cd ~/sparksql/data
-    $ hdfs dfs -mkdir data
-    $ hdfs dfs -put sf_parking_clean.json /user/hduser/data/
+    hduser@MyPC:~$ cd ~/sparksql/data
+    hduser@MyPC:~/sparksql/data$ hdfs dfs -mkdir data
+    hduser@MyPC:~/sparksql/data$ hdfs dfs -put sf_parking_clean.json /user/hduser/data/
     ~~~
 
-6.	Launch the PySpark interactive shell/interpreter, and try the following codes
+3.	Activate your venv (e.g, de-test-venv), and install reverse geocoder (https://pypi.org/project/reverse_geocoder/) package. Launch PySpark Shell
+    ~~~bash
+    hduser@MyPC:~/sparksql/data$ cd ~
+    hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+    (de-test-venv) hduserMyPC:~$ pip3 install reverse_geocoder
+    (de-test-venv) hduserMyPC:~$ pyspark
+    Welcome to
+          ____              __
+         / __/__  ___ _____/ /__
+        _\ \/ _ \/ _ `/ __/  '_/
+       /__ / .__/\_,_/_/ /_/\_\   version 4.0.4
+          /_/
+    Using Python version 3.12.3 (main, Aug 31 2026 10:18:26)
+    Spark context Web UI available at http://172.31.77.100:4040
+    Spark context available as 'sc' (master = local[*], app id = local-1792576061544).
+    SparkSession available as 'spark'.
+    >>>
+    ~~~
+
+4.	Launch the PySpark interactive shell/interpreter, and try the following codes
     ~~~bash
     >>> from pyspark.sql import SQLContext
     >>> sqlContext = SparkSession.builder.getOrCreate()
@@ -529,7 +541,12 @@ Python virtual environments (venv) create a self-contained and isolated environm
     ~~~
     > Suppose that your installed Spark does not need to have the hdfs directory path (hdfs://localhost:9000/user/hduser/) explicitly indicated. Example, it may be run as: parking = sqlContext.read.json("data/sf_parking_clean.json")
 
-
+5. Exit the Pyspark and deactivate the virtual environment for ending the exercise.
+   ~~~bash
+   >>> exit()
+   (de-test-venv) hduserMyPC@MyPC:~$ deactivate
+   hduserMyPC@MyPC:~$
+   ~~~
 
 ## G9. Spark SQL and Jupyter Notebook [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
