@@ -377,6 +377,7 @@ Python virtual environments create a self-contained and isolated environment for
 
 4.	Submit the wordcount.py job to Spark (directly to the YARN resource manager)
     ~~~bash
+    $ cd /home/hduser/SparkApp
     $ spark-submit app.py
     ~~~
 
