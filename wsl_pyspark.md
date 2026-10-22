@@ -180,7 +180,7 @@ Python virtual environments create a self-contained and isolated environment for
 
 
 
-## G4. Using the PySpark Interactive Shell - Numerical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G4. Using the PySpark Interactive Shell - Numerical Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Login using user **hduser**, activate your virtual environment (e.g, de-test-venv), and launch PySpark with 4 cores
     ~~~bash
