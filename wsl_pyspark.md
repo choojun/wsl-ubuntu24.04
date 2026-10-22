@@ -445,7 +445,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     hduserMyPC@MyPC:~/SparkApp$ spark-submit app.py
     ~~~
 
-5.	You may check the print out results. 
+5.	You may observe the print out results. 
 
 
 
@@ -456,7 +456,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
 
 3. Read more on Apache Spark at URLs https://spark.apache.org/sql/ and https://en.wikipedia.org/wiki/Apache_Spark#Spark_SQL
 
-4. Login as hduser, and install the Jupyter notebook, pandas, and reverse geocoder (https://pypi.org/project/reverse_geocoder/) packages 
+4. Login as **hduser**, and install the Jupyter notebook, pandas, and reverse geocoder (https://pypi.org/project/reverse_geocoder/) packages 
    ~~~bash
    $ sudo apt install jupyter-notebook
    $ pip3 install pandas
