@@ -45,11 +45,11 @@
 
 
 
-## G2. Setup Python venv with JupyterLab for PySpark interactive shell/interpreter [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G2. Setup Python venv with JupyterLab for PySpark Interactive Shell (Pyspark Shell) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-Python virtual environments create a self-contained and isolated environment for different Python projects. This would enable you to install a specific version of a module on a per project basis which will not affect your other Python projects.
+Python virtual environments (venv) create a self-contained and isolated environment for different Python projects. This would enable you to install a specific version of a module on a per project basis which will not affect your other Python projects.
 
-1. Login as the user **hduser**, to create a virtual environment
+1. Login as the user **hduser**, to create a venv.
 
     1.1 Create a project directory (e.g., de-test)
       ~~~bash
@@ -57,7 +57,7 @@ Python virtual environments create a self-contained and isolated environment for
       ~~~
       > It is advisable to utilize distinct directories for each project development.
 
-    1.2 Create a virtual environment for your project (e.g., de-test-venv):
+    1.2 Create a venv for your project (e.g., de-test-venv):
       ~~~bash
       $ sudo apt install python3-full
       $ sudo apt install jupyter-core
@@ -74,7 +74,7 @@ Python virtual environments create a self-contained and isolated environment for
 
    JupyterLab is a highly extensible, feature-rich notebook authoring application and editing environment, and is a part of Project Jupyter, a large umbrella project centered around the goal of providing tools (and standards) for interactive computing with computational notebooks. It is a sibling to other notebook authoring applications under the Project Jupyter umbrella, like Jupyter Notebook and Jupyter Desktop. JupyterLab offers a more advanced, feature rich, customizable experience compared to Jupyter Notebook. Read more from URL https://jupyterlab.readthedocs.io/en/latest/
 
-   2.1 Activate the virtual environment, install python optional packages in created venv (e.g. scikit-learn and etc)), and run JupyterLab with commands
+   2.1 Activate the venv, install python optional packages in created venv (e.g. scikit-learn and etc)), and run JupyterLab with commands
      ~~~bash
      hduser@MyPC:~$ cd ~
      hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
@@ -83,12 +83,12 @@ Python virtual environments create a self-contained and isolated environment for
      ~~~
      > Note that you need to activate the venv in order to install python packages within the venv (preferable way), or
      > Run Python files from the command-line interface (CLI) using the environment's dependencies (not recommended).
-     > Please be aware that the download and installation process will be time-consuming. Ensure the PySpark version corresponds with your Apache Spark installation
+     > Please be aware that the download and installation process will be time-consuming. Ensure the PySpark version corresponds with your Apache Spark installation.
 
    2.2 Access JupyterLab with Web borser
        From the output shown in your terminal, **copy and paste one of the URLs in a web browser**.
 
-   * To create a jupyter notebook based on your virtual environment, under the **Notebook**, just click on the kernel with your virtual environment name, e.g., de-test-venv. **Note that new created jupyter notebook is ready with PySpark under the de-test-venv**.
+   * To create a jupyter notebook based on your venv, under the **Notebook**, just click on the kernel with your venv name, e.g., de-test-venv. **Note that new created jupyter notebook is ready with PySpark under the de-test-venv**.
 
    * To close a jupyter notebook and shut down the kernel (i.e., de-test-venv), under the jupyter notebook as the active tab, click **File** and then select **Close** and **Shut Down Notebook…**
      
@@ -96,7 +96,7 @@ Python virtual environments create a self-contained and isolated environment for
    
    * To logout from JupyterLab, click **File** and then select **Log Out**
 
-   * To shut down the jupyterlab server, go to the terminal where you ran the command to start JupyterLab, i.e., in Step 3.1. Press Ctrl-C and type ‘y’ to confirm that you want to shut down the server.
+   * To shut down the jupyterlab server, which is used to host the JupyterLab, go to the terminal where you ran the command to start JupyterLab, i.e., in Step 3.1. Press Ctrl-C and type ‘y’ to confirm that you want to shut down the server.
 
    2.3 **To delete any unwanted venv**, if needed, try the command with Syntax: jupyter kernelspec uninstall unwanted-kernel. Examples:
    >
@@ -109,7 +109,7 @@ Python virtual environments create a self-contained and isolated environment for
    Once the deletion is complete, you can check JupyterLab (under File -> New Launcher) to verify that the venv is no longer listed.
 
 
-   2.4	Launch the PySpark interactive shell/interpreter. 
+   2.4	Launch the PySpark Shell. 
    ~~~bash
    (de-test-venv) hduserMyPC@MyPC:~$ pyspark
    ~~~
@@ -138,20 +138,33 @@ Python virtual environments create a self-contained and isolated environment for
    > rootLogger.level = warn  
    > rootLogger.appenderRef.stdout.ref = console  
 
-   2.5 **Important: Remember to deactivate the virtual environment**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
+   2.5 **Important: Remember to deactivate the venv**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
       ~~~bash
       (de-test-venv) hduserMyPC@MyPC:~$ deactivate
       ~~~
 
-## G3. Using the PySpark Interactive Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G3. Using the PySpark Shell - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Launch PySpark’s interactive shell using user **hduser**
+1.	Launch PySpark Shell using user **hduser**
     ~~~bash
+    hduser@MyPC:~$ cd ~
+    hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
     (de-test-venv) hduserMyPC@MyPC:~$ pyspark
     ~~~
 
 2.	Create an Resilient Distributed Dataset (RDD) with data from a text file. It transforms the RDD to implement the word count application using Spark.
     ~~~bash
+    Welcome to
+          ____              __
+         / __/__  ___ _____/ /__
+        _\ \/ _ \/ _ `/ __/  '_/
+       /__ / .__/\_,_/_/ /_/\_\   version 4.0.4
+          /_/
+    Using Python version 3.12.3 (main, Aug 31 2026 10:18:26)
+    Spark context Web UI available at http://172.31.77.100:4040
+    Spark context available as 'sc' (master = local[*], app id = local-1792576061544).
+    SparkSession available as 'spark'.
+    >>>
     >>> text = sc.textFile("shakespeare.txt")
     >>> print(text)
     >>> from operator import add
@@ -166,36 +179,53 @@ Python virtual environments create a self-contained and isolated environment for
     >>> print(wc.toDebugString())
     >>> counts = wc.reduceByKey(add)
     >>> counts.saveAsTextFile("hdfs://localhost:9000/user/hduser/wc")
-    >>> exit()
     ~~~
     > In certain occasion, Apache spark does not need to have the hdfs directory path (hdfs://localhost:9000/user/hduser/) explicitly indicated to write in the local path, i.e., /home/hduser. Example:
     > counts.saveAsTextFile("wc")
 
-4.	Check the HDFS current working directory for the newly created directory’s contents, and use the head command to view one of the part files
+4.	Exit the Pyspark Shell. Then, check the HDFS current working directory for the newly created directory’s contents, and use the head command to view one of the part files. 
     ~~~bash
+    >>> exit()
+    (de-test-venv) hduserMyPC@MyPC:~$
     (de-test-venv) hduserMyPC@MyPC:~$ hdfs dfs -ls /user/hduser/wc
     (de-test-venv) hduserMyPC@MyPC:~$ hdfs dfs -head /user/hduser/wc/part-00000
     ~~~
 
-
-
+5. **Important**: Remember to deactivate the venv for ending the exercise.
+    ~~~bash
+    (de-test-venv) hduserMyPC@MyPC:~$ deactivate
+    hduserMyPC@MyPC:~$
+    ~~~
 
 ## G4. Using the PySpark Interactive Shell - Numerical Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Login using user **hduser**, activate your virtual environment (e.g, de-test-venv), and launch PySpark with 4 cores
+1.	Login using user **hduser**, activate your venv (e.g, de-test-venv), and launch PySpark Shell **with 4 CPU cores**.
     ~~~bash
+    hduser@MyPC:~$ cd ~
+    hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
     (de-test-venv) hduserMyPC:~$ pyspark --executor-cores 4
     ~~~
 
 2.	Try the following codes. The codes generate a list of random integers and create an RDD by parallelizing num_list with library numpy.
     ~~~bash
+    Welcome to
+          ____              __
+         / __/__  ___ _____/ /__
+        _\ \/ _ \/ _ `/ __/  '_/
+       /__ / .__/\_,_/_/ /_/\_\   version 4.0.4
+          /_/
+    Using Python version 3.12.3 (main, Aug 31 2026 10:18:26)
+    Spark context Web UI available at http://172.31.77.100:4040
+    Spark context available as 'sc' (master = local[*], app id = local-1792576061544).
+    SparkSession available as 'spark'.
+    >>>
     >>> import numpy as np
     >>> num_list = np.random.randint(0, 10, 20)
     >>> numbers_RDD = sc.parallelize(num_list)
     >>> numbers_RDD
     ~~~
 
-3.	You may check the type for numbers_RDD, return all the elements of the RDD as an array, return an RDD created by consolidating all elements within each partition into a list
+3.	You may check the type for numbers_RDD, return all the elements of the RDD as an array, return an RDD created by consolidating all elements within **each partition** into a list
     ~~~bash
     >>> type(numbers_RDD)
     >>> numbers_RDD.collect()
@@ -212,14 +242,14 @@ Python virtual environments create a self-contained and isolated environment for
     >>> distinct_numbers_RDD.collect()
     ~~~
 
-5.	You may sum all the elements in numbers_RDD and sum all the elements in numbers_RDD using reduce
+5.	You may sum all the elements in numbers_RDD, and sum all the elements in numbers_RDD using **reduce**
     ~~~bash
     >>> numbers_RDD.collect()
     >>> numbers_RDD.sum()
     >>> numbers_RDD.reduce(lambda x, y: x+y)
     ~~~
 
-6.	You may find the max value in numbers_RDD and filter non-zero numbers that are divisible by 3
+6.	You may find the max value in numbers_RDD, and filter non-zero numbers that are divisible by 3
     ~~~bash
     >>> numbers_RDD.reduce(lambda x, y: x if x > y else y)
     >>> numbers_RDD.filter(lambda x:x%3==0 and x!=0).collect()
@@ -235,13 +265,13 @@ Python virtual environments create a self-contained and isolated environment for
 8.	Generate a histogram for the elements in squares_RDD and do mapping with a regular Python function
     ~~~bash
     >>> squares_RDD.histogram([x for x in range(0, 100, 10)])
-    >>> def square_if_odd(x):
-    ...     if x%2==1:
+    >>> def squareroot_if_odd(x):
+    ...     if x%2==0:
     ...             return x*x
     ...     else:
     ...             return x
     ...
-    >>> numbers_RDD.map(square_if_odd).collect()
+    >>> numbers_RDD.map(squareroot_if_odd).collect()
     ~~~
 
 9. Extract the even and odd numbers from numbers_RDD. What is the type of the collection that is returned? Sort the resulting numbers for the odd and even numbers
@@ -258,14 +288,28 @@ Python virtual environments create a self-contained and isolated environment for
     >>> numbers_RDD.collect()
     >>> union_RDD = sc.union([numbers_RDD, squares_RDD])
     >>> union_RDD.collect()
+    >>>
+    >>> intersection_RDD = squares_RDD.intersection(numbers_RDD)
+    >>> intersection_RDD.collect()
+    >>>
+    >>> subtract_RDD = squares_RDD.subtract(numbers_RDD)
+    >>> subtract_RDD.collect()
+    >>>
+    >>> cartesian_RDD = squares_RDD.cartesian(numbers_RDD)
+    >>> cartesian_RDD.collect()
     ~~~
 
-11. cartesian() generates a Cartesian product of two collections and returns all the possible combinations of pairs between the elements in both collections
+11. Note that cartesian() generates a Cartesian product of two collections and returns all the possible combinations of pairs between the elements in both collections
     ~~~bash
     >>> numbers_RDD.cartesian(numbers_RDD).collect()
     ~~~
 
-
+12. Exit the Pyspark and deactivate the virtual environment for ending the exercise.
+    ~~~bash
+    >>> exit()
+    (de-test-venv) hduserMyPC@MyPC:~$ deactivate
+    hduserMyPC@MyPC:~$
+    ~~~
 
 ## G5. Using the PySpark Interactive Shell - Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
