@@ -173,8 +173,8 @@ Python virtual environments create a self-contained and isolated environment for
 
 4.	Check the HDFS current working directory for the newly created directory’s contents, and use the head command to view one of the part files
     ~~~bash
-    $ hdfs dfs -ls /user/hduser/wc
-    $ hdfs dfs -head /user/hduser/wc/part-00000
+    (de-test-venv) hduserMyPC@MyPC:~$ hdfs dfs -ls /user/hduser/wc
+    (de-test-venv) hduserMyPC@MyPC:~$ hdfs dfs -head /user/hduser/wc/part-00000
     ~~~
 
 
