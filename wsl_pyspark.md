@@ -449,7 +449,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
 
 
 
-## G8. Using the PySpark Shell with Spark SQL[Spark SQL](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G8. Using the PySpark Shell with [Spark SQL](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
 1.	Spark SQL is a module in Apache Spark that provides a relational interface to work with structured data using SQL-based operations in Spark through either JDBC/ODBC connectors, a built-in interactive Hive console, or Spark SQL API. This practical covers the Spark SQL API, which runs as a library on top of Spark’s Core engine and APIs. The Spark SQL API may be accessed using the same programming interface that was used for Spark’s RDD APIs. Read more on Apache Spark at URLs https://spark.apache.org/sql/ and https://en.wikipedia.org/wiki/Apache_Spark#Spark_SQL
 ![sparksql](https://github.com/choojun/choojun.github.io/assets/6356054/538f24de-c002-44a0-8b57-e17b107ce1c8)
@@ -548,72 +548,30 @@ Python virtual environments (venv) create a self-contained and isolated environm
    hduserMyPC@MyPC:~$
    ~~~
 
-## G9. Spark SQL and Jupyter Notebook [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G9. Exercise [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
 
-1.	Apache Arrow is a development platform for in-memory analytics. It contains a set of technologies that enable big data systems to store, process and move data fast. Pyarrow has integred with NumPy, pandas, and built-in Python objects. They are based on the C++ implementation of Arrow (https://arrow.apache.org/).
-
-2. Read more from URL https://arrow.apache.org/docs/python/index.html 
-
-3. Login as hduser, and install the Jupyter notebook, PySpark and PyArrow packages 
-   ~~~bash
-   $ pip3 --version
-   $ sudo pip3 install --upgrade pip
-   $ cd ~
-   $ pip3 install jupyter
-   $ pip3 install jupyter-server
-   $ pip3 install pyspark
-   $ pip3 install pyarrow
-   ~~~
-
-4. Edit the file .bashrc by adding an alias to launch Jupyter
-   ~~~bash
-   alias jupyter-notebook="~/.local/bin/jupyter-notebook --no-browser"
-   ~~~
-
-5. Update your bash profile
-   ~~~bash
-   $ source ~/.bashrc
-   ~~~
-
-6.	Make a copy of the C:\de\sparksql folder in the local hduser’s home directory (optional)
+1.	Login using user **hduser**, and make a copy of the C:\de\sparksql folder in the local hduser’s home directory.
     ~~~bash
-    $ sudo cp -r /mnt/c/de/sparksql /home/hduser
-    $ sudo chown -r hduser:hduser -R /home/hduser/sparksql
+    hduser@MyPC:~$ cd ~
+    hduser@MyPC:~$ sudo cp -r /mnt/c/de/sparksql /home/hduser
+    hduser@MyPC:~$ sudo chown -R hduser:hduser /home/hduser/sparksql
     ~~~
 
-7. To start the Jupyter notebook server by issuing the following command. Then, copy and paste one of the URLs that are listed in any web browser
-   ~~~bash
-   $ cd ~/sparksql
-   $ jupyter notebook --port=8888 --no-browser
-   ~~~
-   > Suppose that you have error: No module named 'jupyter_server.contents', try to switch the traitlets
-   ~~~bash
-   $ pip3 uninstall traitlets
-   $ pip3 install traitlets==5.9.0
-   ~~~
-   > To terminate the Jupyter notebook server with Ctrl-C
+2.	Change directory to the sparksql folder, and review the code in wordcount.py
+    ~~~bash
+    hduser@MyPC:~$ cd ~/sparksql/data
+    hduser@MyPC:~/sparksql/data$ hdfs dfs -mkdir data
+    hduser@MyPC:~/sparksql/data$ hdfs dfs -put sf_parking_clean.json /user/hduser/data/
+    ~~~
 
-8. Open up the Practical3c_SparkSQL_and_DataFrames.ipynb notebook and do the Spark SQL exercises there.
-   > Suppose that you have learned some essential codes in G4 to G7 before attempting the G8
+3.	Activate your venv (e.g, de-test-venv), and install Apache Arrow (https://arrow.apache.org/) package. Apache Arrow is a development platform for in-memory analytics. It contains a set of technologies that enable big data systems to store, process and move data fast. Pyarrow has integred with NumPy, pandas, and built-in Python objects. Read more from URL https://arrow.apache.org/docs/python/index.html 
+    ~~~bash
+    hduser@MyPC:~/sparksql/data$ cd ~
+    hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+    (de-test-venv) hduserMyPC:~$ pip3 install pyarrow
+    ~~~
 
+4. Access JupyterLab with Web borser. From the output shown in your terminal, **copy and paste one of the URLs in a web browser**.
 
-## G10. JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+5. Choose the created venv, and open up the Practical3c_SparkSQL_and_DataFrames.ipynb notebook. Do the Spark SQL exercises there. Suppose that you have learned some essential codes in G4 to G7 before attempting the G9.
 
-1.	JupyterLab is a highly extensible, feature-rich notebook authoring application and editing environment, and is a part of Project Jupyter, a large umbrella project centered around the goal of providing tools (and standards) for interactive computing with computational notebooks. It is a sibling to other notebook authoring applications under the Project Jupyter umbrella, like Jupyter Notebook and Jupyter Desktop. JupyterLab offers a more advanced, feature rich, customizable experience compared to Jupyter Notebook.
-
-2. Read more from URL https://jupyterlab.readthedocs.io/en/latest/
-
-3. Login as hduser, and install the JupyterLab
-   ~~~bash
-   $ pip3 --version
-   $ sudo pip3 install --upgrade pip
-   $ sudo pip3 install jupyterlab
-   $ sudo apt install python3-venv
-   ~~~
-
-4. Login as student to start the Jupyter server by issuing the following command. Then, copy and paste one of the URLs that are listed in any web browser. You should able to observe the create myenv1 in your web browser.
-   ~~~bash
-   $ cd ~
-   $ python -m venv myenv1
-   $ jupyter-lab
-   ~~~
