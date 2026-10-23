@@ -55,7 +55,7 @@ Read more required details at URLs
 | Hadoop              | 3.4.1 (> JDK8) | *1 | *1                  | *1 | *1 | *1                        | *1                   | *1     | *1        |
 | Spark               |                |    | 4.0.4 (must jdk17)  | *1 | *1 |                           | *1                   |        | *1        |
 | Scala               |                |    | Targeted on 2.13.x  |    |    | 2.13.x                    | Targeted on 2.13.x   |        |           |
-| Jupyter Lab         |                |    |                     |    | *1 |                           |                      |        |           |
+| Jupyter Lab         |                |    | *1                  | *1 | *1 |                           |                      |        |           |
 | Kafka               |                |    |                     |    |    | kafka_2.13-4.3.1 (jdk17)  | *1                   | *1     |           |
 | HBase               |                |    |                     |    |    |                           | 3.x (jdk17)          | *1     |           |
 | ?HappyBase          |                |    |                     |    |    |                           |                      | ?1.2.0 |           |
