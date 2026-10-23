@@ -63,7 +63,7 @@ hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
 
 4. Examine the output in the file cluster.txt.
 
-## H3. Multiclass Classification with spark.ml [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## H3. Multi-class Classification with spark.ml [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. This example uses the Naive Bayes classifier to perform multiclass classification.
 
