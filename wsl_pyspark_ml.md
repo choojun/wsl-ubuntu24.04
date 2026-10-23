@@ -21,15 +21,15 @@ File for exercise: [mllib.zip](https://github.com/choojun/choojun.github.io/file
 1.	This example uses Alternating Least Squares (ALS) algorithm to obtain potential matches for an online dating service
 2. Login using **hduser**, and make a copy of the C:\de\mllib folder in the local hduser’s home directory
 ~~~bash
-$ sudo cp -r /mnt/c/de/mllib /home/hduser
-$ sudo chown hduser:hduser -R /home/hduser/mllib
+hduserMyPC@MyPC:~$ sudo cp -r /mnt/c/de/mllib /home/hduser
+hduserMyPC@MyPC:~$ sudo chown hduser:hduser -R /home/hduser/mllib
 ~~~
 
 3. Copy all data files in the mllib directory, including its sub-directory mllib/data, to the data directory in the distributed file system. You may review the contents of the mllib and mllib/data directories before proceeding to the next step
 ~~~bash
-$ hdfs dfs -put mllib /user/hduser
-$ hdfs dfs -ls /user/hduser/mllib
-$ hdfs dfs -ls /user/hduser/mllib/data
+hduserMyPC@MyPC:~$ hdfs dfs -put mllib /user/hduser
+hduserMyPC@MyPC:~$ hdfs dfs -ls /user/hduser/mllib
+hduserMyPC@MyPC:~$ hdfs dfs -ls /user/hduser/mllib/data
 ~~~
 
 4. Review and understand the code in matchmaker.py before submitting the matchmaker.py job to Spark and piping the output to a file
