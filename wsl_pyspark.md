@@ -574,5 +574,5 @@ Python virtual environments (venv) create a self-contained and isolated environm
 
 4. Access JupyterLab with Web borser. From the output shown in your terminal, **copy and paste one of the URLs in a web browser**.
 
-5. Choose the created venv, and open up the Practical3c_SparkSQL_and_DataFrames.ipynb notebook. Do the Spark SQL exercises there. Suppose that you have learned some essential codes in G4 to G7 before attempting the G9.
+5. Choose the created venv, and open up the Practical3c_SparkSQL_and_DataFrames.ipynb notebook. Do the Spark SQL exercises there. Suppose that you have learned some essential codes in G4 to G8 before attempting the G9.
 
