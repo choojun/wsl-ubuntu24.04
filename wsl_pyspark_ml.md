@@ -19,7 +19,7 @@ File for exercise: [mllib.zip](https://github.com/choojun/choojun.github.io/file
 ## H1. Recommender Systems with spark.mllib [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1.	This example uses Alternating Least Squares (ALS) algorithm to obtain potential matches for an online dating service
-2. Login using **hduser**, activate the venv, and make a copy of the C:\de\mllib folder in the local hduser’s home directory
+2. Login using **hduser**, and make a copy of the C:\de\mllib folder in the local hduser’s home directory
 ~~~bash
 hduser@MyPC:~$ cd ~
 hduserMyPC@MyPC:~$ sudo cp -r /mnt/c/de/mllib /home/hduser
