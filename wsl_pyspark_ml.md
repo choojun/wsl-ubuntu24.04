@@ -101,3 +101,8 @@ hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
 
 4. Examine the output in the terminal
 
+5 **Important: Remember to deactivate the venv**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
+~~~bash
+(de-test-venv) hduserMyPC@MyPC:~$ deactivate
+hduserMyPC@MyPC:~$ 
+~~~
