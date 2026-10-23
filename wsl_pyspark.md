@@ -141,6 +141,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
    2.5 **Important: Remember to deactivate the venv**. Once you no longer need to work in the environment, you may deactivate the environment to return to your normal shell.
       ~~~bash
       (de-test-venv) hduserMyPC@MyPC:~$ deactivate
+      hduserMyPC@MyPC:~$ 
       ~~~
 
 ## G3. Using the PySpark Shell for Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
