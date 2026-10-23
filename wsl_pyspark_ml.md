@@ -19,8 +19,9 @@ File for exercise: [mllib.zip](https://github.com/choojun/choojun.github.io/file
 ## H1. Recommender Systems with spark.mllib [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1.	This example uses Alternating Least Squares (ALS) algorithm to obtain potential matches for an online dating service
-2. Login using **hduser**, and make a copy of the C:\de\mllib folder in the local hduser’s home directory
+2. Login using **hduser**, activate the venv, and make a copy of the C:\de\mllib folder in the local hduser’s home directory
 ~~~bash
+hduser@MyPC:~$ cd ~
 hduserMyPC@MyPC:~$ sudo cp -r /mnt/c/de/mllib /home/hduser
 hduserMyPC@MyPC:~$ sudo chown hduser:hduser -R /home/hduser/mllib
 ~~~
@@ -32,13 +33,13 @@ hduserMyPC@MyPC:~$ hdfs dfs -ls /user/hduser/mllib
 hduserMyPC@MyPC:~$ hdfs dfs -ls /user/hduser/mllib/data
 ~~~
 
-4. Review and understand the code in matchmaker.py before submitting the matchmaker.py job to Spark and piping the output to a file
+4. Activate the venv, review and understand the code in matchmaker.py before submitting the matchmaker.py job to Spark and piping the output to a file
 ~~~bash
-$ hdfs dfs -cat /user/hduser/mllib/matchmaker.py | more
-$ $SPARK_HOME/bin/spark-submit mllib/matchmaker.py 1 M > matchmaking_recs.txt
+hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+(de-test-venv) hduserMyPC@MyPC:~$ hdfs dfs -cat /user/hduser/mllib/matchmaker.py | more
+(de-test-venv) hduserMyPC@MyPC:~$ spark-submit mllib/matchmaker.py 1 M > matchmaking_recs.txt
 ~~~
-> Note that you need change the correct file paths inside the matchmaker.py, e.g.
-> from **data/\*.dat** to **hdfs://localhost:9000/user/hduser/mllib/data/\*.dat**
+> Note that you need change the correct file paths inside the matchmaker.py, e.g. from **data/\*.dat** to **hdfs://localhost:9000/user/hduser/mllib/data/\*.dat**
 
 5. Examine the output in the file matchmaking_recs.txt
 
