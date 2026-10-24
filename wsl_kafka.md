@@ -11,45 +11,45 @@
 
 ## J1. Install Kafka [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1.	Login as hduser, and check the installed scala package
+1.	Login as **hduser**, and check the installed scala package
 ~~~bash
-$ cd ~
-$ scala -version
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ scala -version
 ~~~
 
-2.	You may install the required scala version (by Kafka) as steps as follows
+2.	You may install the required scala version (2.13.x) as steps as follows
 ~~~bash
-$ cd ~
-$ sudo apt install zip unzip
-$ curl -s "https://get.sdkman.io" | bash
-$ source "/home/hduser/.sdkman/bin/sdkman-init.sh"
-$ sdk install scala 2.13.18
-$ scala -version
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ sudo apt install zip unzip
+hduser@MyPC:~$ curl -s "https://get.sdkman.io" | bash
+hduser@MyPC:~$ source "/home/hduser/.sdkman/bin/sdkman-init.sh"
+hduser@MyPC:~$ sdk install scala 2.13.18
+hduser@MyPC:~$ scala -version
 ~~~
 
 3.	Download and setup the respective version of Kafka based on the installed version of Scala. The available Kafka versions may be found at the Kafka download page - https://kafka.apache.org/downloads
 ~~~bash
-$ cd ~
-$ wget https://downloads.apache.org/kafka/4.3.1/kafka_2.13-4.3.1.tgz
-$ tar -xvzf kafka_2.13-4.3.1.tgz  
-$ mv kafka_2.13-4.3.1 kafka
-$ chown hduser:hadoop -R kafka
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ wget https://downloads.apache.org/kafka/4.3.1/kafka_2.13-4.3.1.tgz
+hduser@MyPC:~$ tar -xvzf kafka_2.13-4.3.1.tgz  
+hduser@MyPC:~$ mv kafka_2.13-4.3.1 kafka
+hduser@MyPC:~$ chown hduser:hadoop -R kafka
 ~~~
 
 ## J2. Starting and Stopping Zookeeper and Kafka Broker [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1.	Login as hduser. Ensure the following services started sequentially and check them with command jps
+1.	Remain login as **hduser**. Ensure the following services started sequentially and check them with command jps
     - SSH
     - HDFS
     - YARN
 
-2.	Start Kafka broker server in the background
+2.	Start Kafka broker server in the background after generated the UUID and formatted the required storage.
 ~~~bash
-$ cd ~/kafka
-$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
-$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
-$ bin/kafka-server-start.sh config/server.properties &
-$ jps
+hduser@MyPC:~$ cd ~/kafka
+hduser@MyPC:~$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+hduser@MyPC:~$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+hduser@MyPC:~$ bin/kafka-server-start.sh config/server.properties &
+hduser@MyPC:~$ jps
 
 $ bin/kafka-server-stop.sh
 
