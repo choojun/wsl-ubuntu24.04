@@ -43,16 +43,20 @@ $ chown hduser:hadoop -R kafka
     - HDFS
     - YARN
 
-2.	Start Zookeeper and Kafka broker server in the background
+2.	Start Kafka broker server in the background
 ~~~bash
 $ cd ~/kafka
-$ bin/zookeeper-server-start.sh config/zookeeper.properties &
-(Then, press the <enter> key and Zookeeper will continue running in the background.)
+$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
 $ bin/kafka-server-start.sh config/server.properties &
-(Then, press the <enter> key and Kafka broker will continue running in the background.)
 $ jps
+
+$ bin/kafka-server-stop.sh
+
+If you also want to delete any data of your local Kafka environment including any events you have created along the way, run the command:
+$ rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs
 ~~~
-> Note that you should observe the QuorumPeerMain (for Zookeeper) and Kafka processes with the command jps. You should observe a total of eight services, i.e. QuorumPeerMain, Jps, SecondaryNameNode, ResourceManager, NodeManager, DataNode, Kafka, NameNode
+> Note that you should observe the Kafka process with the command jps. You should observe a total of seven services, i.e. Jps, SecondaryNameNode, ResourceManager, NodeManager, DataNode, Kafka, NameNode
 
 3.	Stopping Kafka and Zookeeper
 ~~~bash
