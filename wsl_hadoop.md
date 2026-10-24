@@ -418,7 +418,7 @@ $ ssh localhost
       </property>
       <property>
          <name>yarn.log-aggregation.retain-seconds</name>
-         <value>259200</value>
+         <value>604800</value>
       </property>
     </configuration>
  ~~~
