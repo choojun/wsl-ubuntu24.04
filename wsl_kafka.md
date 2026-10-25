@@ -201,15 +201,16 @@ By default, a buffer is available to send the messages immediately even if there
 > In the above example, the 8s delay will result in all three messages appearing at almost the same time to the consumer.
 
 
-## J6. Accessing Kafka in Python - by Specifying Partition [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J6. Accessing Kafka in PySpark Interactive Shell (Pyspark Shell) - by Specifying Partition [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1.	Use another terminal as producer by login as hduser, and invoke the Pyspark’s interactive shell with 4 executor cores
+1.	Use another terminal as **producer** by login as **hduser**, activate the venv, and invoke the Pyspark Shell with 4 executor cores
 ~~~bash
-$ cd ~
-$ pyspark --executor-cores 4
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+(de-test-venv) hduserMyPC@MyPC:~$ pyspark --executor-cores 4
 ~~~
 
-2. In the producer terminal, enter the following Python statements to generate messages
+2. In the **producer terminal**, enter the following Python statements to generate messages
 ~~~python
 >>> from kafka import KafkaProducer
 >>> from json import dumps
@@ -223,7 +224,7 @@ $ pyspark --executor-cores 4
 ...     i += 1
 ~~~
 
-3.	Use another terminal as consumer by login as hduser, and invoke Pyspark’s interactive shell
+3.	Use another terminal as **consumer** by login as **hduser**, activate the venv, and invoke Pyspark Shell
 ~~~python
 >>> from kafka import KafkaConsumer                                                  
 >>> from kafka import TopicPartition
@@ -235,9 +236,9 @@ $ pyspark --executor-cores 4
 ~~~
 
 
-## J7. Accessing Kafka in Python - with Serialized JSON Messages [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J7. Accessing Kafka in in PySpark Interactive Shell (Pyspark Shell) - with Serialized JSON Messages [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. In producer terminal, update the following lines of code based on the copy of J6
+1. In **producer terminal**, update the following lines of code based on the copy of J6
 ~~~python
 >>> i = 1                                               
 >>> while True:
@@ -250,8 +251,9 @@ $ pyspark --executor-cores 4
 
 2. Create a file named send_messages.py
 ~~~bash
-$ cd ~
-$ nano send_messages.py
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+(de-test-venv) hduserMyPC@MyPC:~$ send_messages.py
 ~~~
 
 3. Add the following statements into send_messages.py and then save the file
@@ -267,7 +269,7 @@ producer.flush()
 
 4. Run the python file
 ~~~bash
-$ python send_messages.py
+(de-test-venv) hduserMyPC@MyPC:~$ python send_messages.py
 ~~~
 
 
