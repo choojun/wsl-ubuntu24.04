@@ -144,19 +144,21 @@ hduser@MyPC:~$ ~/kafka/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --deep
 
 ## J5. Accessing Kafka in Python [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1.	Login as hduser, and check the installed kafka-python package
+1.	Login as **hduser**, activate the venv, and check the installed kafka-python package
 ~~~bash
-$ cd ~
-$ pip install kafka-python
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+(de-test-venv) hduser@MyPC:~$ pip install kafka-python
 ~~~
 
-2.	Use another terminal as consumer by login as hduser, and start the python interpreter
+2.	Use another terminal as **consumer** by login as **hduser**, activate the venv, and start the python interpreter
 ~~~bash
-$ cd ~
-$ python
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+(de-test-venv) hduser@MyPC:~$ python
 ~~~
 
-3. In the consumer terminal, enter the following Python statements to consume messages
+3. In the **consumer terminal**, enter the following Python statements to consume messages
 ~~~python
 >>> from kafka import KafkaConsumer
 >>> consumer = KafkaConsumer(bootstrap_servers='localhost:9092')
@@ -165,13 +167,14 @@ $ python
 ...     print("msg: ", msg)
 ~~~
 
-4.	Use another terminal as producer by login as hduser, and start the python interpreter
+4.	Use another terminal as **producer** by login as **hduser**, activate the venv, and start the python interpreter
 ~~~bash
-$ cd ~
-$ python
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+(de-test-venv) hduser@MyPC:~$ python
 ~~~
 
-5. In the producer terminal, enter the following Python statements to generate messages
+5. In the **producer terminal**, enter the following Python statements to generate messages
 ~~~python
 >>> from kafka import KafkaProducer
 >>> from json import dumps
@@ -186,7 +189,7 @@ $ python
 ...     i += 1
 ~~~
 
-6. Further configure delay in sending out messages from producer terminal.
+6. Further configure delay in sending out messages from **producer terminal**.
 By default, a buffer is available to send the messages immediately even if there is still unused space in the buffer. To reduce the number of requests, you may set the linger_ms parameter of the KafkaProducer constructor to instruct the producer to wait up to the given number of ms before sending a request in order to enable more records to arrive for batch sending of the messages, thus leading to fewer and more efficient requests handling when not under the maximal load at the cost of a small amount of latency.
 ~~~python
 >>> producer=KafkaProducer(linger_ms=8000, bootstrap_servers=['localhost:9092'], value_serializer=lambda x:dumps(x).encode('utf-8'))
