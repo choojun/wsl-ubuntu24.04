@@ -63,7 +63,7 @@
  
    * **Brand new node**: When provisioning a fresh node or adding a new broker to an existing quorum for the first time.
 
-   * **Wiped data directories (applied to standalone mode)**: If you manually clear, or delete the contents of your configured log.dirs (happening  when shutdown distro of WSL). Deleting log.dirs including any events you have created along the way, can be performed manually using the command line:: **rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs** .
+   * **Wiped data directories (applied to standalone mode)**: If you manually clear, or delete the contents of your configured log.dirs (happening  when shutdown distro of WSL). Deleting log.dirs including any events you have created along the way, can be performed manually using the command line: **rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs** .
 
    * **Cluster reset (applied to standalone mode)**: If you are intentionally tearing down the cluster and building a brand-new cluster ID.
 
