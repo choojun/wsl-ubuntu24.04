@@ -50,24 +50,26 @@ hduser@MyPC:~$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
 hduser@MyPC:~$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
 hduser@MyPC:~$ bin/kafka-server-start.sh config/server.properties &
 hduser@MyPC:~$ jps
-
-$ bin/kafka-server-stop.sh
-
-If you also want to delete any data of your local Kafka environment including any events you have created along the way, run the command:
-$ rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs
 ~~~
 > You should observe the Kafka process with the command jps. You should observe a total of **seven** services, i.e. Jps, SecondaryNameNode, ResourceManager, NodeManager, DataNode, Kafka, NameNode
 >
-> Note that you need to generate one ID, and use the same ID on all cluster nodes. In s multiple nodes of cluster environment, you need to run the storage tool script on each node utilizing the same cluster ID, example: bin/kafka-storage.sh format -t <CLUSTER_ID> -c <path-to-server.properties>
+> Note that you need to generate one ID, and use the same ID on all cluster nodes. In s multiple nodes of cluster environment, you need to run the storage tool script on each node utilizing the same cluster ID, example: **bin/kafka-storage.sh format -t <CLUSTER_ID> -c <path-to-server.properties>**
 >
+>  **When You Would Need to Format Again?**
 > 
+>  a) Brand new node: When provisioning a fresh node or adding a new broker to an existing quorum for the first time.
+> 
+>  b) Wiped data directories (applied to standalone mode): If you manually clear, or delete the contents of your configured log.dirs (happening  when shutdown distro of WSL). Deleting log.dirs including any events you have created along the way, can be performed manually using the command line:: **rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs**
+>
+>  c) Cluster reset (applied to standalone mode): If you are intentionally tearing down the cluster and building a brand-new cluster ID.
 
 3.	Stopping Kafka and Zookeeper
 ~~~bash
-$ bin/kafka-server-stop.sh
-$ bin/zookeeper-server-stop.sh
+hduser@MyPC:~$ cd ~/kafka
+hduser@MyPC:~$ bin/kafka-server-stop.sh
+hduser@MyPC:~$ jps
 ~~~
-> **Attention**: When you have finished your exercises (before shutdown your Windows), you need stop the Kafka and Zookeeper services
+> **Attention**: When you have finished your exercises (before shutdown your Windows), you need stop the HDFS, YARN and Kafka services.
 
 
 
