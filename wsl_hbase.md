@@ -62,6 +62,7 @@
    export HBASE_HOME=/home/hduser/hbase
    export PATH=$HBASE_HOME/bin:$PATH
    ~~~
+   > Remember to issue source ~/.bashrc after saving the file.
 
 3. Set environment variables in ~/hbase/conf/hbase-env.sh by uncomment and edit the environment variables
    ~~~bash
