@@ -1,6 +1,6 @@
 ## Data Engineering with Distributed Environment for Data Analytics: An One-Stop of Setup and Configuration in the Microsoft Windows Subsystem for Linux (WSL) - UBuntu 24.04
 
-Note that this website only contains the setup, practical activities and WSL distro (https://github.com/choojun/wsl/releases). 
+Note that this website only contains the setup, practical activities and shared WSL distro (https://github.com/choojun/wsl/releases). 
 
 Data engineering involves building systems to collect and utilize data. This data typically supports subsequent analysis and data science, often incorporating machine learning. Making data usable generally requires significant computational resources, storage, and processing. In essence, data engineering is the design and development of systems that allow individuals to gather and analyze raw data from diverse sources and formats. This website provides a one-stop setup and configuration for the system using Microsoft WSL. Hereby, the website has also incorporated a suite of distributed-ready open source software and guided exploration through selected application samples in the following sections.
 
@@ -131,7 +131,7 @@ wsl –l -v
 ### Note for Apple MacOS users
 If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
-| Requirements (Tested Combination with Java 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | HappyBase / AIOHappyBase | Apache Derby | Apache Hive |
+| Requirements* (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | HappyBase / AIOHappyBase | Apache Derby | Apache Hive |
 |---|---|---|---|---|---|---|---|---|
 | [E. Hadoop Installation and Configuration](wsl_hadoop) | 3.4.1 |  |  |  |  |  |  |  |
 | [F. HDFS File Operations and MapReduce](wsl_hdfs) | 3.4.1 |  |  |  |  |  |  |  |
@@ -142,7 +142,9 @@ If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon pro
 | [K. HBase Installation and Configuration](wsl_hbase) |  |  |  |  | 3.0.0 |  |  |  |
 | [L. HappyBase / AIOHappyBase Installation and COnfiguration](wsl_happybase) |  |  |  |  |  | 1.2.0 / 1.4.0 |  |  |
 | [M. Hive Installation and Configuration](wsl_hive) |  |  |  |  |  |  | 10.16.x | 4.2.1 |
-
+> Needed WSL2, Web browser and Internet connection, SSH and PDSH, Python 3.12.x
+>
+> 
 Read more required details at URLs
   1. Setup from the scratch - all sections of https://choojun.github.io/wsl
   2. Restore from the pre-setup WSL distro - download the latest release from URL https://github.com/choojun/wsl/releases and perform those steps in the section D of https://choojun.github.io/wsl (after identified your UBuntu version).
