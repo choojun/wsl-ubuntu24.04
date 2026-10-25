@@ -35,6 +35,12 @@
    hduser@MyPC:~$ mv kafka_2.13-4.3.1 kafka
    hduser@MyPC:~$ chown hduser:hadoop -R kafka
    ~~~
+4. In ~/.bashrc file, add the following lines at the end of the file.
+   ~~~bash
+   export KAFKA_HOME=/home/hduser/kafka
+   export PATH=$PATH:$KAFKA_HOME/bin
+   ~~~
+   > Remember to issue source ~/.bashrc after saving the file.
 
 ## J2. Starting and Stopping Kafka Broker [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
