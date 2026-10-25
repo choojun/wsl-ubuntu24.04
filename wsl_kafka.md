@@ -36,7 +36,7 @@ hduser@MyPC:~$ mv kafka_2.13-4.3.1 kafka
 hduser@MyPC:~$ chown hduser:hadoop -R kafka
 ~~~
 
-## J2. Starting and Stopping Zookeeper and Kafka Broker [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J2. Starting and Stopping Kafka Broker [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1.	Remain login as **hduser**. Ensure the following services started sequentially and check them with command jps
     - SSH
@@ -57,11 +57,11 @@ Note that you need to generate one ID, and use the same ID on all cluster nodes.
  
 * **Brand new node**: When provisioning a fresh node or adding a new broker to an existing quorum for the first time.
 
-* **Wiped data directories (applied to standalone mode)**: If you manually clear, or delete the contents of your configured log.dirs (happening  when shutdown distro of WSL). Deleting log.dirs including any events you have created along the way, can be performed manually using the command line:: **rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs**
+* **Wiped data directories (applied to standalone mode)**: If you manually clear, or delete the contents of your configured log.dirs (happening  when shutdown distro of WSL). Deleting log.dirs including any events you have created along the way, can be performed manually using the command line:: **rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs** .
 
 * **Cluster reset (applied to standalone mode)**: If you are intentionally tearing down the cluster and building a brand-new cluster ID.
 
-3.	Stopping Kafka and Zookeeper
+3.	Stopping Kafka.
 ~~~bash
 hduser@MyPC:~$ cd ~/kafka
 hduser@MyPC:~$ bin/kafka-server-stop.sh
@@ -96,7 +96,7 @@ hduser@MyPC:~$ ~/kafka/bin/kafka-topics.sh --describe --bootstrap-server localho
 
 ## J4. Producer - Consumer Terminals [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. To simulate a producer terminal, open another terminal of Ubuntu and login as **hduser**.
+1. To simulate a **producer terminal**, open another terminal of Ubuntu and login as **hduser**.
 2. List all available topics, and carry out the following steps after your Consumer Terminal is ready to consume messages.
 
 3. **Producer terminal**: Send a few messages under the topic test.
