@@ -133,6 +133,8 @@
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ ~/hbase/bin/stop-hbase.sh
+   hduser@MyPC:~$ ~/hbase/bin/hbase-daemon.sh stop master
+   hduser@MyPC:~$ ~/hbase/bin/hbase-daemon.sh stop regionserver
    hduser@MyPC:~$ jps
    ~~~
    > You may choose to clear all the HBase data, after stopped both **HMaster** and **HRegionServer**, using the following commands
