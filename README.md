@@ -129,7 +129,19 @@ wsl –l -v
 4. The beauty of using both export and import commands is that you can quickly and easily setup the same environment on multiple machines or setup multiple distros in the same machine. Your users and passwords will be retained, including anything you have installed using the package manager.
 
 ### Note for Apple MacOS users
-If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 22.04.x. You can find the specific 22.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
+If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
+
+| Requirements (Tested Combination with Java 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | HappyBase / AIOHappyBase | Apache Derby | Apache Hive |
+|---|---|---|---|---|---|---|---|---|
+| [E. Hadoop Installation and Configuration](wsl_hadoop) | 3.4.1 |  |  |  |  |  |  |  |
+| [F. HDFS File Operations and MapReduce](wsl_hdfs) | 3.4.1 |  |  |  |  |  |  |  |
+| [G. Spark, PySpark Shell, Spark SQL and JupyterLab](wsl_pyspark) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
+| [H. Spark and Machine Learning](wsl_pyspark_ml) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
+| [I. Spark and Visualisation](wsl_pyspark_viz) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
+| [J. Kafka Installation and Configuration](wsl_kafka) |  |  |  | 4.3.1 |  |  |  |  |
+| [K. HBase Installation and Configuration](wsl_hbase) |  |  |  |  | 3.0.0 |  |  |  |
+| [L. HappyBase / AIOHappyBase Installation and COnfiguration](wsl_happybase) |  |  |  |  |  | 1.2.0 / 1.4.0 |  |  |
+| [M. Hive Installation and Configuration](wsl_hive) |  |  |  |  |  |  | 10.16.x | 4.2.1 |
 
 Read more required details at URLs
   1. Setup from the scratch - all sections of https://choojun.github.io/wsl
