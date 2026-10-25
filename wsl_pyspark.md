@@ -305,7 +305,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     >>> numbers_RDD.cartesian(numbers_RDD).collect()
     ~~~
 
-12. Exit the Pyspark and deactivate the virtual environment for ending the exercise.
+12. Exit the Pyspark Shell and deactivate the virtual environment for ending the exercise.
     ~~~bash
     >>> exit()
     (de-test-venv) hduserMyPC@MyPC:~$ deactivate
@@ -375,7 +375,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     >>> print("Lines with 'c':{}, lines with 'w':{}".format(number_of_c, number_of_w))
     ~~~
 
-6. Exit the Pyspark and deactivate the virtual environment for ending the exercise.
+6. Exit the Pyspark Shell and deactivate the virtual environment for ending the exercise.
    ~~~bash
    >>> exit()
    (de-test-venv) hduserMyPC@MyPC:~$ deactivate
@@ -489,7 +489,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     >>>
     ~~~
 
-4.	Launch the PySpark interactive shell/interpreter, and try the following codes
+4.	Launch the PySpark Shell, and try the following codes
     ~~~bash
     >>> from pyspark.sql import SQLContext
     >>> sqlContext = SparkSession.builder.getOrCreate()
