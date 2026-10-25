@@ -60,7 +60,7 @@
 2.	In ~/.bashrc file, add the following lines at the end of the file.
    ~~~bash
    export HBASE_HOME=/home/hduser/hbase
-   export PATH=$HBASE_HOME/bin:$PATH
+   export PATH=$PATH:$HBASE_HOME/bin
    ~~~
    > Remember to issue source ~/.bashrc after saving the file.
 
