@@ -123,17 +123,17 @@
 
 6. Start the HBase
    ~~~bash
-   hduser@MyPC:~$ cd ~/hbase
-   xx hduser@MyPC:~/hbase$ ~/hbase/bin/hbase-daemon.sh start zookeeper
-   hduser@MyPC:~/hbase$ ~/hbase/bin/start-hbase.sh
-   hduser@MyPC:~/hbase$ jps
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ ~/hbase/bin/hbase-daemon.sh start zookeeper
+   hduser@MyPC:~$ ~/hbase/bin/start-hbase.sh
+   hduser@MyPC:~$ jps
    ~~~
    > Verify that HBase is running - you should see the HBase processes with jps command, i.e. **HMaster** and **HRegionServer**. Note that you may ignore the errors due to SLF4J during HBase startup, as it will eventually perform logging to a plain text in local file system.
    > When you want to stop HBase, type the following commands 
    ~~~bash
-   hduser@MyPC:~$ cd ~/hbase
-   hduser@MyPC:~/hbase$ ~/hbase/bin/stop-hbase.sh
-   hduser@MyPC:~/hbase$ jps
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ ~/hbase/bin/stop-hbase.sh
+   hduser@MyPC:~$ jps
    ~~~
    > You may choose to clear all the HBase data, after stopped both **HMaster** and **HRegionServer**, using the following commands
    ~~~bash
