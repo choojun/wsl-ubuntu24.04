@@ -50,28 +50,29 @@
 ## K2. Configure HBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. Stop (if running) the Kafka service
-~~~bash
-$ cd ~/kafka
-$ bin/kafka-server-stop.sh
-$ jps
-~~~
-> Attention! Please wait at least 30 seconds after issuing the stop command. Responses might be slow, and do use the command jps to observe the termination of service, i.e. **Kafka**.
+   ~~~bash
+   $ cd ~/kafka
+   $ bin/kafka-server-stop.sh
+   $ jps
+   ~~~
+   > Attention! Please wait at least 30 seconds after issuing the stop command. Responses might be slow, and do use the command jps to observe the termination of service, i.e. **Kafka**.
 
-2.	Edit the Bash profile of hduser by adding the following lines, and source the profile
-~~~bash
-export HBASE_HOME=/home/hduser/hbase
-export PATH=$HBASE_HOME/bin:$PATH
-~~~
+2.	In ~/.bashrc file, add the following lines at the end of the file.
+   ~~~bash
+   export HBASE_HOME=/home/hduser/hbase
+   export PATH=$HBASE_HOME/bin:$PATH
+   ~~~
 
-3.	Set environment variables in ~/hbase/conf/hbase-env.sh by uncomment and edit the environment variables
-~~~bash
-  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-  export HBASE_HOME=/home/hduser/hbase
-  export HBASE_CLASSPATH=${HBASE_HOME}/lib
-  export HBASE_REGIONSERVERS=${HBASE_HOME}/conf/regionservers
-  export HBASE_MANAGES_ZK=false
-~~~
-> Please start both zookeeper and kafka servers before this step. If you are planning to run the Kafka service, then in hbase-env.sh change HBASE_MANAGES_ZK from true to false
+3. Set environment variables in ~/hbase/conf/hbase-env.sh by uncomment and edit the environment variables
+   ~~~bash
+   export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+   export HBASE_HOME=/home/hduser/hbase
+   export HBASE_HEAPSIZE=4G
+   export HBASE_CLASSPATH=${HBASE_HOME}/lib
+   export HBASE_REGIONSERVERS=${HBASE_HOME}/conf/regionservers
+   export HBASE_MANAGES_ZK=false
+   ~~~
+   > Please start both zookeeper and kafka servers before this step. If you are planning to run the Kafka service, then in hbase-env.sh change HBASE_MANAGES_ZK from true to false
 
 4. Edit and add the properties of ~/hbase/conf/hbase-site.xml 
 ~~~xml
