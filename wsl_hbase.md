@@ -66,14 +66,14 @@
 
 3. Set environment variables in ~/hbase/conf/hbase-env.sh by uncomment and edit the environment variables
    ~~~bash
-   export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+   export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
    export HBASE_HOME=/home/hduser/hbase
    export HBASE_HEAPSIZE=4G
    export HBASE_CLASSPATH=${HBASE_HOME}/lib
    export HBASE_REGIONSERVERS=${HBASE_HOME}/conf/regionservers
    export HBASE_MANAGES_ZK=false
    ~~~
-   > Please start both zookeeper and kafka servers before this step. If you are planning to run the Kafka service, then in hbase-env.sh change HBASE_MANAGES_ZK from true to false
+   > Please start kafka server before this step. If you are planning to run the Kafka service, then in hbase-env.sh change HBASE_MANAGES_ZK from true to false
 
 4. Edit and add the properties of ~/hbase/conf/hbase-site.xml 
 ~~~xml
@@ -94,13 +94,15 @@
 ~~~
 
 5. Start the Zookeeper and Kafka services
-~~~bash
-$ cd ~/kafka
-$ bin/zookeeper-server-start.sh config/zookeeper.properties &
-$ bin/kafka-server-start.sh config/server.properties &
-~~~
-> Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow to start following your recent configuration.
-> Please verify that Zookeeper and Kafka are running by running the jps command, i.e. you should see the process: **HQuorumPeer** and **Kafka**, before proceed to the next step. 
+   ~~~bash
+   hduser@MyPC:~$ cd ~/kafka
+   hduser@MyPC:~$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+   hduser@MyPC:~$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+   hduser@MyPC:~$ bin/kafka-server-start.sh config/server.properties
+   hduser@MyPC:~$ jps
+   ~~~
+   > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow to start following your recent configuration.
+   > Please verify that Kafka is running by running the jps command, i.e. you should see the process: **Kafka** before proceed to the next step. 
 
 6. Start the HBase
 ~~~bash
