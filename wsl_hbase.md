@@ -8,51 +8,54 @@
 
 ## K1. Install HBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1.	Login as **hduser**. Ensure the following services started sequentially and check them with command jps
-    - SSH
-    - HDFS
-    - YARN
+1. Login as **hduser**. Ensure the following services started sequentially and check them with command jps
+   - SSH
+   - HDFS
+   - YARN
 
-2.	Check the installed version of Hadoop
-~~~bash
-hduser@MyPC:~$ cd ~
-hduser@MyPC:~$ hadoop version
-~~~
-> Reinstall the Hadoop if it is not version 3.4.1. Remember to delete the existing hadoop3 directory before begin your setup.
+2. Check the installed version of Hadoop
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ hadoop version
+   ~~~
+   > Reinstall the Hadoop if it is not version 3.4.1. Remember to delete the existing hadoop3 directory before begin your setup.
 
-3.	Check the installed version of PySpark
-~~~bash
-hduser@MyPC:~$ pyspark --version
-~~~
-> Reinstall the Spark if it the PySpark not version 3.5.0 (for Hadoop 3.3.6 and later). Remember to delete the existing spark directory before begin your setup.
+3. Check the installed version of PySpark
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+   (de-test-venv) hduser@MyPC:~$ pyspark --version
+   ~~~
+   > Reinstall the Spark if it the PySpark not version 4.0.x (tested 4.0.4 for Hadoop 3.4.1). Remember to delete the existing spark directory before begin your setup.
 
-4.	Check the installed version of Scala
-~~~bash
-$ scala -version
-$ ll ~/kafka/libs | grep kafka
-~~~
-> Reinstall the Kafka if it is not those version of your install Scala, say 2.13.x as shown in file kafka_(Scala-version)-(Kafka-version).*. Remember to delete the existing kafka directory before begin your setup.
+4. Check the installed version of Scala
+   ~~~bash
+   (de-test-venv) hduser@MyPC:~$ scala -version
+   (de-test-venv) hduser@MyPC:~$ ll ~/kafka/libs | grep kafka
+   (de-test-venv) hduser@MyPC:~$ deactivate
+   ~~~
+   > Reinstall the Kafka (tested Kafka 4.3.1 with Scala 2.13.16) if it is not those version of your install Scala, say 2.13.x as shown in file kafka_(Scala-version)-(Kafka-version).*. Remember to delete the existing kafka directory before begin your setup.
 
-5.	Download HBase
-~~~bash
-$ cd ~
-$ wget https://archive.apache.org/dist/hbase/2.5.7/hbase-2.5.10-bin.tar.gz
-$ tar -xvzf hbase-2.5.10-bin.tar.gz
-$ mv hbase-2.5.10 hbase
-~~~
-> Find the current stable release of HBase that is compatible with your version of Hadoop at here (https://hbase.apache.org/book.html#hadoop), and you may find a list of releases at Apache Hbase download page (https://hbase.apache.org/downloads.html). For example, you may adopt version Hbase 2.5.x for the installed Hadoop 3.3.6.
+5. Download HBase
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ xxwget https://archive.apache.org/dist/hbase/2.5.7/hbase-2.5.10-bin.tar.gz
+   hduser@MyPC:~$ wget https://archive.apache.org/dist/hbase//3.0.0/hbase-byo-hadoop-3.0.0-bin.tar.gz
+   hduser@MyPC:~$ tar -xvzf hbase-byo-hadoop-3.0.0-bin.tar.gz
+   hduser@MyPC:~$ mv hbase-byo-hadoop-3.0.0 hbase
+   ~~~
+   > Find the current stable release of HBase that is compatible with your version of Hadoop at here (https://hbase.apache.org/book.html#hadoop), and you may find a list of releases at Apache Hbase download page (https://hbase.apache.org/downloads.html). For example, you may adopt the tested version Hbase 3.0.0 with Hadoop 3.4.1.
 
 
 ## K2. Configure HBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Stop (if running) the Zookeeper and Kafka services
+1. Stop (if running) the Kafka service
 ~~~bash
 $ cd ~/kafka
 $ bin/kafka-server-stop.sh
-$ bin/zookeeper-server-stop.sh
 $ jps
 ~~~
-> Attention! Please wait at least 30 seconds after issuing each command. Responses might be slow, and do use the command jps to observe the termination of services, i.e. **HQuorumPeer** and **Kafka**.
+> Attention! Please wait at least 30 seconds after issuing the stop command. Responses might be slow, and do use the command jps to observe the termination of service, i.e. **Kafka**.
 
 2.	Edit the Bash profile of hduser by adding the following lines, and source the profile
 ~~~bash
