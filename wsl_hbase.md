@@ -39,7 +39,6 @@
 5. Download HBase
    ~~~bash
    hduser@MyPC:~$ cd ~
-   hduser@MyPC:~$ xxwget https://archive.apache.org/dist/hbase/2.5.7/hbase-2.5.10-bin.tar.gz
    hduser@MyPC:~$ wget https://archive.apache.org/dist/hbase//3.0.0/hbase-byo-hadoop-3.0.0-bin.tar.gz
    hduser@MyPC:~$ tar -xvzf hbase-byo-hadoop-3.0.0-bin.tar.gz
    hduser@MyPC:~$ mv hbase-byo-hadoop-3.0.0 hbase
@@ -51,9 +50,9 @@
 
 1. Stop (if running) the Kafka service
    ~~~bash
-   $ cd ~/kafka
-   $ bin/kafka-server-stop.sh
-   $ jps
+   hduser@MyPC:~$ cd ~/kafka
+   hduser@MyPC:~/kafka$ bin/kafka-server-stop.sh
+   hduser@MyPC:~/kafka$ jps
    ~~~
    > Attention! Please wait at least 30 seconds after issuing the stop command. Responses might be slow, and do use the command jps to observe the termination of service, i.e. **Kafka**.
 
@@ -71,7 +70,7 @@
    export HBASE_HEAPSIZE=4G
    export HBASE_CLASSPATH=${HBASE_HOME}/lib
    export HBASE_REGIONSERVERS=${HBASE_HOME}/conf/regionservers
-   export HBASE_MANAGES_ZK=false
+   export HBASE_MANAGES_ZK=true
    ~~~
    > Ensure that you have stopped kafka server before this step.
 
@@ -96,32 +95,34 @@
 5. Start the HDFS, YARN and Kafka services
    ~~~bash
    hduser@MyPC:~$ cd ~/hadoop3
-   hduser@MyPC:~$ sbin/start-dfs.sh
-   hduser@MyPC:~$ sbin/start-yarn.sh
+   hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
+   hduser@MyPC:~/hadoop3$ sbin/start-yarn.sh
    hduser@MyPC:~$ cd ~/kafka
-   hduser@MyPC:~$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
-   hduser@MyPC:~$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
-   hduser@MyPC:~$ bin/kafka-server-start.sh config/server.properties
-   hduser@MyPC:~$ jps
+   hduser@MyPC:~/kafka$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+   hduser@MyPC:~/kafka$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+   hduser@MyPC:~/kafka$ bin/kafka-server-start.sh config/server.properties
+   hduser@MyPC:~/kafka$ jps
    ~~~
    > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow to start following your recent configuration.
    > Please verify that Kafka is running by running the jps command, i.e. you should see a total of seven processes before proceed to the next step. 
 
 6. Start the HBase
    ~~~bash
-   hduser@MyPC:~$ cd ~
-   hduser@MyPC:~$ ~/hbase/bin/start-hbase.sh
-   hduser@MyPC:~$ jps
+   hduser@MyPC:~$ cd ~/hbase
+   xx hduser@MyPC:~/hbase$ ~/hbase/bin/hbase-daemon.sh start zookeeper
+   hduser@MyPC:~/hbase$ ~/hbase/bin/start-hbase.sh
+   hduser@MyPC:~/hbase$ jps
    ~~~
    > Verify that HBase is running - you should see the HBase processes with jps command, i.e. **HMaster** and **HRegionServer**. Note that you may ignore the errors due to SLF4J during HBase startup, as it will eventually perform logging to a plain text in local file system.
    > When you want to stop HBase, type the following commands 
    ~~~bash
-   hduser@MyPC:~$ cd ~
-   hduser@MyPC:~$ ~/hbase/bin/stop-hbase.sh
-   hduser@MyPC:~$ jps
+   hduser@MyPC:~$ cd ~/hbase
+   hduser@MyPC:~/hbase$ ~/hbase/bin/stop-hbase.sh
+   hduser@MyPC:~/hbase$ jps
    ~~~
    > You may choose to clear all the HBase data, after stopped both **HMaster** and **HRegionServer**, using the following commands
    ~~~bash
+   hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ hdfs dfs -ls /
    hduser@MyPC:~$ hdfs dfs -rm -r /hbase
    hduser@MyPC:~$ hdfs dfs -ls /
