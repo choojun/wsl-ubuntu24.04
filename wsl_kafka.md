@@ -63,6 +63,17 @@ Note that you need to generate one ID, and use the same ID on all cluster nodes.
 
 Apache Kafka 4.0 (released in March 2025) and KRaft are permanently and exclusively linked because Kafka 4.0 has completely removed Apache ZooKeeper and relies on KRaft as its sole metadata management system. KRaft stands for Kafka Raft — Kafka’s own implementation of the Raft consensus protocol. Instead of relying on an external system, i.e. ZooKeeper, Kafka now manages its own metadata using a quorum of dedicated controller nodes within the cluster itself. in KRaft, a set of controller nodes (typically 3 or 5) form a Raft quorum. One is elected the active controller and manages a special metadata partition log. All cluster metadata — topics, partitions, ISRs, configurations — is stored in this internal log. When the active controller fails, the Raft protocol ensures a new leader is elected from the remaining controllers, and because they already have the metadata in memory, failover is nearly instantaneous.
 
+| Aspect of Kafka with   | ZooKeeper (ZK) Mode           | KRaft Model                     |
+|------------------------|-------------------------------|---------------------------------|
+| 1. Architecture           | Two separate systems          | Single self-contained system    |
+| 2. Metadata Storage       | ZooKeeper znodes              | Internal Kafka metadata log     |
+| 3. Controller Election    | Ephemeral znodes in ZK        | Raft consensus amon controllers |
+| 4. Failover Speed         | Seconds to minutes            | Near-instantaneous (in-memory)  |
+| 5. Partition Limit        | ~200,000 practical ceiling    | Millions of partition supported |
+| 6. Operational Complexity | Manage 2 cluster & monitoring | Manage 1 system                 |
+| 7. Security Config        | Separate ZK + Kafka auth      | Unified security model          |
+| 8. Recovery Time          | Load full state from ZK       | 10x faster - already in memory  |
+
 3.	Stopping Kafka.
 ~~~bash
 hduser@MyPC:~$ cd ~/kafka
