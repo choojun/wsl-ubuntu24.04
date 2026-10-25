@@ -57,6 +57,10 @@ If you also want to delete any data of your local Kafka environment including an
 $ rm -rf /tmp/kafka-logs /tmp/kraft-combined-logs
 ~~~
 > Note that you should observe the Kafka process with the command jps. You should observe a total of seven services, i.e. Jps, SecondaryNameNode, ResourceManager, NodeManager, DataNode, Kafka, NameNode
+>
+> Note that you need to generate one ID, and use the same ID on all cluster nodes. In s multiple nodes of cluster environment, you need to run the storage tool script on each node utilizing the same cluster ID, example: bin/kafka-storage.sh format -t <CLUSTER_ID> -c <path-to-server.properties>
+>
+> 
 
 3.	Stopping Kafka and Zookeeper
 ~~~bash
