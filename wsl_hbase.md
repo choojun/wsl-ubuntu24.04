@@ -73,7 +73,7 @@
    export HBASE_REGIONSERVERS=${HBASE_HOME}/conf/regionservers
    export HBASE_MANAGES_ZK=false
    ~~~
-   > Please start kafka server before this step. If you are planning to run the Kafka service, then in hbase-env.sh change HBASE_MANAGES_ZK from true to false
+   > Ensure that you have stopped kafka server before this step.
 
 4. Edit and add the properties of ~/hbase/conf/hbase-site.xml 
 ~~~xml
@@ -93,8 +93,11 @@
     </configuration>
 ~~~
 
-5. Start the Zookeeper and Kafka services
+5. Start the HDFS, YARN and Kafka services
    ~~~bash
+   hduser@MyPC:~$ cd ~/hadoop3
+   hduser@MyPC:~$ sbin/start-dfs.sh
+   hduser@MyPC:~$ sbin/start-yarn.sh
    hduser@MyPC:~$ cd ~/kafka
    hduser@MyPC:~$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
    hduser@MyPC:~$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
@@ -102,32 +105,27 @@
    hduser@MyPC:~$ jps
    ~~~
    > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow to start following your recent configuration.
-   > Please verify that Kafka is running by running the jps command, i.e. you should see the process: **Kafka** before proceed to the next step. 
+   > Please verify that Kafka is running by running the jps command, i.e. you should see a total of seven processes before proceed to the next step. 
 
 6. Start the HBase
-~~~bash
-$ cd ~
-$ ~/hbase/bin/start-hbase.sh
-$ jps
-~~~
-> Verify that HBase is running - you should see the HBase processes with jps command, i.e. **HMaster** and **HRegionServer**. Note that you may ignore the errors due to SLF4J during HBase startup, as it will eventually perform logging to a plain text in local file system.
-> When you want to stop HBase, type the following commands 
-~~~bash
-$ cd ~
-$ ~/hbase/bin/stop-hbase.sh
-$ jps
-~~~
-> You may choose to clear all the HBase data, after stopped both HMaster and HRegionServer, using the following commands
-~~~bash
-$ hdfs dfs -ls /
-$ hdfs dfs -rm -r /hbase
-$ hdfs dfs -ls /
-~~~
-> Delete the log4j-slf4j-impl-2.17.2.jar file (optional)
-~~~bash
-$ rm ~/hive/lib/log4j-slf4j-impl-2.17.2.jar
-~~~
-> We delete the file log4j-slf4j-impl-2.17.2.jar because the similar file is also presented in the Hadoop directory, and it gives error to us occasionally
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ ~/hbase/bin/start-hbase.sh
+   hduser@MyPC:~$ jps
+   ~~~
+   > Verify that HBase is running - you should see the HBase processes with jps command, i.e. **HMaster** and **HRegionServer**. Note that you may ignore the errors due to SLF4J during HBase startup, as it will eventually perform logging to a plain text in local file system.
+   > When you want to stop HBase, type the following commands 
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ ~/hbase/bin/stop-hbase.sh
+   hduser@MyPC:~$ jps
+   ~~~
+   > You may choose to clear all the HBase data, after stopped both **HMaster** and **HRegionServer**, using the following commands
+   ~~~bash
+   hduser@MyPC:~$ hdfs dfs -ls /
+   hduser@MyPC:~$ hdfs dfs -rm -r /hbase
+   hduser@MyPC:~$ hdfs dfs -ls /
+   ~~~
 
 ## K3. Using HBase Shell [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
