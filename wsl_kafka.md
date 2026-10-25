@@ -23,7 +23,7 @@
    hduser@MyPC:~$ sudo apt install zip unzip
    hduser@MyPC:~$ curl -s "https://get.sdkman.io" | bash
    hduser@MyPC:~$ source "/home/hduser/.sdkman/bin/sdkman-init.sh"
-   hduser@MyPC:~$ sdk install scala 2.13.18
+   hduser@MyPC:~$ sdk install scala 2.13.16
    hduser@MyPC:~$ scala -version
    ~~~
 
