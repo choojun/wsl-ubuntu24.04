@@ -124,7 +124,7 @@ hduser@MyPC:~$ ~/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhos
 
 6. To examine the incoming messages.
 ~~~
-hduser@MyPC:~$ ~/kafka/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --deep-iteration --print-data-log --files /tmp/kafka-logs/test-0/00000000000000000000.log
+hduser@MyPC:~$ ~/kafka/bin/kafka-run-class.sh kafka.tools.DumpLogSegments --deep-iteration --print-data-log --files /tmp/kraft-combined-logs/test-0/00000000000000000000.log
 ~~~
 > Note that follow the file name of the *.log file that appears in your directory
 
