@@ -89,6 +89,21 @@
         <name>hbase.wal.provider</name>
         <value>filesystem</value>
       </property>
+      <!-- Reduce the time Master waits for RegionServers to check in during exit -->
+      <property>
+        <name>hbase.master.wait.on.regionservers.timeout</name>
+        <value>30000</value> <!-- 30 seconds -->
+      </property>
+      <!-- Tighten ZooKeeper session timeouts so dead nodes are realized faster -->
+      <property>
+        <name>zookeeper.session.timeout</name>
+        <value>60000</value> <!-- 60 seconds -->
+      </property>
+      <!-- Enable thread dumps on long-running worker pools during close -->
+      <property>
+        <name>hbase.regionserver.thread.dump.on.abort</name>
+        <value>true</value>
+      </property>
     </configuration>
 ~~~
 
