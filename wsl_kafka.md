@@ -253,7 +253,7 @@ hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
 ~~~bash
 hduser@MyPC:~$ cd ~
 hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
-(de-test-venv) hduserMyPC@MyPC:~$ send_messages.py
+(de-test-venv) hduserMyPC@MyPC:~$ nano send_messages.py
 ~~~
 
 3. Add the following statements into send_messages.py and then save the file
