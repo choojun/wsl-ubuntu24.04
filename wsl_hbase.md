@@ -137,6 +137,8 @@
    hduser@MyPC:~$ ~/hbase/bin/hbase-daemon.sh stop regionserver
    hduser@MyPC:~$ jps
    ~~~
+   > Shutdown can take a moment to complete. If you are running a distributed operation, be sure to wait until HBase has shut down completely before stopping the Hadoop daemons.
+   > 
    > You may choose to clear all the HBase data, after stopped both **HMaster** and **HRegionServer**, using the following commands
    ~~~bash
    hduser@MyPC:~$ cd ~
