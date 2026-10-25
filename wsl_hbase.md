@@ -70,7 +70,7 @@
    export HBASE_HEAPSIZE=4G
    export HBASE_CLASSPATH=${HBASE_HOME}/lib
    export HBASE_REGIONSERVERS=${HBASE_HOME}/conf/regionservers
-   export HBASE_MANAGES_ZK=true
+   export HBASE_MANAGES_ZK=false
    ~~~
    > Ensure that you have stopped kafka server before this step.
 
@@ -103,6 +103,14 @@
       <property>
         <name>hbase.regionserver.thread.dump.on.abort</name>
         <value>true</value>
+      </property>
+      <property>
+        <name>zookeeper.recovery.retry</name>
+        <value>3</value> <!-- Default is often too high (e.g., 30) -->
+      </property>
+      <property>
+        <name>zookeeper.recovery.retry.intervalmill</name>
+        <value>1000</value> <!-- Retries every 1 second -->
       </property>
     </configuration>
 ~~~
