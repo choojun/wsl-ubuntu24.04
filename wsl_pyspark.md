@@ -542,7 +542,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     ~~~
     > Suppose that your installed Spark does not need to have the hdfs directory path (hdfs://localhost:9000/user/hduser/) explicitly indicated. Example, it may be run as: parking = sqlContext.read.json("data/sf_parking_clean.json")
 
-5. Exit the Pyspark and deactivate the virtual environment for ending the exercise.
+5. Exit the Pyspark Shell and deactivate the virtual environment for ending the exercise.
    ~~~bash
    >>> exit()
    (de-test-venv) hduserMyPC@MyPC:~$ deactivate
