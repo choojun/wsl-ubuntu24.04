@@ -133,7 +133,7 @@ If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon pro
 
 | Requirements* (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | HappyBase / AIOHappyBase | Apache Derby | Apache Hive |
 |---|---|---|---|---|---|---|---|---|
-| [E. Hadoop Installation and Configuration](wsl_hadoop) | 3.4.1 |  |  |  |  |  |  |  |
+| [E. Hadoop Installation and Configuration](wsl_hadoop.md) | 3.4.1 |  |  |  |  |  |  |  |
 | [F. HDFS File Operations and MapReduce](wsl_hdfs) | 3.4.1 |  |  |  |  |  |  |  |
 | [G. Spark, PySpark Shell, Spark SQL and JupyterLab](wsl_pyspark) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
 | [H. Spark and Machine Learning](wsl_pyspark_ml) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
