@@ -97,7 +97,7 @@
       <!-- Tighten ZooKeeper session timeouts so dead nodes are realized faster -->
       <property>
         <name>zookeeper.session.timeout</name>
-        <value>60000</value> <!-- 60 seconds -->
+        <value>120000</value> <!-- 120 seconds -->
       </property>
       <!-- Enable thread dumps on long-running worker pools during close -->
       <property>
