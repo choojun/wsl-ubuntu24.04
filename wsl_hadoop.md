@@ -110,9 +110,9 @@ alias python=python3
 ~~~
 > Ctrl-x to save after edited the file.
 
-9. In ~/.bashrc file, add the following lines at the end of the file based on the python3.x from your installation:
+9. In ~/.bashrc file, add the following lines at the end of the file based on the python3.x from your installation (e.g. Ubuntu 24.04 coming with Python 3.12):
 ~~~bash
-export CPATH=/usr/include/python3.10m:$CPATH
+export CPATH=/usr/include/python3.12:$CPATH
 export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
 ~~~
 > Ctrl-x to save after edited the file.
