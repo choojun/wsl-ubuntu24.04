@@ -48,7 +48,7 @@ hduser@MyPC:~$ chown hduser:hadoop -R kafka
 hduser@MyPC:~$ cd ~/kafka
 hduser@MyPC:~$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
 hduser@MyPC:~$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
-hduser@MyPC:~$ bin/kafka-server-start.sh config/server.properties &
+hduser@MyPC:~$ bin/kafka-server-start.sh config/server.properties
 hduser@MyPC:~$ jps
 ~~~
 > You should observe the Kafka process with the command jps. You should observe a total of **seven** services, i.e. Jps, SecondaryNameNode, ResourceManager, NodeManager, DataNode, Kafka, NameNode
