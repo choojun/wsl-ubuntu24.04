@@ -1,6 +1,6 @@
 <img width="206" height="80" alt="ubuntu_restore" src="https://github.com/user-attachments/assets/8efb683f-d23c-4d29-9917-57ea24b06cca" />
 
-# D. Restore (Import) the Distro on WSL
+# D. Restore (Import) the Distro on WSL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. In Power Shell, list the installed distro on WSL before removing the same / targeted instance. Note that you need to know the exact name for this process, especially those who wants to restore it at some point on the same PC or on those PC with the same name for distribution of distro. Note that the 'unregister' command will unregister the distribution from WSL and deletes the root filesystems.
 ~~~bash
