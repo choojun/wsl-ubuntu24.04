@@ -1,12 +1,12 @@
 ![spark](https://github.com/choojun/choojun.github.io/assets/6356054/ed7bd2cd-1ce6-43db-8ebd-18d56f351a43)
 
-# I. Spark and Visualization [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+# I. Spark and Visualization [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Seaborn is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics. Read more at URL https://seaborn.pydata.org/
 2. [Visualization.zip](https://github.com/choojun/choojun.github.io/files/14373625/Visualization.zip)
 
 
-## I1. Visualization with PySpark [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## I1. Visualization with PySpark [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login as **hduser**, activate the venv, and install the seaborn package
 ~~~bash
