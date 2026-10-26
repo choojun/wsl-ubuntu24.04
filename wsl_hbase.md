@@ -432,7 +432,7 @@ hbase> list
 
 3. Start the HDFS service.
    ~~~bash
-   hduser@MyPC:~$ cd hadoop3
+   hduser@MyPC:~$ cd ~/hadoop3
    hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
    $ jps
    ~~~
@@ -459,10 +459,10 @@ hbase> list
 
 6. Start the HBase.
    ~~~bash
-   hduser@MyPC:~$ cd ~
-   hduser@MyPC:~$ ~/hbase/bin/hbase-daemon.sh start zookeeper
-   hduser@MyPC:~$ ~/hbase/bin/start-hbase.sh
-   hduser@MyPC:~$ jps
+   hduser@MyPC:~$ cd ~/hbase
+   hduser@MyPC:~/hbase$ ~/hbase/bin/hbase-daemon.sh start zookeeper
+   hduser@MyPC:~/hbase$ ~/hbase/bin/start-hbase.sh
+   hduser@MyPC:~/hbase$ jps
    ~~~
    > Suppose you need to observe at least ten (10) services in the total, including HQuorumPeer, HMaster and HRegionServer, as stated in step 6 of K2.
 
@@ -475,37 +475,39 @@ hbase> list
 ## K8. Attention: At the end of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 
-1. Stop the HBase service
-~~~bash
-$ cd ~
-$ $HBASE_HOME/bin/stop-hbase.sh
-$ jps
-~~~
-> Suppose the two services will be terminated, i.e. HMaster and HRegionServer.
+1. Stop the HBase service.
+   ~~~bash
+   hduser@MyPC:~$ cd ~/hbase
+   hduser@MyPC:~/hbase$ ~/hbase/bin/stop-hbase.sh
+   hduser@MyPC:~/hbase$ ~/hbase/bin/hbase-daemon.sh stop zookeeper
+   hduser@MyPC:~/hbase$ jps
+   ~~~
+   > Please wait at least 30 seconds after issuing each command, especially on executing stop-hbase.sh. Note that responses may be slow. Suppose the three services will be terminated, i.e. HQuorumPeer, HMaster and HRegionServer.
 
 
-2. Stop (if running) the Zookeeper and Kafka services
-~~~bash
-$ cd ~/kafka
-$ bin/kafka-server-stop.sh
-$ bin/zookeeper-server-stop.sh
-~~~
-> Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow.
-> Suppose the two services will be terminated, i.e. HQuorumPeer and Kafka
+2. Stop the Kafka service.
+   ~~~bash
+   hduser@MyPC:~$ cd ~/kafka
+   hduser@MyPC:~/kafka$ bin/kafka-server-stop.sh
+   hduser@MyPC:~/kafka$ jps
+   ~~~
+   > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow. Suppose the Kafka service will be terminated, i.e. Kafka
 
 
 3. Stop the YARN and HDFS services
-~~~bash
-$ cd ~/hadoop3
-$ sbin/stop-yarn.sh
-$ sbin/stop-dfs.sh
-$ top
-~~~
-> Ctrl-c to terminate the command top
+   ~~~bash
+   hduser@MyPC:~$ cd ~/hadoop3
+   hduser@MyPC:~/hadoop3$ sbin/stop-yarn.sh
+   hduser@MyPC:~/hadoop3$ sbin/stop-dfs.sh
+   hduser@MyPC:~/hadoop3$ jps
+   hduser@MyPC:~/hadoop3$ top
+   ~~~
+   > Ctrl-c to terminate the command top
 
 4. Exit from your user account(s) 
-~~~bash
-exit
-~~~
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ exit
+   ~~~
 
 
