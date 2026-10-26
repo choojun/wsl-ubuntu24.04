@@ -1,6 +1,6 @@
 ![spark](https://github.com/choojun/choojun.github.io/assets/6356054/ed7bd2cd-1ce6-43db-8ebd-18d56f351a43)
 
-# G. Spark, PySpark Shell, Spark SQL and JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+# G. Spark, PySpark Shell, Spark SQL and JupyterLab [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Spark is an in-memory distributed computing engine especially designed for the Hadoop cluster. 
 2. Read more on Apache Spark at URLs https://spark.apache.org and https://en.wikipedia.org/wiki/Apache_Spark
@@ -8,7 +8,7 @@
 4. [sparksql.zip](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip)
 
 
-## G1. Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G1. Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login as **hduser**. Ensure that the SSH, DFS, and YARN services are started sequentially. Then, examine them using the jps command
 
@@ -44,7 +44,7 @@
 
 
 
-## G2. Setup Python venv with JupyterLab for PySpark Interactive Shell (Pyspark Shell) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G2. Setup Python venv with JupyterLab for PySpark Interactive Shell (Pyspark Shell) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 Python virtual environments (venv) create a self-contained and isolated environment for different Python projects. This would enable you to install a specific version of a module on a per project basis which will not affect your other Python projects.
 
@@ -143,7 +143,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
       hduserMyPC@MyPC:~$ 
       ~~~
 
-## G3. Using the PySpark Shell for Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G3. Using the PySpark Shell for Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Launch PySpark Shell using user **hduser**
     ~~~bash
@@ -197,7 +197,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     hduserMyPC@MyPC:~$
     ~~~
 
-## G4. Using the PySpark Shell for Numerical Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G4. Using the PySpark Shell for Numerical Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login using user **hduser**, activate your venv (e.g, de-test-venv), and launch PySpark Shell **with 4 CPU cores**.
     ~~~bash
@@ -311,7 +311,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     hduserMyPC@MyPC:~$
     ~~~
 
-## G5. Using the PySpark Shell for Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G5. Using the PySpark Shell for Text Processing [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login using user **hduser**, activate your venv (e.g, de-test-venv), and launch PySpark Shell with 4 CPU cores
     ~~~bash
@@ -382,7 +382,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
    ~~~
 
 
-## G6. Using the spark-submit (an Spark Command-Line utility) with Python - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G6. Using the spark-submit (an Spark Command-Line utility) with Python - Word Count (SparkApp) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login using user **hduser**,, and make a copy of the C:\de\SparkApp folder in the local hduser’s home directory
     ~~~bash
@@ -410,7 +410,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     ~~~
 
 
-## G7. Using the spark-submit (an Spark Command-Line utility) with Python - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G7. Using the spark-submit (an Spark Command-Line utility) with Python - Flight Delay ([SparkApp](https://github.com/choojun/choojun.github.io/files/14237887/SparkApp.zip)) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Remain login using user **hduser**, make a copy of the C:\de\SparkApp folder in the local hduser’s home directory, change directory to the SparkApp directory, and review the code in app.py
     ~~~bash
@@ -449,7 +449,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
 
 
 
-## G8. Using the PySpark Shell with [Spark SQL](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G8. Using the PySpark Shell with [Spark SQL](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip) [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Spark SQL is a module in Apache Spark that provides a relational interface to work with structured data using SQL-based operations in Spark through either JDBC/ODBC connectors, a built-in interactive Hive console, or Spark SQL API. This practical covers the Spark SQL API, which runs as a library on top of Spark’s Core engine and APIs. The Spark SQL API may be accessed using the same programming interface that was used for Spark’s RDD APIs. Read more on Apache Spark at URLs https://spark.apache.org/sql/ and https://en.wikipedia.org/wiki/Apache_Spark#Spark_SQL
 ![sparksql](https://github.com/choojun/choojun.github.io/assets/6356054/538f24de-c002-44a0-8b57-e17b107ce1c8)
@@ -548,7 +548,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
    hduserMyPC@MyPC:~$
    ~~~
 
-## G9. Exercise [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## G9. Exercise [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login using user **hduser**, and make a copy of the C:\de\sparksql folder in the local hduser’s home directory.
     ~~~bash
