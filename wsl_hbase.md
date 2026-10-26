@@ -59,7 +59,7 @@
 2.	In ~/.bashrc file, add the following lines at the end of the file.
    ~~~bash
    export HBASE_HOME=/home/hduser/hbase
-   export PATH=$PATH:$HBASE_HOME/bin
+   export PATH=$PATH:/home/hduser/hbase/bin
    export HBASE_CLASSPATH=/home/hduser/hbase/lib/*
    ~~~
    > Remember to issue source ~/.bashrc after saving the file.
@@ -69,8 +69,8 @@
    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
    export HBASE_HOME=/home/hduser/hbase
    export HBASE_HEAPSIZE=4G
-   export HBASE_CLASSPATH=${HBASE_HOME}/lib
-   export HBASE_REGIONSERVERS=${HBASE_HOME}/conf/regionservers
+   export HBASE_CLASSPATH=/home/hduser/hbase/lib
+   export HBASE_REGIONSERVERS=/home/hduser/hbase/conf/regionservers
    export HBASE_MANAGES_ZK=false
    ~~~
    > Ensure that you have stopped kafka server before this step.
