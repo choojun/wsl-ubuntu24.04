@@ -2,7 +2,7 @@
 
 Note that this website only contains the setup, practical activities and shared WSL distro (https://github.com/choojun/wsl/releases). 
 
-Data engineering involves building systems to collect and utilize data. This data typically supports subsequent analysis and data science, often incorporating machine learning. Making data usable generally requires significant computational resources, storage, and processing. In essence, data engineering is the design and development of systems that allow individuals to gather and analyze raw data from diverse sources and formats. This website provides a one-stop setup and configuration for the system using Microsoft WSL. Hereby, the website has also incorporated a suite of distributed-ready open source software and guided exploration through selected application samples in the following sections.
+Data engineering involves building systems to collect and utilize data. This data typically supports subsequent analysis and data science, often incorporating machine learning. Making data usable generally requires significant computational resources, storage, and processing. In essence, data engineering is the design and development of systems that allow individuals to gather and analyze raw data from diverse sources and formats. This website provides a one-stop setup and configuration for the system using Microsoft WSL. Hereby, the website has also incorporated a suite of distributed-ready open source software and guided exploration through selected application samples in the following setup sections.
 
 | Section (Tested with WSL2 and Ubuntu 24.04 - LTS) | Windows 7 | Windows 10 | Windows 11 |
 |---|---|---|---|
@@ -25,12 +25,9 @@ If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon pro
 | [K. HBase Installation and Configuration](wsl_hbase.md) |  |  |  |  | 3.0.0 |  |  |  |
 | [L. HappyBase / AIOHappyBase Installation and COnfiguration](wsl_happybase.md) |  |  |  |  |  | 1.2.0 / 1.4.0 |  |  |
 | [M. Hive Installation and Configuration](wsl_hive.md) |  |  |  |  |  |  | 10.16.x | 4.2.1 |
-> Needed WSL2, Web browser and Internet connection, SSH and PDSH, Python 3.12.x
+> Needed Web browser, constant Internet connection, SSH and PDSH, Python 3.12.x
 >
-> 
-Read more required details at URLs
-  1. Setup from the scratch - all sections of https://choojun.github.io/wsl
-  2. Restore from the pre-setup WSL distro - download the latest release from URL https://github.com/choojun/wsl/releases and perform those steps in the section D of https://choojun.github.io/wsl (after identified your UBuntu version).
+> **Optional**: Restore from the pre-setup WSL distro by downloading the required release from URL https://github.com/choojun/wsl/releases, and perform those steps in the section D (after identified your UBuntu version).
 
 
 ### Experimental Version (not stable yet)
