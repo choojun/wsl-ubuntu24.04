@@ -59,8 +59,8 @@
 2.	In ~/.bashrc file, add the following lines at the end of the file.
    ~~~bash
    export HBASE_HOME=/home/hduser/hbase
-   export PATH=$PATH:/home/hduser/hbase/bin
-   export HBASE_CLASSPATH=/home/hduser/hbase/lib/*
+   export PATH=$PATH:$HBASE_HOME/bin
+   export HBASE_CLASSPATH=$HBASE_HOME/lib/*
    ~~~
    > Remember to issue source ~/.bashrc after saving the file.
 
