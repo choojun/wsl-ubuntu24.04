@@ -1,4 +1,4 @@
-<img width="598" height="232" alt="ubuntu" src="https://github.com/user-attachments/assets/8c824f6a-c30f-48e5-af36-28732b85a048" />
+<img width="206" height="80" alt="ubuntu" src="https://github.com/user-attachments/assets/5cc44314-c0ce-4caa-9bc5-780c7094d0b3" />
 
 # B. Running Ubuntu on WSL
 
