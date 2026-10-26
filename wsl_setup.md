@@ -2,9 +2,9 @@
 
 # A. Remove/Setup WSL
 
-A Microsoft Windows component that allows users to run Linux command-line tools, scripts, and GUI applications natively on Windows 10 and Windows 11. 
+A Microsoft Windows component that allows users to run Linux command-line tools, scripts, and GUI applications **natively** on Windows 10 and Windows 11. 
 
-1. Hardware requirement: recommended **16GB RAM (or more)** and **CPU virtualization enabled** with **constant internet access** during exercises.
+1. Hardware requirement: at least **16GB RAM (32GB or more recommended for our practical)** and **CPU virtualization enabled** with **constant internet access** during exercises.
 Suppose that your Windows has updated to the latest patches too (tested Windows 10 Pro with version 22H2)!  
 Software reqirement:
    - Find Settings --> Apps --> Apps & features --> Related Settings --> Programs and Features --> Turn Windows features on or off, **or**
