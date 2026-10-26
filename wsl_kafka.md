@@ -1,6 +1,6 @@
 ![kafka](https://github.com/choojun/choojun.github.io/assets/6356054/9e24ef13-f41f-4d8a-a731-889cdb9f76df)
 
-# J. Kafka Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+# J. Kafka Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications. Kafka has three key capabilities under a distributed, highly scalable, elastic, fault-tolerant, and secure manner, as listed as follow
    * To publish (write) and subscribe to (read) streams of events, including continuous import/export of your data from other systems
@@ -9,7 +9,7 @@
 2. Kafka is a distributed system consisting of servers and clients that communicate via a high-performance TCP network protocol. As a server, Kafka is run as a cluster of one or more servers that can span multiple datacenters or cloud regions. As a clients, Kafka allows us to write distributed applications and microservices that read, write, and process streams of events in parallel, at scale, and in a fault-tolerant manner even in the case of network problems or machine failures
 3. Read more on Kafka and its related middlewares at URL https://kafka.apache.org/documentation/ , https://kafka.apache.org/quickstart and https://doc.akka.io/libraries/alpakka-kafka/current/home.html
 
-## J1. Install Kafka [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J1. Install Kafka [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Login as **hduser**, and check the installed scala package
    ~~~bash
@@ -42,7 +42,7 @@
    ~~~
    > Remember to issue source ~/.bashrc after saving the file.
 
-## J2. Starting and Stopping Kafka Broker [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J2. Starting and Stopping Kafka Broker [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Remain login as **hduser**. Ensure the following services started sequentially and check them with command jps
     - SSH
@@ -91,7 +91,7 @@
 
 
 
-## J3. Producing and Examining Messages - using Terminal [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J3. Producing and Examining Messages - using Terminal [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Remain login as **hduser**. 
 2. Create a Topic.
@@ -113,7 +113,7 @@
 
 
 
-## J4. Producer - Consumer Terminals [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J4. Producer - Consumer Terminals [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. To simulate a **producer terminal**, open another terminal of Ubuntu and login as **hduser**.
 2. List all available topics, and carry out the following steps after your Consumer Terminal is ready to consume messages.
@@ -148,7 +148,7 @@
    > Note that follow the file name of the *.log file that appears in your directory
 
 
-## J5. Accessing Kafka in Python [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J5. Accessing Kafka in Python [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Login as **hduser**, activate the venv, and check the installed kafka-python package
    ~~~bash
@@ -207,7 +207,7 @@
    > In the above example, the 8s delay will result in all three messages appearing at almost the same time to the consumer.
 
 
-## J6. Accessing Kafka in PySpark Interactive Shell (Pyspark Shell) - by Specifying Partition [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J6. Accessing Kafka in PySpark Interactive Shell (Pyspark Shell) - by Specifying Partition [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Use another terminal as **producer** by login as **hduser**, activate the venv, and invoke the Pyspark Shell with 4 executor cores
    ~~~bash
@@ -242,7 +242,7 @@
    ~~~
 
 
-## J7. Accessing Kafka in in PySpark Interactive Shell (Pyspark Shell) - with Serialized JSON Messages [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## J7. Accessing Kafka in in PySpark Interactive Shell (Pyspark Shell) - with Serialized JSON Messages [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. In **producer terminal**, update the following lines of code based on the copy of J6
    ~~~python
