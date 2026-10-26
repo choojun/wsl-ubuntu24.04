@@ -19,4 +19,4 @@ wsl --export <distribution> <file location with filename.tar>
     e.g. wsl --export Ubuntu-22.04 c:/Users/choojun/Documents/wsl/my-backup-Ubuntu-22.04.tar
 ~~~
 
-<img width="206" height="80" alt="ubuntu_backup" src="https://github.com/user-attachments/assets/74c465db-944a-4e49-a786-c75c6a178b51" />
+
