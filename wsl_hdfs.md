@@ -1,6 +1,6 @@
 ![hadoop](https://github.com/choojun/choojun.github.io/assets/6356054/0233d690-e03c-4699-a0e9-e9f932139de3)
 
-# F. HDFS File Operations and MapReduce [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+# F. HDFS File Operations and MapReduce [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. This practical introduces the basic Hadoop Distributed File System (HDFS) operations.
 2. Login as **hduser**, and the HDFS shell can be invoked using 
@@ -14,7 +14,7 @@ $ hdfs dfs -help
 ~~~
 
 
-## F1. Basic File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## F1. Basic File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login as **hduser**, download a remote file from Google Drive
 ~~~bash
@@ -69,7 +69,7 @@ $ wget --no-check-certificate 'https://drive.google.com/file/d/1skRa_0NTu-XmthVs
 $ wget --no-check-certificate 'https://drive.google.com/file/d/155Sra6cu3AmSQ1oyh8kLAl_KdPzY7PrY/view' -O HarryPotter2.txt
 ~~~
 
-## F2. Advanced File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## F2. Advanced File Operations [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login as **hduser**, and to view the contents of your current directory
 ~~~bash
@@ -159,7 +159,7 @@ $ hdfs dfs -ls
 > In addition to the above commands, there are a number of POSIX-like commands (https://en.wikipedia.org/wiki/List_of_POSIX_commands) which include chgrp, chown, cp, du, mkdir, stat, tail
 
 
-## F3. MapReduce with Java - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## F3. MapReduce with Java - Word Count [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Hadoop MapReduce is a software framework for easily writing applications which process vast amounts of data (multi-terabyte data-sets) in-parallel on large clusters (thousands of nodes) of commodity hardware in a reliable, fault-tolerant manner. A MapReduce job splits the input data-set into independent chunks which are processed by the map tasks in a completely parallel manner. The framework sorts the outputs of the maps, which are then input to the reduce tasks. Typically both the input and the output of the job are stored in a file-system. The framework takes care of scheduling tasks, monitoring them and re-executes the failed tasks. The MapReduce framework operates exclusively on <key, value> pairs, that is, the framework views the input to the job as a set of <key, value> pairs and produces a set of <key, value> pairs as the output of the job, conceivably of different types.
 2.	Input and Output types of a MapReduce job:
@@ -212,7 +212,7 @@ $ mapred job -list
 
 10. Repeat the Steps 7 to 9 with the two downloaded files, HarryPotter1.txt and HarryPotter2.txt, as an exercise.
 
-## F4. MapReduce with Python - On-time Performance of Flights [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](/)
+## F4. MapReduce with Python - On-time Performance of Flights [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login as **hduser**, download file [StreamingOn-time.zip](https://github.com/choojun/choojun.github.io/files/14274973/StreamingOn-time.zip) , and make a copy of the C:\de\StreamingOn-time folder in the local hduser’s home directory
 ~~~bash
