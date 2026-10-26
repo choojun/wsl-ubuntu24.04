@@ -1,4 +1,5 @@
-## Data Engineering with Distributed Environment for Data Analytics: An One-Stop of Setup and Configuration in the Microsoft Windows Subsystem for Linux (WSL) - UBuntu 24.04
+# Data Engineering with Distributed Environment for Data Analytics: 
+## An One-Stop of Setup and Configuration in the Microsoft Windows Subsystem for Linux (WSL) - UBuntu 24.04
 
 Note that this website only contains the setup, practical activities and shared WSL distro (https://github.com/choojun/wsl/releases). 
 
@@ -11,7 +12,7 @@ Data engineering involves building systems to collect and utilize data. This dat
 | [C. Backup the Distro on WSL](wsl_backup.md) | ❌ | ✔ | ✔ |
 | [D. Restore (Import) the Distro on WSL](wsl_restore.md) | ❌ | ✔ | ✔ |
 
-### Note for Apple MacOS users
+#### Note for Apple MacOS users
 If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
 | Section (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | AIO/HappyBase | Apache Derby | Apache Hive |
