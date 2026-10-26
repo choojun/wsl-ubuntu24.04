@@ -156,6 +156,7 @@
    hduser@MyPC:~$ hdfs dfs -ls /
    hduser@MyPC:~$ hdfs dfs -rm -r /hbase
    hduser@MyPC:~$ hdfs dfs -ls /
+   hduser@MyPC:~$ rm -R ~/hbase/tmp/zookeeper
    ~~~
 
 ## K3. Using HBase Shell [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
