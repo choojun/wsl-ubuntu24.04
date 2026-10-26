@@ -55,7 +55,7 @@
    ~~~
 
 ## L2. Using HappyBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
-1.	Open another session in terminal, and login as hduser. Then, launch the python command-line interpreter
+1.	Open another session in terminal, login as **hduser**, and activate the venv. Then, launch the python command-line interpreter
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
@@ -87,13 +87,17 @@
 
 
 ## L3. Creating Tables in HBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
-1.	Open another session in terminal, and login as hduser. Then, launch the python command-line interpreter
-~~~bash
-$ python
-~~~
+1.	Open another session in terminal, login as hduser, and activate the venv. Then, launch the python command-line interpreter
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
+   (de-test-venv) hduser@MyPC:~$ python
+   ~~~
 
 2. Create a new HBase table with a single column-family
 ~~~bash
+>>> import happybase
+>>> connection = happybase.Connection(port=9090)
 >>> connection.create_table('mytable', {'cf1':dict()})
 ~~~
 > If you encounter the following exception,
