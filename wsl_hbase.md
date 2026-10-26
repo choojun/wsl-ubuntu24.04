@@ -138,6 +138,9 @@
    hduser@MyPC:~$ jps
    ~~~
    > Verify that HBase is running - you should see the HBase processes with jps command, i.e. **HMaster** and **HRegionServer**. Note that you may ignore the errors due to SLF4J during HBase startup, as it will eventually perform logging to a plain text in local file system.
+   > 
+   > Browse any web browser for the HBase Web UI, by default, and it is available at URL http://localhost:16010/
+   >
    > When you want to stop HBase, type the following commands 
    ~~~bash
    hduser@MyPC:~$ cd ~
