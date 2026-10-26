@@ -4,7 +4,7 @@ Note that this website only contains the setup, practical activities and shared 
 
 Data engineering involves building systems to collect and utilize data. This data typically supports subsequent analysis and data science, often incorporating machine learning. Making data usable generally requires significant computational resources, storage, and processing. In essence, data engineering is the design and development of systems that allow individuals to gather and analyze raw data from diverse sources and formats. This website provides a one-stop setup and configuration for the system using Microsoft WSL. Hereby, the website has also incorporated a suite of distributed-ready open source software and guided exploration through selected application samples in the following sections.
 
-| Requirements (Tested with WSL2 and Ubuntu 24.04 - LTS) | Windows 7 | Windows 10 | Windows 11 |
+| Section (Tested with WSL2 and Ubuntu 24.04 - LTS) | Windows 7 | Windows 10 | Windows 11 |
 |---|---|---|---|
 | [A. Remove/Setup WSL](wsl_setup.md) | ❌ | ✔ | ✔ |
 | [B. Running Ubuntu on WSL](wsl_ubuntu.md) | ❌ | ✔ | ✔ |
@@ -14,7 +14,7 @@ Data engineering involves building systems to collect and utilize data. This dat
 ### Note for Apple MacOS users
 If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
-| Requirements* (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | AIO/HappyBase | Apache Derby | Apache Hive |
+| Section (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | AIO/HappyBase | Apache Derby | Apache Hive |
 |---|---|---|---|---|---|---|---|---|
 | [E. Hadoop Installation and Configuration](wsl_hadoop.md) | 3.4.1 |  |  |  |  |  |  |  |
 | [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | 3.4.1 |  |  |  |  |  |  |  |
