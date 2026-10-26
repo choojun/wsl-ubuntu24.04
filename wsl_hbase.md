@@ -56,7 +56,7 @@
    ~~~
    > Attention! Please wait at least 30 seconds after issuing the stop command. Responses might be slow, and do use the command jps to observe the termination of service, i.e. **Kafka**.
 
-2.	In ~/.bashrc file, add the following lines at the end of the file.
+2. In ~/.bashrc file, add the following lines at the end of the file.
    ~~~bash
    export HBASE_HOME=/home/hduser/hbase
    export PATH=$PATH:$HBASE_HOME/bin
@@ -76,45 +76,45 @@
    > Ensure that you have stopped kafka server before this step.
 
 4. Edit and add the properties of ~/hbase/conf/hbase-site.xml 
-~~~xml
-    <configuration>
+   ~~~xml
+   <configuration>
       <property>
-        <name>hbase.cluster.distributed</name>
-        <value>true</value>
+          <name>hbase.cluster.distributed</name>
+          <value>true</value>
       </property>
       <property>
-        <name>hbase.rootdir</name>
-        <value>hdfs://localhost:9000/hbase</value>
+          <name>hbase.rootdir</name>
+          <value>hdfs://localhost:9000/hbase</value>
       </property>
       <property>
-        <name>hbase.wal.provider</name>
-        <value>filesystem</value>
+          <name>hbase.wal.provider</name>
+          <value>filesystem</value>
       </property>
       <!-- Reduce the time Master waits for RegionServers to check in during exit -->
       <property>
-        <name>hbase.master.wait.on.regionservers.timeout</name>
-        <value>30000</value> <!-- 30 seconds -->
+          <name>hbase.master.wait.on.regionservers.timeout</name>
+          <value>30000</value> <!-- 30 seconds -->
       </property>
       <!-- Tighten ZooKeeper session timeouts so dead nodes are realized faster -->
       <property>
-        <name>zookeeper.session.timeout</name>
-        <value>120000</value> <!-- 120 seconds -->
+          <name>zookeeper.session.timeout</name>
+          <value>120000</value> <!-- 120 seconds -->
       </property>
       <!-- Enable thread dumps on long-running worker pools during close -->
       <property>
-        <name>hbase.regionserver.thread.dump.on.abort</name>
-        <value>true</value>
+          <name>hbase.regionserver.thread.dump.on.abort</name>
+          <value>true</value>
       </property>
       <property>
-        <name>zookeeper.recovery.retry</name>
-        <value>3</value> <!-- Default is often too high (e.g., 30) -->
+          <name>zookeeper.recovery.retry</name>
+          <value>3</value> <!-- Default is often too high (e.g., 30) -->
       </property>
       <property>
-        <name>zookeeper.recovery.retry.intervalmill</name>
-        <value>1000</value> <!-- Retries every 1 second -->
+          <name>zookeeper.recovery.retry.intervalmill</name>
+          <value>1000</value> <!-- Retries every 1 second -->
       </property>
     </configuration>
-~~~
+    ~~~
 
 5. Start the HDFS, YARN and Kafka services
    ~~~bash
@@ -161,85 +161,85 @@
 ## K3. Using HBase Shell [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1.	Login as hduser, say in another session, after HBase started
-~~~bash
-$ cd ~
-$ ~/hbase/bin/hbase shell
-~~~
+   ~~~bash
+   $ cd ~
+   $ ~/hbase/bin/hbase shell
+   ~~~
 
 2.	Get a listing of commands
-~~~bash
-hbase(main):001:0> help
-~~~
+   ~~~bash
+   hbase(main):001:0> help
+   ~~~
 
 3.	Check the status of the HBase cluster
-~~~bash
-hbase(main):002:0> status
-~~~
+   ~~~bash
+   hbase(main):002:0> status
+   ~~~
 
 4.	To view all tables
-~~~bash
-hbase(main):003:0> list
-~~~
+   ~~~bash
+   hbase(main):003:0> list
+   ~~~
 
 5.	To exit the HBase Shell
-~~~bash
-hbase(main):004:0> exit
-~~~
+   ~~~bash
+   hbase(main):004:0> exit
+   ~~~
 
 
 
 ## K4. Running HBase Commands [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. Create a table named linkshare in the default namespace with one column-family called link
-~~~bash
-hbase> create 'linkshare', 'link'
-~~~
+   ~~~bash
+   hbase> create 'linkshare', 'link'
+   ~~~
 
 2. Add a new column-family named statistics to the table. 
-~~~bash
-hbase> disable 'linkshare'
-hbase> alter 'linkshare', 'statistics'
-hbase> enable 'linkshare'
-~~~
-> Note that to alter the table (e.g. change column-family, add column-family, etc) after it has been created, you need to first disable the table to prevent clients from assessing the table during the alter operation.
+   ~~~bash
+   hbase> disable 'linkshare'
+   hbase> alter 'linkshare', 'statistics'
+   hbase> enable 'linkshare'
+   ~~~
+   > Note that to alter the table (e.g. change column-family, add column-family, etc) after it has been created, you need to first disable the table to prevent clients from assessing the table during the alter operation.
 
 3. Verify that the new column-family has been added to the table
-~~~bash
-hbase> describe 'linkshare'
-~~~
+   ~~~bash
+   hbase> describe 'linkshare'
+   ~~~
 
 4. Insert a value in a cell at the specified table/row/column, use the command put. In the following examples, we use the unique reversed URL link for the row keys
-~~~bash
-hbase> put 'linkshare', 'org.hbase.www', 'link:title', 'Apache HBase'
-hbase> put 'linkshare', 'org.hadoop.www', 'link:title', 'Apache Hadoop'
-hbase> put 'linkshare', 'com.oreilly.www', 'link:title', 'O\'Reilly.com'
-~~~
+   ~~~bash
+   hbase> put 'linkshare', 'org.hbase.www', 'link:title', 'Apache HBase'
+   hbase> put 'linkshare', 'org.hadoop.www', 'link:title', 'Apache Hadoop'
+   hbase> put 'linkshare', 'com.oreilly.www', 'link:title', 'O\'Reilly.com'
+   ~~~
 
 
 5. For incrementing frequency counters, use the command incr. In the examples below, we indicate that the counter should be incremented by 1
-~~~bash
-hbase> incr 'linkshare', 'org.hbase.www', 'statistics:share', 1
-hbase> incr 'linkshare', 'org.hbase.www', 'statistics:like', 1
-hbase> incr 'linkshare', 'org.hbase.www', 'statistics:share', 1
-~~~
+   ~~~bash
+   hbase> incr 'linkshare', 'org.hbase.www', 'statistics:share', 1
+   hbase> incr 'linkshare', 'org.hbase.www', 'statistics:like', 1
+   hbase> incr 'linkshare', 'org.hbase.www', 'statistics:share', 1
+   ~~~
 
 6. To access a counter’s current value, use the get_counter command, specifying the table name, row key, and column
-~~~bash
-hbase> get_counter 'linkshare', 'org.hbase.www', 'statistics:share'
-~~~
+   ~~~bash
+   hbase> get_counter 'linkshare', 'org.hbase.www', 'statistics:share'
+   ~~~
 
 7. To perform lookups by row key to retrieve attributes for a specific row, use the get command
-~~~bash
-hbase> get 'linkshare', 'org.hbase.www'
-~~~
-> The get command also accepts an optional dictionary of parameters to specify the column(s), timestamp, timerange, and version of the cell values to be retrieved. e.g.
-~~~bash
-hbase> get 'linkshare', 'org.hbase.www', 'link:title'
-hbase> get 'linkshare', 'org.hbase.www', 'link:title', 'statistics:share'
-hbase> get 'linkshare', 'org.hbase.www', ['link:title', 'statistics:share']
-hbase> get 'linkshare', 'org.hbase.www', {TIMERANGE => [1399887705673, 1400133976734]}
-hbase> get 'linkshare', 'org.hbase.www', {COLUMN => 'statistics:share', VERSIONS => 2}
-~~~
+   ~~~bash
+   hbase> get 'linkshare', 'org.hbase.www'
+   ~~~
+   > The get command also accepts an optional dictionary of parameters to specify the column(s), timestamp, timerange, and version of the cell values to be retrieved. e.g.
+   ~~~bash
+   hbase> get 'linkshare', 'org.hbase.www', 'link:title'
+   hbase> get 'linkshare', 'org.hbase.www', 'link:title', 'statistics:share'
+   hbase> get 'linkshare', 'org.hbase.www', ['link:title', 'statistics:share']
+   hbase> get 'linkshare', 'org.hbase.www', {TIMERANGE => [1399887705673, 1400133976734]}
+   hbase> get 'linkshare', 'org.hbase.www', {COLUMN => 'statistics:share', VERSIONS => 2}
+   ~~~
 
 8. Display all the contents of a table
 ~~~bash
@@ -248,85 +248,87 @@ hbase> scan 'linkshare'
 
 
 9. Limit scan to the rows starting with a specific row key
-~~~bash
-hbase> scan 'linkshare', {COLUMNS => ['link:title'], STARTROW => 'org.hbase.www'}
-hbase> scan 'linkshare', {COLUMNS => ['link:title'], STARTROW => 'org'}
-~~~
+   ~~~bash
+   hbase> scan 'linkshare', {COLUMNS => ['link:title'], STARTROW => 'org.hbase.www'}
+   hbase> scan 'linkshare', {COLUMNS => ['link:title'], STARTROW => 'org'}
+   ~~~
 
 
 10. Import the necessary classes
-~~~bash
-hbase> import org.apache.hadoop.hbase.util.Bytes
-hbase> import org.apache.hadoop.hbase.filter.SingleColumnValueFilter
-hbase> import org.apache.hadoop.hbase.filter.BinaryComparator
-hbase> import org.apache.hadoop.hbase.filter.CompareFilter
-~~~
-> Create a filter that limits the results to rows where the statistics:like counter column value is less than or equal to 10
-~~~
-     likeFilter = SingleColumnValueFilter.new(Bytes.toBytes('statistics'),
-     Bytes.toBytes('like'),
-     CompareFilter::CompareOp.valueOf('GREATER_OR_EQUAL'),
-     BinaryComparator.new(Bytes.toBytes(10)))
-~~~
-> Set a flag for the filter to skip any rows without a value in this column
-~~~bash
-hbase> likeFilter.setFilterIfMissing(true)
-~~~
-> Run a scan with the configured filter
-~~~bash
-hbase> scan 'linkshare', { FILTER => likeFilter }
-~~~
+    ~~~bash
+    hbase> import org.apache.hadoop.hbase.util.Bytes
+    hbase> import org.apache.hadoop.hbase.filter.SingleColumnValueFilter
+    hbase> import org.apache.hadoop.hbase.filter.BinaryComparator
+    hbase> import org.apache.hadoop.hbase.filter.CompareFilter
+    ~~~
+    > Create a filter that limits the results to rows where the statistics:like counter column value is less than or equal to 10
+    ~~~
+    likeFilter = SingleColumnValueFilter.new(Bytes.toBytes('statistics'),
+    Bytes.toBytes('like'),
+    CompareFilter::CompareOp.valueOf('GREATER_OR_EQUAL'),
+    BinaryComparator.new(Bytes.toBytes(10)))
+    ~~~
+    > Set a flag for the filter to skip any rows without a value in this column
+    ~~~bash
+    hbase> likeFilter.setFilterIfMissing(true)
+    ~~~
+    > Run a scan with the configured filter
+    ~~~bash
+    hbase> scan 'linkshare', { FILTER => likeFilter }
+    ~~~
 
 ## K5.  Data Definition Language (DDL) Commands [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. Create a table named 't1' with a column family 'cf1'
-~~~bash
-hbase> create 't1', 'cf1'
-~~~
+   ~~~bash
+   hbase> create 't1', 'cf1'
+   ~~~
 
 2. Create a table named 'emp', with two column families: 'personal data' and 'professional data'
-~~~bash
-hbase> create 'emp', 'personal data', 'professional data'
-hbase> list
-~~~
+   ~~~bash
+   hbase> create 'emp', 'personal data', 'professional data'
+   hbase> list
+   ~~~
 
 3. The describe command
-~~~bash
-hbase> describe 'emp'
-~~~
+   ~~~bash
+   hbase> describe 'emp'
+   ~~~
 
 4. Create a namespace 'ns1'
-~~~bash
-hbase> create_namespace 'ns1'
-~~~
+   ~~~bash
+   hbase> create_namespace 'ns1'
+   ~~~
 
 5. Create a table named 't1' in the namespace 'ns1' with a column family cf1' and maximum of 5 versions of all columns in the column family 'cf1'
-~~~bash
-hbase> create 'ns1:t1', {NAME=>'cf1', VERSIONS=>5}
-hbase> list
-~~~
-Create a table named 't2' in the namespace 'ns1' with two column families 'cf1' and 'cf1'
-~~~bash
-hbase> create 'ns1:t2', 'cf1', 'cf2'
-hbase> list
-hbase> describe 'ns1:t2'
-~~~
+   ~~~bash
+   hbase> create 'ns1:t1', {NAME=>'cf1', VERSIONS=>5}
+   hbase> list
+   ~~~
+
+   Create a table named 't2' in the namespace 'ns1' with two column families 'cf1' and 'cf1'
+   ~~~bash
+   hbase> create 'ns1:t2', 'cf1', 'cf2'
+   hbase> list
+   hbase> describe 'ns1:t2'
+   ~~~
 
 6. The alter command. Add additional column families 'cf3', 'cf4,  and 'cf5' to the table 'n1:t2'
-~~~bash
-hbase> alter 'ns1:t2', 'cf3', 'cf4', 'cf5'
-hbase> describe 'ns1:t2'
-~~~
+   ~~~bash
+   hbase> alter 'ns1:t2', 'cf3', 'cf4', 'cf5'
+   hbase> describe 'ns1:t2'
+   ~~~
 
 7. Delete the  column family 'cf3' of the table 'ns1:t2''
-~~~bash
-hbase> alter 'ns1:t2', NAME=>'cf3', METHOD=>'delete'
-~~~
-Delete the  column family 'cf4' of the table 'ns1:t2'
-~~~bash
-hbase> alter 'ns1:t2', 'delete'=>'cf4'
-hbase> describe 'ns1:t2'
-~~~
+   ~~~bash
+   hbase> alter 'ns1:t2', NAME=>'cf3', METHOD=>'delete'
+   ~~~
+
+   Delete the  column family 'cf4' of the table 'ns1:t2'
+   ~~~bash
+   hbase> alter 'ns1:t2', 'delete'=>'cf4'
+   hbase> describe 'ns1:t2'
+   ~~~
 
 8. Change the maximum number of versions of the columns in a column family
 ~~~bash
