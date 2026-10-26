@@ -1,6 +1,6 @@
 <img width="206" height="80" alt="ubuntu_backup" src="https://github.com/user-attachments/assets/70319677-0a44-4029-8f85-7218ee3fc4ca" />
 
-# C. Backup the Distro on WSL
+# C. Backup the Distro on WSL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. In Power Shell, list the installed distro on WSL with the following command. Note that you need to know the exact name to create a backup
 ~~~bash
