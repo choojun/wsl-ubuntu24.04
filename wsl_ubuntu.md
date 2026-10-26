@@ -1,6 +1,6 @@
 <img width="206" height="80" alt="ubuntu" src="https://github.com/user-attachments/assets/5cc44314-c0ce-4caa-9bc5-780c7094d0b3" />
 
-# B. Running Ubuntu on WSL
+# B. Running Ubuntu on WSL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Suppose that the required distro as default, run the following command with Power Shell.
 ~~~bash
