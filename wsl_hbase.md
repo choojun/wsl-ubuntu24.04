@@ -420,55 +420,51 @@ hbase> list
 
 ## K7. Attention: At the beginning of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Login as hduser or switch account to hduser
-~~~bash
-$ su - hduser
-~~~
+1. Login as **hduser** or switch account to **hduser**.
+   ~~~bash
+   tarumt@MyPC:~$ su - hduser
+   ~~~
 
-2. Start ssh,
-~~~bash
-$ sudo service ssh start
-~~~
+2. Start ssh.
+   ~~~bash
+   hduser@MyPC:~$ sudo service ssh start
+   ~~~
 
-3. Start the HDFS service
-~~~bash
-$ sbin/start-dfs.sh
-$ jps
-~~~
-> Suppose you need to observe at least four (4) services, including both NameNode and DataNode, as stated in step 12 of G7. Otherwise, you may need to reformat the HDFS NameNode.
->  ~~~bash
-> $ cd ~/hadoop3
-> $ bin/hdfs namenode -format
-> $ sbin/start-dfs.sh
-> $ hdfs dfs -mkdir /user
-> $ hdfs dfs -mkdir /user/hduser
-> ~~~
+3. Start the HDFS service.
+   ~~~bash
+   hduser@MyPC:~$ cd hadoop3
+   hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
+   $ jps
+   ~~~
+   > Suppose you need to observe at least **four** (4) services, including both **NameNode** and **DataNode**, as stated in step 13 of E7. Otherwise, you may need to reformat the HDFS NameNode and create the required directories. See its details at steps 12 to 15 of E7.
 
-4. Start the Yarn service
-~~~bash
-$ sbin/start-yarn.sh
-$ jps
-~~~
-> Suppose you need to observe at least six (6) services in the total, refer steps 12 and 13 of G7.
+4. Start the Yarn service.
+   ~~~bash
+   hduser@MyPC:~$ cd ~/hadoop3
+   hduser@MyPC:~/hadoop3$ sbin/start-yarn.sh
+   hduser@MyPC:~/hadoop3$ jps
+   ~~~
+   > Suppose you need to observe at least **six** (6) services in the total, refer step 14 of E7.
 
-5. Start the Zookeeper and Kafka services
-~~~bash
-$ cd ~/kafka
-$ bin/kafka-server-stop.sh
-$ bin/zookeeper-server-stop.sh
-$ bin/zookeeper-server-start.sh config/zookeeper.properties &
-$ bin/kafka-server-start.sh config/server.properties &
-~~~
-> Please wait at least 30 seconds after issuing each command. Note that responses may be slow.
-> Suppose you need to observe at least eight (8) services in the total, including both HQuorumPeer and Kafka, as stated in step 6 of K2.
+5. Start the Kafka service.
+   ~~~bash
+   hduser@MyPC:~$ cd ~/kafka
+   hduser@MyPC:~/kafka$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+   hduser@MyPC:~/kafka$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+   hduser@MyPC:~/kafka$ bin/kafka-server-start.sh config/server.properties
+   hduser@MyPC:~/kafka$ jps
+   ~~~
+   > Please wait at least 30 seconds after issuing each command. Note that responses may be slow.
+   > Suppose you need to observe at least **seven** (7) services in the total, including Kafka, as stated in step 2 of J2.
 
-6. Start the HBase
-~~~bash
-$ cd ~
-$ $HBASE_HOME/bin/start-hbase.sh
-$ jps
-~~~
-> Suppose you need to observe at least ten (10) services in the total, including both HMaster and HRegionServer, as stated in step 7 of K2.
+6. Start the HBase.
+   ~~~bash
+   hduser@MyPC:~$ cd ~
+   hduser@MyPC:~$ ~/hbase/bin/hbase-daemon.sh start zookeeper
+   hduser@MyPC:~$ ~/hbase/bin/start-hbase.sh
+   hduser@MyPC:~$ jps
+   ~~~
+   > Suppose you need to observe at least ten (10) services in the total, including HQuorumPeer, HMaster and HRegionServer, as stated in step 6 of K2.
 
 
 
