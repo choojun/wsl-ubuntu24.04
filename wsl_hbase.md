@@ -8,19 +8,19 @@
 
 ## K1. Install HBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Login as **hduser**. Ensure the following services started sequentially and check them with command jps
+1. Login as **hduser**. Ensure the following services started sequentially and check them with command jps.
    - SSH
    - HDFS
    - YARN
 
-2. Check the installed version of Hadoop
+2. Check the installed version of Hadoop.
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ hadoop version
    ~~~
    > Reinstall the Hadoop if it is not version 3.4.1. Remember to delete the existing hadoop3 directory before begin your setup.
 
-3. Check the installed version of PySpark
+3. Check the installed version of PySpark.
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
@@ -28,7 +28,7 @@
    ~~~
    > Reinstall the Spark if it the PySpark not version 4.0.x (tested 4.0.4 for Hadoop 3.4.1). Remember to delete the existing spark directory before begin your setup.
 
-4. Check the installed version of Scala
+4. Check the installed version of Scala.
    ~~~bash
    (de-test-venv) hduser@MyPC:~$ scala -version
    (de-test-venv) hduser@MyPC:~$ ll ~/kafka/libs | grep kafka
@@ -36,7 +36,7 @@
    ~~~
    > Reinstall the Kafka (tested Kafka 4.3.1 with Scala 2.13.16) if it is not those version of your install Scala, say 2.13.x as shown in file kafka_(Scala-version)-(Kafka-version).*. Remember to delete the existing kafka directory before begin your setup.
 
-5. Download HBase
+5. Download HBase.
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ wget https://archive.apache.org/dist/hbase//3.0.0/hbase-byo-hadoop-3.0.0-bin.tar.gz
@@ -48,7 +48,7 @@
 
 ## K2. Configure HBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Stop (if running) the Kafka service
+1. Stop (if running) the Kafka service.
    ~~~bash
    hduser@MyPC:~$ cd ~/kafka
    hduser@MyPC:~/kafka$ bin/kafka-server-stop.sh
@@ -64,7 +64,7 @@
    ~~~
    > Remember to issue source ~/.bashrc after saving the file.
 
-3. Set environment variables in ~/hbase/conf/hbase-env.sh by uncomment and edit the environment variables
+3. Set environment variables in ~/hbase/conf/hbase-env.sh by uncomment and edit the environment variables.
    ~~~bash
    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
    export HBASE_HOME=/home/hduser/hbase
@@ -116,7 +116,7 @@
     </configuration>
     ~~~
 
-5. Start the HDFS, YARN and Kafka services
+5. Start the HDFS, YARN and Kafka services.
    ~~~bash
    hduser@MyPC:~$ cd ~/hadoop3
    hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
@@ -130,7 +130,7 @@
    > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow to start following your recent configuration.
    > Please verify that Kafka is running by running the jps command, i.e. you should see a total of seven processes before proceed to the next step. 
 
-6. Start the HBase
+6. Start the HBase.
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ ~/hbase/bin/hbase-daemon.sh start zookeeper
@@ -139,9 +139,9 @@
    ~~~
    > Verify that HBase is running - you should see the HBase processes with jps command, i.e. **HMaster** and **HRegionServer**. Note that you may ignore the errors due to SLF4J during HBase startup, as it will eventually perform logging to a plain text in local file system.
    > 
-   > Browse any web browser for the HBase Web UI, by default, and it is available at URL http://localhost:16010/
+   > Browse any web browser for the **HBase Web UI**, by default, and it is available at URL http://localhost:16010/
    >
-   > When you want to stop HBase, type the following commands 
+   > When you want to stop HBase, type the following commands.
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ ~/hbase/bin/stop-hbase.sh
@@ -150,7 +150,7 @@
    ~~~
    > Shutdown can take a moment to complete. If you are running a distributed operation, be sure to wait until HBase has shut down completely before stopping the Hadoop daemons.
    > 
-   > You may choose to clear all the HBase data, after stopped both **HMaster** and **HRegionServer**, using the following commands
+   > You may choose to clear all the HBase data, after stopped both **HMaster** and **HRegionServer**, using the following commands.
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ hdfs dfs -ls /
@@ -160,28 +160,28 @@
 
 ## K3. Using HBase Shell [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1.	Login as hduser, say in another session, after HBase started
+1.	Login as hduser, say in another session, after HBase started.
    ~~~bash
    $ cd ~
    $ ~/hbase/bin/hbase shell
    ~~~
 
-2.	Get a listing of commands
+2.	Get a listing of commands.
    ~~~bash
    hbase(main):001:0> help
    ~~~
 
-3.	Check the status of the HBase cluster
+3.	Check the status of the HBase cluster.
    ~~~bash
    hbase(main):002:0> status
    ~~~
 
-4.	To view all tables
+4.	To view all tables.
    ~~~bash
    hbase(main):003:0> list
    ~~~
 
-5.	To exit the HBase Shell
+5.	To exit the HBase Shell.
    ~~~bash
    hbase(main):004:0> exit
    ~~~
@@ -190,7 +190,7 @@
 
 ## K4. Running HBase Commands [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Create a table named linkshare in the default namespace with one column-family called link
+1. Create a table named linkshare in the default namespace with one column-family called link.
    ~~~bash
    hbase> create 'linkshare', 'link'
    ~~~
@@ -203,12 +203,12 @@
    ~~~
    > Note that to alter the table (e.g. change column-family, add column-family, etc) after it has been created, you need to first disable the table to prevent clients from assessing the table during the alter operation.
 
-3. Verify that the new column-family has been added to the table
+3. Verify that the new column-family has been added to the table.
    ~~~bash
    hbase> describe 'linkshare'
    ~~~
 
-4. Insert a value in a cell at the specified table/row/column, use the command put. In the following examples, we use the unique reversed URL link for the row keys
+4. Insert a value in a cell at the specified table/row/column, use the command put. In the following examples, we use the unique reversed URL link for the row keys.
    ~~~bash
    hbase> put 'linkshare', 'org.hbase.www', 'link:title', 'Apache HBase'
    hbase> put 'linkshare', 'org.hadoop.www', 'link:title', 'Apache Hadoop'
@@ -216,23 +216,23 @@
    ~~~
 
 
-5. For incrementing frequency counters, use the command incr. In the examples below, we indicate that the counter should be incremented by 1
+5. For incrementing frequency counters, use the command incr. In the examples below, we indicate that the counter should be incremented by 1.
    ~~~bash
    hbase> incr 'linkshare', 'org.hbase.www', 'statistics:share', 1
    hbase> incr 'linkshare', 'org.hbase.www', 'statistics:like', 1
    hbase> incr 'linkshare', 'org.hbase.www', 'statistics:share', 1
    ~~~
 
-6. To access a counter’s current value, use the get_counter command, specifying the table name, row key, and column
+6. To access a counter’s current value, use the get_counter command, specifying the table name, row key, and column.
    ~~~bash
    hbase> get_counter 'linkshare', 'org.hbase.www', 'statistics:share'
    ~~~
 
-7. To perform lookups by row key to retrieve attributes for a specific row, use the get command
+7. To perform lookups by row key to retrieve attributes for a specific row, use the get command.
    ~~~bash
    hbase> get 'linkshare', 'org.hbase.www'
    ~~~
-   > The get command also accepts an optional dictionary of parameters to specify the column(s), timestamp, timerange, and version of the cell values to be retrieved. e.g.
+   > The get command also accepts an optional dictionary of parameters to specify the column(s), timestamp, timerange, and version of the cell values to be retrieved. E.g.,
    ~~~bash
    hbase> get 'linkshare', 'org.hbase.www', 'link:title'
    hbase> get 'linkshare', 'org.hbase.www', 'link:title', 'statistics:share'
@@ -241,187 +241,187 @@
    hbase> get 'linkshare', 'org.hbase.www', {COLUMN => 'statistics:share', VERSIONS => 2}
    ~~~
 
-8. Display all the contents of a table
-~~~bash
-hbase> scan 'linkshare'
-~~~
+8. Display all the contents of a table.
+   ~~~bash
+   hbase> scan 'linkshare'
+   ~~~
 
 
-9. Limit scan to the rows starting with a specific row key
+9. Limit scan to the rows starting with a specific row key.
    ~~~bash
    hbase> scan 'linkshare', {COLUMNS => ['link:title'], STARTROW => 'org.hbase.www'}
    hbase> scan 'linkshare', {COLUMNS => ['link:title'], STARTROW => 'org'}
    ~~~
 
 
-10. Import the necessary classes
+10. Import the necessary classes.
     ~~~bash
     hbase> import org.apache.hadoop.hbase.util.Bytes
     hbase> import org.apache.hadoop.hbase.filter.SingleColumnValueFilter
     hbase> import org.apache.hadoop.hbase.filter.BinaryComparator
     hbase> import org.apache.hadoop.hbase.filter.CompareFilter
     ~~~
-    > Create a filter that limits the results to rows where the statistics:like counter column value is less than or equal to 10
+    > Create a filter that limits the results to rows where the statistics:like counter column value is less than or equal to 10.
     ~~~
     likeFilter = SingleColumnValueFilter.new(Bytes.toBytes('statistics'),
     Bytes.toBytes('like'),
     CompareFilter::CompareOp.valueOf('GREATER_OR_EQUAL'),
     BinaryComparator.new(Bytes.toBytes(10)))
     ~~~
-    > Set a flag for the filter to skip any rows without a value in this column
+    > Set a flag for the filter to skip any rows without a value in this column.
     ~~~bash
     hbase> likeFilter.setFilterIfMissing(true)
     ~~~
-    > Run a scan with the configured filter
+    > Run a scan with the configured filter.
     ~~~bash
     hbase> scan 'linkshare', { FILTER => likeFilter }
     ~~~
 
 ## K5.  Data Definition Language (DDL) Commands [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Create a table named 't1' with a column family 'cf1'
+1. Create a table named 't1' with a column family 'cf1'.
    ~~~bash
    hbase> create 't1', 'cf1'
    ~~~
 
-2. Create a table named 'emp', with two column families: 'personal data' and 'professional data'
+2. Create a table named 'emp', with two column families: 'personal data' and 'professional data'.
    ~~~bash
    hbase> create 'emp', 'personal data', 'professional data'
    hbase> list
    ~~~
 
-3. The describe command
+3. The describe command.
    ~~~bash
    hbase> describe 'emp'
    ~~~
 
-4. Create a namespace 'ns1'
+4. Create a namespace 'ns1'.
    ~~~bash
    hbase> create_namespace 'ns1'
    ~~~
 
-5. Create a table named 't1' in the namespace 'ns1' with a column family cf1' and maximum of 5 versions of all columns in the column family 'cf1'
+5. Create a table named 't1' in the namespace 'ns1' with a column family cf1' and maximum of 5 versions of all columns in the column family 'cf1'.
    ~~~bash
    hbase> create 'ns1:t1', {NAME=>'cf1', VERSIONS=>5}
    hbase> list
    ~~~
 
-   Create a table named 't2' in the namespace 'ns1' with two column families 'cf1' and 'cf1'
+   Create a table named 't2' in the namespace 'ns1' with two column families 'cf1' and 'cf1'.
    ~~~bash
    hbase> create 'ns1:t2', 'cf1', 'cf2'
    hbase> list
    hbase> describe 'ns1:t2'
    ~~~
 
-6. The alter command. Add additional column families 'cf3', 'cf4,  and 'cf5' to the table 'n1:t2'
+6. The alter command. Add additional column families 'cf3', 'cf4,  and 'cf5' to the table 'n1:t2'.
    ~~~bash
    hbase> alter 'ns1:t2', 'cf3', 'cf4', 'cf5'
    hbase> describe 'ns1:t2'
    ~~~
 
-7. Delete the  column family 'cf3' of the table 'ns1:t2''
+7. Delete the  column family 'cf3' of the table 'ns1:t2''.
    ~~~bash
    hbase> alter 'ns1:t2', NAME=>'cf3', METHOD=>'delete'
    ~~~
 
-   Delete the  column family 'cf4' of the table 'ns1:t2'
+   Delete the  column family 'cf4' of the table 'ns1:t2'.
    ~~~bash
    hbase> alter 'ns1:t2', 'delete'=>'cf4'
    hbase> describe 'ns1:t2'
    ~~~
 
-8. Change the maximum number of versions of the columns in a column family
-~~~bash
-hbase> alter 'emp', {NAME=>'personal data', VERSIONS=>5}
-~~~
+8. Change the maximum number of versions of the columns in a column family.
+   ~~~bash
+   hbase> alter 'emp', {NAME=>'personal data', VERSIONS=>5}
+   ~~~
 
 ## K6.  Data Manipulation Language (DML) Commands [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
-1. Inserting values into tables. Put a cell value at a specified table/row/column (and optionally timestamp) coordinates. Note that HBase does not support insertion of multiple columns in a single statement. Put values into table 'ns1:t2'
-~~~bash
-hbase> put 'ns1:t2', 'key1', 'cf1:name', 'John'
-hbase> put 'ns1:t2', 'key1', 'cf1:id', 19191919  
-hbase> put 'ns1:t2', 'key1', 'cf2:city', 'London' 
-hbase> put 'ns1:t2', 'key1', 'cf2:country', 'UK'  
-hbase> scan 'ns1:t2'
-~~~
+1. Inserting values into tables. Put a cell value at a specified table/row/column (and optionally timestamp) coordinates. Note that HBase does not support insertion of multiple columns in a single statement. Put values into table 'ns1:t2'.
+   ~~~bash
+   hbase> put 'ns1:t2', 'key1', 'cf1:name', 'John'
+   hbase> put 'ns1:t2', 'key1', 'cf1:id', 19191919  
+   hbase> put 'ns1:t2', 'key1', 'cf2:city', 'London' 
+   hbase> put 'ns1:t2', 'key1', 'cf2:country', 'UK'  
+   hbase> scan 'ns1:t2'
+   ~~~
 
-2. Put values into table 'emp'
-~~~bash
-hbase> put 'emp', '1001', 'personal data:name', 'Thor'
-hbase> put 'emp', '1001', 'personal data:city', 'Kuala Lumpur'
-hbase> put 'emp', '1001', 'professional data:designation', 'manager'
-hbase> put 'emp', '1001', 'professional data:email', 'thor@mail.abc.com'
-hbase> scan 'emp'
-~~~
+2. Put values into table 'emp'.
+   ~~~bash
+   hbase> put 'emp', '1001', 'personal data:name', 'Thor'
+   hbase> put 'emp', '1001', 'personal data:city', 'Kuala Lumpur'
+   hbase> put 'emp', '1001', 'professional data:designation', 'manager'
+   hbase> put 'emp', '1001', 'professional data:email', 'thor@mail.abc.com'
+   hbase> scan 'emp'
+   ~~~
 
-3. Using table references. Get a table reference to the table 'ns1:t2'. The commands to be performed on that table can now be invoked directly on the table reference
-~~~bash
-hbase> t = get_table 'ns1:t2'
-hbase> t.scan
-~~~
+3. Using table references. Get a table reference to the table 'ns1:t2'. The commands to be performed on that table can now be invoked directly on the table reference.
+   ~~~bash
+   hbase> t = get_table 'ns1:t2'
+   hbase> t.scan
+   ~~~
 
-4. Get a table reference to the table 'ns1:t1', and insert values into the table “ns1:t1” using the table reference
-~~~bash
-hbase> t = get_table 'ns1:t1'
-hbase> t.put 'key2', 'cf1:city', 'KL'
-hbase> t.put 'key2', 'cf1:id', 87654321
-hbase> t.put 'key2', 'cf1:name', 'Minnie'
-hbase> scan 'ns1:t1'
-~~~
+4. Get a table reference to the table 'ns1:t1', and insert values into the table “ns1:t1” using the table reference.
+   ~~~bash
+   hbase> t = get_table 'ns1:t1'
+   hbase> t.put 'key2', 'cf1:city', 'KL'
+   hbase> t.put 'key2', 'cf1:id', 87654321
+   hbase> t.put 'key2', 'cf1:name', 'Minnie'
+   hbase> scan 'ns1:t1'
+   ~~~
 
-5. Updating table values by putting '\<table_name\>', '\<rowkey\>', '\<column_family\>:\<column\>', '\<new_value\>'. Updating the value for 'cf1.name' to 'Jack'
-~~~bash
-hbase> put 'ns1:t2', 'key1', 'cf1:name', 'Jack'
-~~~
+5. Updating table values by putting '\<table_name\>', '\<rowkey\>', '\<column_family\>:\<column\>', '\<new_value\>'. Updating the value for 'cf1.name' to 'Jack'.
+   ~~~bash
+   hbase> put 'ns1:t2', 'key1', 'cf1:name', 'Jack'
+   ~~~
 
-6. Updating the value for 'cf1.city' using the table reference t
-~~~bash
-hbase> t.put 'key1', 'cf1:city', 'Manchester'
-hbase> t.scan
-~~~
+6. Updating the value for 'cf1.city' using the table reference t.
+   ~~~bash
+   hbase> t.put 'key1', 'cf1:city', 'Manchester'
+   hbase> t.scan
+   ~~~
 
-7. Reading row data / filtering data. Get a single row's data
-~~~bash
-hbase> get 'ns1:t1', 'key1'
-~~~
+7. Reading row data / filtering data. Get a single row's data.
+   ~~~bash
+   hbase> get 'ns1:t1', 'key1'
+   ~~~
 
-8. Get a single column's data of a row
-~~~bash
-hbase> get 'ns1:t1', 'key2', {COLUMN=>'cf1:city'}
-~~~
+8. Get a single column's data of a row.
+   ~~~bash
+   hbase> get 'ns1:t1', 'key2', {COLUMN=>'cf1:city'}
+   ~~~
 
-9. Filtering only certain columns
-~~~bash
-hbase> scan 'ns1:t1', {COLUMNS => ['cf1:name', 'cf1:city']}
-~~~
+9. Filtering only certain columns.
+   ~~~bash
+   hbase> scan 'ns1:t1', {COLUMNS => ['cf1:name', 'cf1:city']}
+   ~~~
 
-10. Count the number of rows of a table
-~~~bash
-hbase> t.scan
-hbase> t.count
-~~~
+10. Count the number of rows of a table.
+    ~~~bash
+    hbase> t.scan
+    hbase> t.count
+    ~~~
 
-11. Deleting cells in a table with syntax delete '\<table_name\>', '\<rowkey\>', '\<column_family\>:\<column\>'. Delete a specific cell in a table
-~~~bash
-hbase> delete 'ns1:t1', 'key1', 'cf1:city'
-hbase> scan 'ns1:t1'
-~~~
+11. Deleting cells in a table with syntax delete '\<table_name\>', '\<rowkey\>', '\<column_family\>:\<column\>'. Delete a specific cell in a table.
+    ~~~bash
+    hbase> delete 'ns1:t1', 'key1', 'cf1:city'
+    hbase> scan 'ns1:t1'
+    ~~~
 
-12. Delete all cells for a specific row
-~~~bash
-hbase> deleteall 'ns1:t1', 'key1'
-hbase> scan 'ns1:t1'
-~~~
+12. Delete all cells for a specific row.
+    ~~~bash
+    hbase> deleteall 'ns1:t1', 'key1'
+    hbase> scan 'ns1:t1'
+    ~~~
 
-13. Drop table
-~~~bash
-hbase> list
-hbase> drop 't1'
-hbase> disable 't1'
-hbase> drop 't1'
-hbase> list
-~~~
+13. Drop table.
+    ~~~bash
+    hbase> list
+    hbase> drop 't1'
+    hbase> disable 't1'
+    hbase> drop 't1'
+    hbase> list
+    ~~~
 
 ## K7. Attention: At the beginning of all future practical [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
@@ -496,10 +496,10 @@ hbase> list
    hduser@MyPC:~/kafka$ bin/kafka-server-stop.sh
    hduser@MyPC:~/kafka$ jps
    ~~~
-   > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow. Suppose the Kafka service will be terminated, i.e. Kafka
+   > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow. Suppose the Kafka service will be terminated, i.e. Kafka.
 
 
-3. Stop the YARN and HDFS services
+3. Stop the YARN and HDFS services.
    ~~~bash
    hduser@MyPC:~$ cd ~/hadoop3
    hduser@MyPC:~/hadoop3$ sbin/stop-yarn.sh
@@ -507,9 +507,9 @@ hbase> list
    hduser@MyPC:~/hadoop3$ jps
    hduser@MyPC:~/hadoop3$ top
    ~~~
-   > Ctrl-c to terminate the command top
+   > Ctrl-c to terminate the command top.
 
-4. Exit from your user account(s) 
+4. Exit from your user account(s). 
    ~~~bash
    hduser@MyPC:~$ cd ~
    hduser@MyPC:~$ exit
