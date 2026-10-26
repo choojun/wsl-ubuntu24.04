@@ -1,6 +1,6 @@
 ![spark](https://github.com/choojun/choojun.github.io/assets/6356054/ed7bd2cd-1ce6-43db-8ebd-18d56f351a43)
 
-# H. Spark and Machine Learning [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+# H. Spark and Machine Learning [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Spark has two machine learning libraries with different APIs, but including implementations of similar algorithms. These machine learning algorithms and utilities have been designed to scale across a cluster by way of inclusion of parallel algorithms in which operations can be applied in parallel across nodes.
 
@@ -16,7 +16,7 @@ Spark (including RDDs and DataFrames) and its machine learning-based APIs are av
 File for exercise: [mllib.zip](https://github.com/choojun/choojun.github.io/files/14240398/mllib.zip)
 
 
-## H1. Recommender Systems with spark.mllib [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## H1. Recommender Systems with spark.mllib [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	This example uses Alternating Least Squares (ALS) algorithm to obtain potential matches for an online dating service.
 
@@ -45,7 +45,7 @@ hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
 
 5. Examine the output in the file matchmaking_recs.txt
 
-## H2. Clustering with spark.mllib [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## H2. Clustering with spark.mllib [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	This example uses k-means clustering to determine which areas in the US have been most hit by earthquakes.
 
@@ -63,7 +63,7 @@ hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
 
 4. Examine the output in the file cluster.txt.
 
-## H3. Multi-class Classification with spark.ml [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## H3. Multi-class Classification with spark.ml [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. This example uses the Naive Bayes classifier to perform multiclass classification.
 
@@ -82,7 +82,7 @@ hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
 
 4. Examine the output in the terminal
 
-## H4. Recommender (Regression based) with spark.ml [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## H4. Recommender (Regression based) with spark.ml [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. This example uses Alternating Least Squares (ALS) algorithm for movie recommendations
 
