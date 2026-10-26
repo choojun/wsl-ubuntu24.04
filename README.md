@@ -61,7 +61,7 @@ https://www.scala-lang.org/
 https://kafka.apache.org/
 https://hbase.apache.org/
 https://happybase.readthedocs.io/
-https://github.com/python-happybase/aiohappybase
+https://thrift.apache.org/
 https://hive.apache.org/
 https://db.apache.org/derby/
 https://jupyter.org/
