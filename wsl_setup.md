@@ -1,6 +1,6 @@
 <img width="160" height="80" alt="wsl" src="https://github.com/user-attachments/assets/cf564094-1d59-4f66-a5b2-4300213bf6f3" />
 
-# A. Remove/Setup WSL
+# A. Remove/Setup WSL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 A Microsoft Windows component that allows users to run Linux command-line tools, scripts, and GUI applications **natively** on Windows 10 and Windows 11. 
 
