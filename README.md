@@ -14,7 +14,7 @@ Data engineering involves building systems to collect and utilize data. This dat
 ### Note for Apple MacOS users
 If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
-| Requirements* (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | HappyBase / AIOHappyBase | Apache Derby | Apache Hive |
+| Requirements* (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | AIO/HappyBase | Apache Derby | Apache Hive |
 |---|---|---|---|---|---|---|---|---|
 | [E. Hadoop Installation and Configuration](wsl_hadoop.md) | 3.4.1 |  |  |  |  |  |  |  |
 | [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | 3.4.1 |  |  |  |  |  |  |  |
@@ -54,7 +54,24 @@ Read more required details at URLs
 
 
 ## References:
+https://hadoop.apache.org/
+https://openjdk.org/
+https://spark.apache.org/
+https://www.scala-lang.org/
+https://kafka.apache.org/
+https://hbase.apache.org/
+https://happybase.readthedocs.io/
+https://github.com/python-happybase/aiohappybase
+https://hive.apache.org/
+https://db.apache.org/derby/
+https://jupyter.org/
+https://www.python.org/
 
+
+https://www.wikipedia.org/
+https://www.tablesgenerator.com/
 https://www.kaggle.com/datasets/moxxis/harry-potter-lstm
+https://linuxiac.com/windows-subsystem-for-linux-explained-wsl-wsl2/
+https://web.facebook.com/groups/1073126727485389/posts/1624393212358735
 
 
