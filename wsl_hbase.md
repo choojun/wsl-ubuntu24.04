@@ -60,6 +60,7 @@
    ~~~bash
    export HBASE_HOME=/home/hduser/hbase
    export PATH=$PATH:$HBASE_HOME/bin
+   export HBASE_CLASSPATH=/home/hduser/hbase/lib/*
    ~~~
    > Remember to issue source ~/.bashrc after saving the file.
 
