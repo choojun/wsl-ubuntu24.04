@@ -2,8 +2,9 @@
 
 # M. Hive Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1. It is a distributed, fault-tolerant data warehouse system enabling large-scale analytics. It facilitates reading, writing, and managing petabytes of data residing in distributed storage using SQL
-2. Read more on Hive at URL https://cwiki.apache.org/confluence/display/Hive/GettingStarted and https://cwiki.apache.org/confluence/display/Hive/Home
+1. Let's recap what we have learned so far. We have completed the setup for both [Apache Spark](wsl_spark.md) and [Hadoop MapReduce](wsl_hdfs.md), which are two distinct Big Data frameworks. The former is a high-performance in-memory data-processing engine, while the latter is a mature batch-processing platform operating at petabyte scale. Note that **Apache Hive** and [Apache HBase](wsl_hbase.md) serve very different purposes. Apache Hive is a distributed data warehouse system providing a SQL-like interface for MapReduce jobs, whereas [Apache HBase](wsl_hbase.md) is a distributed NoSQL key-value database running on [Hadoop](wsl_hadoop.md).
+2. Specifically, Apache Hive is a distributed, fault-tolerant data warehouse system enabling large-scale analytics. It facilitates reading, writing, and managing petabytes of data residing in distributed storage using SQL
+3. Read more on Hive at URL https://cwiki.apache.org/confluence/display/Hive/GettingStarted and https://cwiki.apache.org/confluence/display/Hive/Home
 
 ## M1. Install and Configure Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
