@@ -8,9 +8,9 @@ Specifically, Apache Hive is a distributed, fault-tolerant data warehouse system
 
 ## M1. Install and Configure Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1.	Login as **hduser**. Ensure that the SSH, HDFS, YARN, Kafka and HBase services are started sequentially. Then, examine them using the jps command.
+1.	Login as **hduser**. Ensure that the SSH, HDFS and YARN services are started sequentially (a total of 6 services to be observed). Then, examine them using the jps command.
 
-2. Install Hive
+2. Install Hive.
 ~~~bash
 $ cd ~
 $ jps
@@ -19,7 +19,7 @@ $ tar -xvzf apache-hive-4.2.1-bin.tar.gz
 $ mv apache-hive-4.2.1-bin hive
 ~~~
 
-3. Edit the file ~/.bashrc with the the following lines 
+3. Edit the file ~/.bashrc with the the following lines.
 ~~~bash
 export HADOOP_MAPRED_HOME=/home/hduser/hadoop3
 export HADOOP_COMMON_HOME=/home/hduser/hadoop3
@@ -32,7 +32,7 @@ export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/
 export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
-4. Re-load the environment
+4. Re-load the environment.
 ~~~bash
 $ source ~/.bashrc
 ~~~
@@ -40,7 +40,7 @@ $ source ~/.bashrc
 5. Duplicate for the file ~/hive/conf/hive-site.xml 
 ~~~bash
 $ cd ~/hive
-$ cp conf/hive-default.xml.template conf/hive-site.xml
+$ cp ~/hive/conf/hive-default.xml.template ~/hive/conf/hive-site.xml
 ~~~
 
 6. Edit the file ~/hive/conf/hive-site.xml
@@ -70,7 +70,7 @@ $ cd ~/hive
 $ cp ~/hive/conf/hive-env.sh.template ~/hive/conf/hive-env.sh
 ~~~
 
-9. Edit the file ~/hive/conf/hive-env.sh  with the the following lines 
+9. Edit the file ~/hive/conf/hive-env.sh with the the following lines 
 ~~~bash
   export HADOOP_HOME=/home/hduser/hadoop3
   export SPARK_HOME=/home/hduser/spark
@@ -85,7 +85,7 @@ $ cp ~/hive/conf/hive-env.sh.template ~/hive/conf/hive-env.sh
   export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
-10. Start both DFS and YARN services before create those required Hive directories in the HDFS. Stop both service after done the directories creation
+10. Start both DFS and YARN services before create/alter those required Hive directories in the HDFS. Stop both service after done the directories creation
 ~~~bash
 $ hdfs dfs -mkdir /tmp
 $ hdfs dfs -mkdir /tmp/hduser
@@ -119,7 +119,7 @@ $ chmod -R g+w /home/hduser/hadoopName
 ~~~
 
 
-12. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
+12. xxxx Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
 ~~~bash
 $ cd ~
 $ find . -name log4j-slf4j-impl-*.jar
@@ -133,9 +133,10 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.6.2.jar
 1. Install and configure Derby
 ~~~bash
 $ cd ~
-$ wget https://archive.apache.org/dist/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
-$ tar -xzf db-derby-10.14.2.0-bin.tar.gz
-$ mv db-derby-10.14.2.0-bin derby 
+$ xxxwget https://archive.apache.org/dist/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
+$ wget https://archive.apache.org/dist/db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
+$ tar -xzf db-derby-10.16.1.1-bin.tar.gz
+$ mv db-derby-10.16.1.1-bin derby 
 $ mkdir derby/data
 ~~~
 
