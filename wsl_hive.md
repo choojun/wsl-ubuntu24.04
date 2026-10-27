@@ -14,9 +14,9 @@ Specifically, Apache Hive is a distributed, fault-tolerant data warehouse system
 ~~~bash
 $ cd ~
 $ jps
-$ wget https://dlcdn.apache.org/hive/hive-4.2.1/apache-hive-4.2.1-bin.tar.gz
-$ tar -xvzf apache-hive-4.2.1-bin.tar.gz
-$ mv apache-hive-4.2.1-bin hive
+$ wget https://archive.apache.org/dist/hive/hive-4.1.0/apache-hive-4.1.0-bin.tar.gz
+$ tar -xvzf apache-hive-4.1.0-bin.tar.gz
+$ mv apache-hive-4.1.0-bin hive
 ~~~
 
 3. Edit the file ~/.bashrc with the the following lines.
