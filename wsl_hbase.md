@@ -495,7 +495,7 @@ HBase has many features which supports both linear and modular scaling. HBase cl
 2. Stop the Kafka service.
    ~~~bash
    hduser@MyPC:~$ cd ~/kafka
-   hduser@MyPC:~/kafka$ bin/kafka-server-stop.sh
+   hduser@MyPC:~/kafka$ ~/kafka/bin/kafka-server-stop.sh
    hduser@MyPC:~/kafka$ jps
    ~~~
    > Attention! Please wait at least 30 seconds after issuing each command. Responses may be slow. Suppose the Kafka service will be terminated, i.e. Kafka.
