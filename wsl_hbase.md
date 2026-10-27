@@ -39,7 +39,7 @@ HBase has many features which supports both linear and modular scaling. HBase cl
 5. Download HBase.
    ~~~bash
    hduser@MyPC:~$ cd ~
-   hduser@MyPC:~$ wget https://archive.apache.org/dist/hbase//3.0.0/hbase-byo-hadoop-3.0.0-bin.tar.gz
+   hduser@MyPC:~$ wget https://archive.apache.org/dist/hbase/3.0.0/hbase-byo-hadoop-3.0.0-bin.tar.gz
    hduser@MyPC:~$ tar -xvzf hbase-byo-hadoop-3.0.0-bin.tar.gz
    hduser@MyPC:~$ mv hbase-byo-hadoop-3.0.0 hbase
    ~~~
