@@ -160,6 +160,14 @@ $ source ~/.bashrc
       <description>JDBC connect string for a JDBC metastore</description>
     </property>
     <property>
+      <name>javax.jdo.option.ConnectionPassword</name>
+      <value>minexxxxxxx</value>
+    </property>
+    <property>
+      <name>javax.jdo.option.ConnectionUserName</name>
+      <value>APPxxxxxxxxx</value>
+    </property>
+    <property>
       <name>javax.jdo.option.ConnectionDriverName</name>
       <value>org.apache.derby.jdbc.ClientDriver</value>
       <description>Driver class name for a JDBC metastore</description>
@@ -213,6 +221,9 @@ $ cp -f ~/hadoop3/etc/hadoop/hdfs-site.xml ~/spark/conf/
 $ cp -f ~/hive/conf/hive-site.xml ~/spark/conf/
 $ cp -f ~/derby/lib/derbyclient.jar ~/spark/jars/
 $ cp -f ~/derby/lib/derbytools.jar ~/spark/jars/
+
+$ cp -f ~/derby/lib/derbyclient.jar ~/hive/lib/
+$ cp -f ~/derby/lib/derbytools.jar ~/hive/lib/
 ~~~
 > **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved files in nearly future.**
 
