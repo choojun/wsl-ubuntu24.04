@@ -133,6 +133,8 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.6.2.jar
 1. Install and configure Derby
 ~~~bash
 $ cd ~
+$ wget https://archive.apache.org/dist/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
+
 $ wget https://archive.apache.org/dist/db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
 $ tar -xzf db-derby-10.16.1.1-bin.tar.gz
 $ mv db-derby-10.16.1.1-bin derby 
