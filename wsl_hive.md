@@ -133,7 +133,6 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.6.2.jar
 1. Install and configure Derby
 ~~~bash
 $ cd ~
-$ xxxwget https://archive.apache.org/dist/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
 $ wget https://archive.apache.org/dist/db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
 $ tar -xzf db-derby-10.16.1.1-bin.tar.gz
 $ mv db-derby-10.16.1.1-bin derby 
@@ -192,18 +191,18 @@ $ source ~/.bashrc
     </property>
 ~~~
 
-5. To allow Hive to connect to Derby through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. Then restart your hadoop, i.e. DFS and YARN services. Note that your hive SHOULD NOT running at this step
+5. To allow Hive to connect to Derby through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. Then restart your hadoop, i.e. DFS and YARN services. **Note that your hive SHOULD NOT running at this step.**
  ~~~xml
-    <configuration>
-      <property>
-       <name>hadoop.proxyuser.hduser.hosts</name>
-       <value>*</value>
-      </property>
-      <property>
-       <name>hadoop.proxyuser.hduser.groups</name>
-       <value>*</value>
-      </property>
-    </configuration>
+ <configuration>
+     <property>
+         <name>hadoop.proxyuser.hduser.hosts</name>
+         <value>*</value>
+     </property>
+     <property>
+         <name>hadoop.proxyuser.hduser.groups</name>
+         <value>*</value>
+     </property>
+ </configuration>
  ~~~
 
 
@@ -215,10 +214,10 @@ $ cp -f ~/hive/conf/hive-site.xml ~/spark/conf/
 $ cp -f ~/derby/lib/derbyclient.jar ~/spark/jars/
 $ cp -f ~/derby/lib/derbytools.jar ~/spark/jars/
 ~~~
-> Attention: ensure Hadoop, Spark, and Hive are successfully installed BEFORE proceeding with this step. You need to redo this step if ANY CHANGES on the involved files in nearly future.
+> **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved files in nearly future.**
 
 
-7. Use existing session (named as **session 1**) to start DFS, YARN, Zookeeper, Kafka and HBase services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default
+7. Use existing session (named as **session 1**) to start HDFS, YARN, Kafka and HBase services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default
 ~~~bash
 $ cd ~/derby/data
 $ nohup ~/derby/bin/startNetworkServer -h 0.0.0.0 &
@@ -236,20 +235,26 @@ $ jps
 > ~~~
 > Tips to start DFS, YARN, Zookeeper, Kafka, HBase and HappyBase (optional) services. Note that a total of elevan (11) services can be observed eventually, included HappyBase and Jps
 > ~~~bash
-> $ jps
-> $ cd ~/hadoop3
-> $ sbin/start-dfs.sh
-> $ sbin/start-yarn.sh
-> $ jps
-> $ cd ~/kafka
-> $ bin/zookeeper-server-start.sh config/zookeeper.properties &
-> $ bin/kafka-server-start.sh config/server.properties &
-> $ jps
-> $ cd ~/hbase
-> $ bin/start-hbase.sh
-> $ jps
-> $ bin/hbase thrift start -p 9090 &
-> $ jps
+> hduser@MyPC:~$
+> hduser@MyPC:~$ cd ~/hadoop3
+> hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
+> hduser@MyPC:~/hadoop3$ sbin/start-yarn.sh
+> hduser@MyPC:~/hadoop3$ jps
+> hduser@MyPC:~/hadoop3$ cd ~
+> hduser@MyPC:~$ cd ~/kafka
+> hduser@MyPC:~/kafka$ KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+> hduser@MyPC:~/kafka$ bin/kafka-storage.sh format --standalone -t $KAFKA_CLUSTER_ID -c config/server.properties
+> hduser@MyPC:~/kafka$ bin/kafka-server-start.sh config/server.properties
+> hduser@MyPC:~/kafka$ jps
+> hduser@MyPC:~/kafka$ cd ~
+> hduser@MyPC:~$ cd ~/hbase
+> hduser@MyPC:~/hbase$ ~/hbase/bin/hbase-daemon.sh start zookeeper
+> hduser@MyPC:~/hbase$ ~/hbase/bin/start-hbase.sh
+> hduser@MyPC:~/hbase$ jps
+> hduser@MyPC:~/hbase$ bin/hbase thrift start -p 9090 &
+> hduser@MyPC:~/hbase$ jps
+> hduser@MyPC:~/hbase$ cd ~
+> hduser@MyPC:~$
 > ~~~
 
 
