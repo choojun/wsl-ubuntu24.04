@@ -83,7 +83,7 @@
 3. Stopping Kafka.
    ~~~bash
    hduser@MyPC:~$ cd ~/kafka
-   hduser@MyPC:~$ bin/kafka-server-stop.sh
+   hduser@MyPC:~$ ~/kafka/bin/kafka-server-stop.sh
    hduser@MyPC:~$ jps
    ~~~
    > **Attention**: When you have finished your exercises (before shutdown your Windows), you need stop the HDFS, YARN and Kafka services.
