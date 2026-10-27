@@ -191,7 +191,7 @@ $ source ~/.bashrc
     </property>
 ~~~
 
-5. To allow Hive to connect to Derby through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. Then restart your hadoop, i.e. DFS and YARN services. **Note that your hive SHOULD NOT running at this step.**
+5. To allow Hive to connect to Derby through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. Then restart your hadoop, i.e. DFS and YARN services. **Note that your Hive SHOULD NOT running at this step.**
  ~~~xml
  <configuration>
      <property>
@@ -217,7 +217,7 @@ $ cp -f ~/derby/lib/derbytools.jar ~/spark/jars/
 > **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved files in nearly future.**
 
 
-7. Use existing session (named as **session 1**) to start HDFS, YARN, Kafka and HBase services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default
+7. Use existing session (named as **session 1**) to start **HDFS**, **YARN**, **Kafka** and **HBase** services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default
 ~~~bash
 $ cd ~/derby/data
 $ nohup ~/derby/bin/startNetworkServer -h 0.0.0.0 &
