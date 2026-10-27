@@ -28,8 +28,8 @@ export YARN_HOME=/home/hduser/hadoop3
 export HIVE_HOME=/home/hduser/hive
 export PATH=$PATH:$HIVE_HOME/bin
 export HIVE_CONF_DIR=/home/hduser/hive/conf
-export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/*
+export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
 4. Re-load the environment
