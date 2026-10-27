@@ -136,7 +136,7 @@ $ cd ~
 $ wget https://archive.apache.org/dist/db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
 $ tar -xzf db-derby-10.16.1.1-bin.tar.gz
 $ mv db-derby-10.16.1.1-bin derby 
-$ mkdir derby/data
+$ mkdir ~/derby/data
 ~~~
 
 2. Edit the file ~/.bashrc with the the following lines 
@@ -228,7 +228,7 @@ $ cp -f ~/derby/lib/derbytools.jar ~/hive/lib/
 > **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved files in nearly future.**
 
 
-7. Use existing session (named as **session 1**) to start **HDFS**, **YARN**, **Kafka** and **HBase** services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default
+7. Use existing session (named as **session 1**) to start **HDFS**, **YARN**, **Kafka** and **HBase** services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default, i.e. ~/derby/data
 ~~~bash
 $ cd ~/derby/data
 $ nohup ~/derby/bin/startNetworkServer -h 0.0.0.0 &
@@ -273,6 +273,8 @@ $ jps
 8. Use the **session 1** to run the following command to initialize Derby as the Metastore database for Hive. It might take a few minutes. Please be patient while you wait for its completion
 ~~~bash
 $ cd ~
+$ java -cp home/hduser/hive/lib/*:/home/hduser/spark/jars/* org.apache.hive.beeline.HiveSchemaTool -initSchemaTo 4.1.0 -dbType derby
+
 $ java -cp /home/hduser/hive/lib/*:/home/hduser/spark/jars/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/* org.apache.hive.beeline.HiveSchemaTool -initSchema -dbType derby
 ~~~
 > In the setup of Derby 10.14.2.0 with Hive 2.3.9, you need to stop-start the Derby after this step
@@ -290,7 +292,7 @@ $ java -cp /home/hduser/hive/lib/*:/home/hduser/spark/jars/*:/home/hduser/hadoop
 
 4. Use another session (named as **session 2**) to edit the ~/hadoop3/etc/hadoop/hadoop-env.sh file by including additional paths into the HADOOP_CLASSPATH as follows
 ~~~bash
- export HADOOP_CLASSPATH=/usr/lib/jvm/java-8-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/* 
+ export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/* 
 ~~~
 > Comment out the above line after stopping HiveServer2 to prevent HBase errors in the next round.
 
