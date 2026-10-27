@@ -112,7 +112,7 @@ $ hdfs dfs -chmod 777 /user/hduser/lib
 > $ jps
 > ~~~
 
-11. Change mode of access for hadoop's data and namenode, which are created in Section E
+11. Change mode of access for hadoop's data and namenode, which are created in [Section E](wsl_hdoop.md)
 ~~~bash
 $ chmod -R g+w /home/hduser/hadoopData
 $ chmod -R g+w /home/hduser/hadoopName
