@@ -167,13 +167,20 @@ $ source ~/.bashrc
 ~~~xml
     <property>
       <name>javax.jdo.option.ConnectionURL</name>
-      <value>jdbc:derby://localhost:1527/metastore_db;create=true</value>
+      <value>jdbc:mysql://localhost:3306/metastore_db;create=true</value>
       <description>JDBC connect string for a JDBC metastore</description>
     </property>
     <property>
       <name>javax.jdo.option.ConnectionDriverName</name>
-      <value>org.apache.derby.jdbc.ClientDriver</value>
+      <value>com.mysql.cj.jdbc.Driver</value>
       <description>Driver class name for a JDBC metastore</description>
+    </property>
+      <name>javax.jdo.option.ConnectionPassword</name>
+      <value>admin</value>
+    </property>
+    <property>
+      <name>javax.jdo.option.ConnectionUserName</name>
+      <value>password</value>
     </property>
     <property>
       <name>hive.exec.local.scratchdir</name>
