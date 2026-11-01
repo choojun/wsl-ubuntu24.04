@@ -127,6 +127,12 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.24.3.jar
 ~~~
 > We delete the file log4j-slf4j-impl-2.24.3.jar because the similar file is also presented in the Hadoop directory, and it gives error to us occasionally
 
+## M2. Install and Configure MySQL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+
+~~~bash
+$ sudo apt install mysql-connector-j
+~~~
+
 
 ## M2. Install and Configure Derby [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
