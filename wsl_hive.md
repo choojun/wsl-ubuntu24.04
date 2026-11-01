@@ -379,8 +379,8 @@ $ bin/beeline
 Beeline version 2.3.9 by Apache Hive
 beeline> !connect jdbc:hive2://
 Connecting to jdbc:hive2://
-Enter username for jdbc:hive2://: APP
-Enter password for jdbc:hive2://: mine
+Enter username for jdbc:hive2://: admin
+Enter password for jdbc:hive2://: password
 Connected to: Apache Hive (version 2.3.9)
 Driver: Hive JDBC (version 2.3.9)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
