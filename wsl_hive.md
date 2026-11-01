@@ -175,12 +175,13 @@ $ source ~/.bashrc
       <value>com.mysql.cj.jdbc.Driver</value>
       <description>Driver class name for a JDBC metastore</description>
     </property>
+    <property>
       <name>javax.jdo.option.ConnectionPassword</name>
-      <value>admin</value>
+      <value>password</value>
     </property>
     <property>
       <name>javax.jdo.option.ConnectionUserName</name>
-      <value>password</value>
+      <value>admin</value>
     </property>
     <property>
       <name>hive.exec.local.scratchdir</name>
