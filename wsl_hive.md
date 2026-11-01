@@ -176,7 +176,7 @@ $ source ~/.bashrc
 ~~~xml
     <property>
       <name>javax.jdo.option.ConnectionURL</name>
-      <value>jdbc:mysql://localhost:3306/metastore_db;create=true</value>
+      <value>jdbc:mysql://localhost:3306/metastore_db</value>
       <description>JDBC connect string for a JDBC metastore</description>
     </property>
     <property>
