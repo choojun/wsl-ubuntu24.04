@@ -131,6 +131,15 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.24.3.jar
 
 ~~~bash
 $ sudo apt install mysql-connector-j
+
+sudo mysql
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE metastore_db;
+GRANT ALL PRIVILEGES ON metastore_db.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+mysql -u admin -p
 ~~~
 
 
