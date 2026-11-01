@@ -112,12 +112,20 @@ $ hdfs dfs -chmod 777 /user/hduser/lib
 > $ jps
 > ~~~
 
-11. Change mode of access for hadoop's data and namenode, which are created in [Section E](wsl_hdoop.md)
+11. Change mode of access for hadoop's data and namenode, which are created in [Section E](wsl_hdoop.md). **Attention**: Stop both DFS and YARN services after this step.
 ~~~bash
 $ chmod -R g+w /home/hduser/hadoopData
 $ chmod -R g+w /home/hduser/hadoopName
 ~~~
-
+~~~
+> Tips to stop DFS and YARN services
+> ~~~bash
+> $ jps
+> $ cd ~/hadoop3
+> $ sbin/stop-yarn.sh
+> $ sbin/stop-dfs.sh
+> $ jps
+> ~~~
 
 12. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
 ~~~bash
@@ -129,52 +137,33 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.24.3.jar
 
 ## M2. Install and Configure MySQL [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
+1. Install MySQL Server, and verify that the service is up and running:
 ~~~bash
+$ sudo apt update
 $ sudo apt install mysql-connector-j
-
-sudo mysql
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
-CREATE DATABASE metastore_db;
-GRANT ALL PRIVILEGES ON metastore_db.* TO 'admin'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
-
-mysql -u admin -p
+$ sudo systemctl status mysql
 ~~~
 
-
-## M2. Install and Configure Derby [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
-
-1. Install and configure Derby
+2. Access the MySQL Shell, and create a dedicated Username (admin), Password (password) and new database metastore_db before grant permissions to the user admin.
 ~~~bash
-$ cd ~
-$ wget https://archive.apache.org/dist/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
-$ tar -xzf db-derby-10.14.2.0-bin.tar.gz
-$ mv db-derby-10.14.2.0-bin derby 
-$ mkdir ~/derby/data
-
-$ xxwget https://archive.apache.org/dist/db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
-$ xxtar -xzf db-derby-10.16.1.1-bin.tar.gz
-$ xxmv db-derby-10.16.1.1-bin derby 
-$ xxmkdir ~/derby/data
+$ sudo mysql
+mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
+mysql> CREATE DATABASE metastore_db;
+mysql> GRANT ALL PRIVILEGES ON metastore_db.* TO 'admin'@'localhost';
+mysql> FLUSH PRIVILEGES;
+mysql> EXIT;
 ~~~
 
-2. Edit the file ~/.bashrc with the the following lines 
+3. Test the new created credentials before next step.
 ~~~bash
-  export DERBY_INSTALL=/home/hduser/derby
-  export DERBY_HOME=/home/hduser/derby
-  export PATH=$PATH:/home/hduser/derby/bin
-  export CLASSPATH=$CLASSPATH:/home/hduser/hive/lib/derby.jar:/home/hduser/derby/lib/derbytools.jar
+$ mysql -u admin -p
+mysql> SHOW DATABASES;
+mysql> use metastore_db;
+mysql> show tables;
+mysql> EXIT;
 ~~~
 
-
-
-3. Re-load the environment
-~~~bash
-$ source ~/.bashrc
-~~~
-
-4. Configure the Hive to use Network Derby by changing the following property values in file ~/hive/conf/hive-site.xml
+4. Configure the Hive to use MySQL by changing the following property values in file ~/hive/conf/hive-site.xml
 ~~~xml
     <property>
       <name>javax.jdo.option.ConnectionURL</name>
@@ -229,7 +218,7 @@ $ source ~/.bashrc
     </property>
 ~~~
 
-5. To allow Hive to connect to Derby through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. Then restart your hadoop, i.e. DFS and YARN services. **Note that your Hive SHOULD NOT running at this step.**
+5. To allow Hive to connect to MySQL (metastore_db) through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. Then restart/start your hadoop, i.e. DFS and YARN services. **Warning: Note that your Hive SHOULD NOT running at this step.**
  ~~~xml
  <configuration>
      <property>
@@ -253,31 +242,17 @@ $ cp -f ~/hive/conf/hive-site.xml ~/spark/conf/
 $ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/spark/jars/
 $ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/hive/lib/
 ~~~
-> **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved files in nearly future.**
+> **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved their files in nearly future.**
 
-2. Edit the file ~/.bashrc with the the following lines 
+7. Edit the file ~/.bashrc with the the following lines 
 ~~~bash
-  export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-j-26.10.0.jar
+export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-j-26.10.0.jar
 ~~~
 
-7. Use existing session (named as **session 1**) to start **HDFS**, **YARN**, **Kafka** and **HBase** services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default, i.e. ~/derby/data
-~~~bash
-$ cd ~/derby/data
-$ nohup ~/derby/bin/startNetworkServer -h 0.0.0.0 &
-$ jps
-25410 NetworkServerControl
-8711 ...
-9561 ...
-26699 Jps
-9115 ...
-8428 ...
-~~~
-> To stop Derby (replace 25410 with your process id):
-> ~~~bash
-> $ kill -9 25410
-> ~~~
+8. Use existing session (named as **session 1**) to start **HDFS**, **YARN**, **Kafka** and **HBase** services before ensuring the MySQL is running.
 > **Tips** to start DFS, YARN, Zookeeper, Kafka, HBase and HappyBase (optional) services. Note that a total of elevan (11) services can be observed eventually, included HappyBase and Jps
 > ~~~bash
+> hduser@MyPC:~$ sudo systemctl status mysql
 > hduser@MyPC:~$
 > hduser@MyPC:~$ cd ~/hadoop3
 > hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
@@ -300,27 +275,11 @@ $ jps
 > hduser@MyPC:~$
 > ~~~
 
-
-
-8. Use the **session 1** to run the following command to initialize Derby as the Metastore database for Hive. It might take a few minutes. Please be patient while you wait for its completion
+9. Use the **session 1** to run the following command to initialize MySQL as the Metastore database for Hive. It might take a few minutes. Please be patient while you wait for its completion
 ~~~bash
 $ cd ~
 $ java -cp home/hduser/hive/lib/*:/home/hduser/spark/jars/* org.apache.hive.beeline.HiveSchemaTool -initSchemaTo 4.1.0 -dbType mysql
-
-$ xxxxjava -cp /home/hduser/hive/lib/*:/home/hduser/spark/jars/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/* org.apache.hive.beeline.HiveSchemaTool -initSchema -dbType derby
 ~~~
-> **Attention**: In the setup of Derby 10.14.2.0 with Hive 4.1.0, you need to stop-start the Derby after this step. To stop Derby (replace 25410 with your process id):
-> ~~~bash
-> $ jps
-> $ kill -9 25410
-> ~~~
-> To start Derby:
-> ~~~bash
-> $ cd ~/derby/data
-> $ nohup ~/derby/bin/startNetworkServer -h 0.0.0.0 &
-> $ jps
-> ~~~
-> 
 > **Attention**: Note that in the setup of Hive 4.1.0, you may have corrupted characters in file ~/hive/conf/hive-site.xml, which is inherited from its template (duplicated in Section M1), particularlly under the description of 'hive.txn.xlock.iow'. Just delete it if there is an error, and re-run above command
 
 
