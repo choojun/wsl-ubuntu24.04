@@ -237,11 +237,11 @@ $ source ~/.bashrc
 $ cp -f ~/hadoop3/etc/hadoop/core-site.xml ~/spark/conf/
 $ cp -f ~/hadoop3/etc/hadoop/hdfs-site.xml ~/spark/conf/
 $ cp -f ~/hive/conf/hive-site.xml ~/spark/conf/
-$ cp -f ~/derby/lib/derbyclient.jar ~/spark/jars/
-$ cp -f ~/derby/lib/derbytools.jar ~/spark/jars/
 
-$ cp -f ~/derby/lib/derbyclient.jar ~/hive/lib/
-$ cp -f ~/derby/lib/derbytools.jar ~/hive/lib/
+$ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/spark/jars/
+$ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/hive/lib/
+
+
 ~~~
 > **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved files in nearly future.**
 
