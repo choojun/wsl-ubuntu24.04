@@ -119,13 +119,13 @@ $ chmod -R g+w /home/hduser/hadoopName
 ~~~
 
 
-12. xxxx Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
+12. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
 ~~~bash
 $ cd ~
 $ find . -name log4j-slf4j-impl-*.jar
-$ rm ~/hive/lib/log4j-slf4j-impl-2.6.2.jar
+$ rm ~/hive/lib/log4j-slf4j-impl-2.24.3.jar
 ~~~
-> We delete the file log4j-slf4j-impl-2.6.2.jar because the similar file is also presented in the Hadoop directory, and it gives error to us occasionally
+> We delete the file log4j-slf4j-impl-2.24.3.jar because the similar file is also presented in the Hadoop directory, and it gives error to us occasionally
 
 
 ## M2. Install and Configure Derby [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
