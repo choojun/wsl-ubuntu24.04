@@ -164,8 +164,10 @@ $ xxmkdir ~/derby/data
   export DERBY_INSTALL=/home/hduser/derby
   export DERBY_HOME=/home/hduser/derby
   export PATH=$PATH:/home/hduser/derby/bin
-  export CLASSPATH=$CLASSPATH:/home/hduser/derby/lib/derby.jar:/home/hduser/derby/lib/derbytools.jar
+  export CLASSPATH=$CLASSPATH:/home/hduser/hive/lib/derby.jar:/home/hduser/derby/lib/derbytools.jar
 ~~~
+
+
 
 3. Re-load the environment
 ~~~bash
@@ -250,11 +252,13 @@ $ cp -f ~/hive/conf/hive-site.xml ~/spark/conf/
 
 $ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/spark/jars/
 $ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/hive/lib/
-
-
 ~~~
 > **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved files in nearly future.**
 
+2. Edit the file ~/.bashrc with the the following lines 
+~~~bash
+  export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-j-26.10.0.jar
+~~~
 
 7. Use existing session (named as **session 1**) to start **HDFS**, **YARN**, **Kafka** and **HBase** services before running the Derby as follows. Note that you need to press Enter key upon the execution of second of command. It will create databases in the current directory by default, i.e. ~/derby/data
 ~~~bash
