@@ -80,7 +80,7 @@ $ cp ~/hive/conf/hive-env.sh.template ~/hive/conf/hive-env.sh
   export HADOOP_HDFS_HOME=/home/hduser/hadoop3
   export YARN_HOME=/home/hduser/hadoop3
   export HIVE_HOME=/home/hduser/hive
-  export HIVE_CONF_DIR=/home/hduser/hive/conf
+  export HIVE_CONF=/home/hduser/hive/conf
   export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/*
   export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
@@ -97,7 +97,7 @@ $ hdfs dfs -chmod g+w /tmp
 $ hdfs dfs -chmod g+w /tmp/hduser
 $ hdfs dfs -chmod 777 /user
 $ hdfs dfs -chmod g+w /user/hduser
-$ hdfs dfs -chmod g+w /user/hduser/warehouse
+$ hdfs dfs -chmod -R 775 /user/hduser/warehouse
 $ hdfs dfs -chmod 777 /user/hduser/lib
 ~~~
 > Tips to start-stop DFS and YARN services
@@ -134,11 +134,14 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.6.2.jar
 ~~~bash
 $ cd ~
 $ wget https://archive.apache.org/dist/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz
-
-$ wget https://archive.apache.org/dist/db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
-$ tar -xzf db-derby-10.16.1.1-bin.tar.gz
-$ mv db-derby-10.16.1.1-bin derby 
+$ tar -xzf db-derby-10.14.2.0-bin.tar.gz
+$ mv db-derby-10.14.2.0-bin derby 
 $ mkdir ~/derby/data
+
+$ xxwget https://archive.apache.org/dist/db/derby/db-derby-10.16.1.1/db-derby-10.16.1.1-bin.tar.gz
+$ xxtar -xzf db-derby-10.16.1.1-bin.tar.gz
+$ xxmv db-derby-10.16.1.1-bin derby 
+$ xxmkdir ~/derby/data
 ~~~
 
 2. Edit the file ~/.bashrc with the the following lines 
@@ -160,14 +163,6 @@ $ source ~/.bashrc
       <name>javax.jdo.option.ConnectionURL</name>
       <value>jdbc:derby://localhost:1527/metastore_db;create=true</value>
       <description>JDBC connect string for a JDBC metastore</description>
-    </property>
-    <property>
-      <name>javax.jdo.option.ConnectionPassword</name>
-      <value>minexxxxxxx</value>
-    </property>
-    <property>
-      <name>javax.jdo.option.ConnectionUserName</name>
-      <value>APPxxxxxxxxx</value>
     </property>
     <property>
       <name>javax.jdo.option.ConnectionDriverName</name>
@@ -198,6 +193,14 @@ $ source ~/.bashrc
       <name>hive.downloaded.resources.dir</name>
       <value>/tmp/hive/${hive.session.id}_resources</value>
       <description>Temporary local directory for added resources in the remote file system</description>
+    </property>
+    <property>
+      <name>hive.external.table.purge.default</name>
+      <value>true</value>
+    </property>
+    <property>
+      <name>hive.metastore.schema.verification</name>
+      <value>false</value>
     </property>
 ~~~
 
@@ -246,7 +249,7 @@ $ jps
 > ~~~bash
 > $ kill -9 25410
 > ~~~
-> Tips to start DFS, YARN, Zookeeper, Kafka, HBase and HappyBase (optional) services. Note that a total of elevan (11) services can be observed eventually, included HappyBase and Jps
+> **Tips** to start DFS, YARN, Zookeeper, Kafka, HBase and HappyBase (optional) services. Note that a total of elevan (11) services can be observed eventually, included HappyBase and Jps
 > ~~~bash
 > hduser@MyPC:~$
 > hduser@MyPC:~$ cd ~/hadoop3
@@ -277,14 +280,41 @@ $ jps
 $ cd ~
 $ java -cp home/hduser/hive/lib/*:/home/hduser/spark/jars/* org.apache.hive.beeline.HiveSchemaTool -initSchemaTo 4.1.0 -dbType derby
 
-$ java -cp /home/hduser/hive/lib/*:/home/hduser/spark/jars/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/* org.apache.hive.beeline.HiveSchemaTool -initSchema -dbType derby
+$ xxxxjava -cp /home/hduser/hive/lib/*:/home/hduser/spark/jars/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/* org.apache.hive.beeline.HiveSchemaTool -initSchema -dbType derby
 ~~~
-> In the setup of Derby 10.14.2.0 with Hive 2.3.9, you need to stop-start the Derby after this step
+> **Attention**: In the setup of Derby 10.14.2.0 with Hive 4.1.0, you need to stop-start the Derby after this step. To stop Derby (replace 25410 with your process id):
+> ~~~bash
+> $ jps
+> $ kill -9 25410
+> ~~~
+> To start Derby:
+> ~~~bash
+> $ cd ~/derby/data
+> $ nohup ~/derby/bin/startNetworkServer -h 0.0.0.0 &
+> $ jps
+> ~~~
 > 
-> Note that in the setup of Hive 3.3.1, you may have corrupted characters in file ~/hive/conf/hive-site.xml, which is inherited from its template (duplicated in Section M1), particularlly under the description of 'hive.txn.xlock.iow'. Just delete it if there is an error, and re-run above command
+> **Attention**: Note that in the setup of Hive 4.1.0, you may have corrupted characters in file ~/hive/conf/hive-site.xml, which is inherited from its template (duplicated in Section M1), particularlly under the description of 'hive.txn.xlock.iow'. Just delete it if there is an error, and re-run above command
 
 
-## M3. Running HiveServer2 and Beeline [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+## M3. Install and Configure Tez [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+
+1. Install and configure Derby
+~~~bash
+$ cd ~
+$ wget https://archive.apache.org/dist/tez/0.10.5/apache-tez-0.10.5-bin.tar.gz
+$ tar -xzf apache-tez-0.10.5-bin.tar.gz
+$ mv apache-tez-0.10.5-bin tez 
+~~~
+
+2. Make a directory named tez in the HDFS file system
+~~~bash
+$ cd ~/tez
+$ hdfs dfs -mkdir tez
+$ hdfs dfs -put -f /home/hduser/tez/* /user/hduser/tez
+~~~
+
+## M4. Running HiveServer2 and Beeline [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. HiveServer2 (HS2) is a service that enables clients to execute queries against Hive. HS2 supports multi-client concurrency and authentication. It is designed to provide better support for open API clients like JDBC and ODBC. Read more on HiveServer2 at URL https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Overview
 
@@ -292,14 +322,23 @@ $ java -cp /home/hduser/hive/lib/*:/home/hduser/spark/jars/*:/home/hduser/hadoop
 
 3. Assume other neccessary services have been executed in the **session 1**.
 
-4. Use another session (named as **session 2**) to edit the ~/hadoop3/etc/hadoop/hadoop-env.sh file by including additional paths into the HADOOP_CLASSPATH as follows
+4. ?? Use another session (named as **session 2**) to edit the ~/hadoop3/etc/hadoop/hadoop-env.sh file by including additional paths into the HADOOP_CLASSPATH as follows
 ~~~bash
- export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/* 
+ export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*
+
+xxxx export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/hbase/lib/client-facing-thirdparty/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/* 
 ~~~
 > Comment out the above line after stopping HiveServer2 to prevent HBase errors in the next round.
 
 5. Switch back to shell **session 1**, and run the Hive over there. Leave the session running and DO NOT CLOSE the session after the execution of following command. 
 ~~~bash
+$ cd ~/hive
+$ cp  ~/hbase/lib/client-facing-thirdparty/opentelemetry-semconv-1.29.0-alpha.jar  ~/hbase/lib
+$ cd ~/hive/lib
+$ rm log4j-slf4j-impl-2.24.3.jar
+$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-mapreduce/0.10.5/tez-mapreduce-0.10.5.jar
+$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-runtime-library/0.10.5/tez-runtime-library-0.10.5.jar
+$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-dag/0.10.5/tez-dag-0.10.5.jar
 $ cd ~/hive
 $ bin/hiveserver2
 ~~~
@@ -319,11 +358,12 @@ Connected to: Apache Hive (version 2.3.9)
 Driver: Hive JDBC (version 2.3.9)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
 0: jdbc:hive2://>
+xxxx ignore it --> SET hive.metastore.disallow.incompatible.col.type.changes=false;
 ~~~
 > To stop the Beeline, use either command !q (after login) or Ctrl-c (before login).
 > Note that we always need to terminate the running RunJar service/s BEFORE re-run the HiveServer2.
 
-## M4. Quick start with Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+## M5. Quick start with Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Create a new database
 ~~~bash
@@ -345,8 +385,11 @@ Transaction isolation: TRANSACTION_REPEATABLE_READ
 0: jdbc:hive2://> INSERT INTO choojunhive.employee VALUES (3,'Chong',21,'M');
 0: jdbc:hive2://> select * from choojunhive.employee;
 ~~~
+> Drop a table: DROP TABLE choojunhive.employee;
+> xx try hdfs dfs -chmod -R 775 /user/hduser/warehouse
+> Note that our the table was defined with the EXTERNAL (by default), Hive only removes the table's schema and metadata from the Hive Metastore (i.e., in Derby). The underlying data files in HDFS (i.e., at location /user/hduser/warehouse/choojunhive/employee) are deliberately left intact to prevent accidental data loss. If you recreate an EXTERNAL table pointing to the same path (by default), the old data will reappear.
+> Manual remedy: Delete the HDFS directory (i.e., /user/hduser/warehouse/choojunhive/employee) manually after issue the command of drop table.
 
 4. Try out the Guided Tutorials as follows
    * https://cwiki.apache.org/confluence/display/hive/tutorial
-   * https://sparkbyexamples.com/apache-hive-tutorial/
    * https://www.simplilearn.com/tutorials/hadoop-tutorial/hive
