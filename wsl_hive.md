@@ -353,6 +353,10 @@ $ hdfs dfs -put /home/hduser/hive/lib/hive-exec-4.1.0.jar /user/hduser/tez
         <name>hive.tez.java.opts</name>
         <value>-Xmx3072m</value>
     </property>
+    <property>
+        <name>hive.tez.cpu.vcores</name>
+        <value>1</value>
+    </property>
 ~~~
 
 ## M4. Running HiveServer2 and Beeline [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
@@ -380,6 +384,7 @@ $ rm log4j-slf4j-impl-2.24.3.jar
 $ wget https://repo1.maven.org/maven2/org/apache/tez/tez-mapreduce/0.10.5/tez-mapreduce-0.10.5.jar
 $ wget https://repo1.maven.org/maven2/org/apache/tez/tez-runtime-library/0.10.5/tez-runtime-library-0.10.5.jar
 $ wget https://repo1.maven.org/maven2/org/apache/tez/tez-dag/0.10.5/tez-dag-0.10.5.jar
+$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-common/0.10.5/tez-common-0.10.5.jar
 $ cd ~/hive
 $ bin/hiveserver2
 ~~~
