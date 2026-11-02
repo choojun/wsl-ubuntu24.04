@@ -300,6 +300,61 @@ $ hdfs dfs -mkdir tez
 $ hdfs dfs -put -f /home/hduser/tez/* /user/hduser/tez
 ~~~
 
+3. In ~/.bashrc file, add the following lines at the end of the file.
+~~~bash
+export TEZ_HOME=/home/hduser/tez
+export TEZ_CONF_DIR=/home/hduser/tez/conf
+export TEZ_JARS=/home/hduser/tez
+if [ -z "$HIVE_AUX_JARS_PATH" ]; then
+    export HIVE_AUX_JARS_PATH="$TEZ_JARS"
+else
+    export HIVE_AUX_JARS_PATH="$HIVE_AUX_JARS_PATH:$TEZ_JARS"
+
+export HADOOP_CLASSPATH=${TEZ_CONF_DIR}:${TEZ_JARS}/*:${TEZ_JARS}/lib/*
+~~~
+
+4. Create related directories in HDFS
+~~~bash
+$ ?? rm ~/tez/lib/slf4j-reload4j-1.7.36.jar
+$ hdfs dfs -mkdir /user/hduser/tez
+$ hdfs dfs -put /home/hduser/tez/* /user/hduser/tez/
+$ hdfs dfs -put /home/hduser/hive/lib/hive-exec-4.1.0.jar /user/hduser/tez
+~~~
+
+5. Create file /home/hduser/tez/conf/tez-site.xml, and add the following lines.
+~~~bash
+<configuration>
+    <property>
+        <name>tez.lib.uris</name>
+        <value>hdfs:///user/hduser/tez/share/tez.tar.gz</value>
+    </property>
+    <property>
+        <name>tez.use.cluster.hadoop-libs</name>
+        <value>true</value>
+    </property>
+</configuration>
+~~~
+
+6. Edit the file ~/hive/conf/hive-site.xml
+~~~bash
+  <property>
+    <name>hive.execution.engine</name>
+    <value>tez</value>
+  </property>
+    <property>
+        <name>tez.lib.uris</name>
+        <value>hdfs:///user/hduser/tez/share/tez.tar.gz</value>
+    </property>
+    <property>
+        <name>hive.tez.contaiiner.size</name>
+        <value>4096</value>
+    </property>
+    <property>
+        <name>hive.tez.java.opts</name>
+        <value>-Xmx3072m</value>
+    </property>
+~~~
+
 ## M4. Running HiveServer2 and Beeline [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. HiveServer2 (HS2) is a service that enables clients to execute queries against Hive. HS2 supports multi-client concurrency and authentication. It is designed to provide better support for open API clients like JDBC and ODBC. Read more on HiveServer2 at URL https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Overview
