@@ -15,17 +15,17 @@ Data engineering involves building systems to collect and utilize data. This dat
 #### Note for Apple MacOS users
 If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
-| Section (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | HappyBase | Apache Derby | Apache Hive |
-|---|---|---|---|---|---|---|---|---|
-| [E. Hadoop Installation and Configuration](wsl_hadoop.md) | 3.4.1 |  |  |  |  |  |  |  |
-| [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | 3.4.1 |  |  |  |  |  |  |  |
-| [G. Spark, PySpark Shell, Spark SQL and JupyterLab](wsl_pyspark.md) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
-| [H. Spark and Machine Learning](wsl_pyspark_ml.md) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
-| [I. Spark and Visualisation](wsl_pyspark_viz.md) |  | 4.0.4 | 2.13.18 |  |  |  |  |  |
-| [J. Kafka Installation and Configuration](wsl_kafka.md) |  |  |  | 4.3.1 |  |  |  |  |
-| [K. HBase Installation and Configuration](wsl_hbase.md) |  |  |  |  | 3.0.0 |  |  |  |
-| [L. HappyBase Installation and COnfiguration](wsl_happybase.md) |  |  |  |  |  | 1.2.0 |  |  |
-| [M. Hive Installation and Configuration](wsl_hive.md) |  |  |  |  |  |  | 10.16.x | 4.2.1 |
+| Section (Tested with OpenJDK 17 - LTS) | Apache Hadoop | Appache Spark | Scala | Apache Kafka | Apache HBase | HappyBase | Apache Hive |
+|---|---|---|---|---|---|---|---|
+| [E. Hadoop Installation and Configuration](wsl_hadoop.md) | 3.4.1 |  |  |  |  |  |  | 
+| [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | 3.4.1 |  |  |  |  |  |  | 
+| [G. Spark, PySpark Shell, Spark SQL and JupyterLab](wsl_pyspark.md) |  | 4.0.4 | 2.13.18 |  |  |  |  | 
+| [H. Spark and Machine Learning](wsl_pyspark_ml.md) |  | 4.0.4 | 2.13.18 |  |  |  |  | 
+| [I. Spark and Visualisation](wsl_pyspark_viz.md) |  | 4.0.4 | 2.13.18 |  |  |  |  | 
+| [J. Kafka Installation and Configuration](wsl_kafka.md) |  |  |  | 4.3.1 |  |  |  | 
+| [K. HBase Installation and Configuration](wsl_hbase.md) |  |  |  |  | 3.0.0 |  |  | 
+| [L. HappyBase Installation and COnfiguration](wsl_happybase.md) |  |  |  |  |  | 1.2.0 |  | 
+| [M. Hive Installation and Configuration](wsl_hive.md) |  |  |  |  |  |  | 4.2.1 with Apache Tez 0.10.5 and MySQL 8.0.46 |
 > Needed Web browser, constant Internet connection, SSH and PDSH, Python 3.12.x
 >
 > **Optional**: Restore from the pre-setup WSL distro by downloading the required release from URL https://github.com/choojun/wsl/releases, and perform those steps in the section D (after identified your UBuntu version).
