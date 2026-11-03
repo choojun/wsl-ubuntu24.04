@@ -8,9 +8,7 @@ Specifically, Apache Hive is a distributed, fault-tolerant data warehouse system
 
 ## M1. Install and Configure Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1.	Login as **hduser**. Ensure that the SSH, HDFS and YARN services are started sequentially (a total of 6 services to be observed). Then, examine them using the jps command.
-
-2. Install Hive.
+1.	Login as **hduser**. Ensure that all services are stopped and check it by using the jps command before download and install Hive.
 ~~~bash
 $ cd ~
 $ jps
@@ -19,7 +17,7 @@ $ tar -xvzf apache-hive-4.1.0-bin.tar.gz
 $ mv apache-hive-4.1.0-bin hive
 ~~~
 
-3. Edit the file ~/.bashrc with the the following lines.
+2. Edit the file ~/.bashrc with the the following lines.
 ~~~bash
 export HADOOP_MAPRED_HOME=/home/hduser/hadoop3
 export HADOOP_COMMON_HOME=/home/hduser/hadoop3
@@ -32,24 +30,24 @@ export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/
 export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
-4. Re-load the environment.
+3. Re-load the environment.
 ~~~bash
 $ source ~/.bashrc
 ~~~
 
-5. Duplicate for the file ~/hive/conf/hive-site.xml 
+4. Duplicate for the file ~/hive/conf/hive-site.xml 
 ~~~bash
 $ cd ~/hive
 $ cp ~/hive/conf/hive-default.xml.template ~/hive/conf/hive-site.xml
 ~~~
 
-6. Edit the file ~/hive/conf/hive-site.xml
+5. Edit the file ~/hive/conf/hive-site.xml
 * Replace all occurrences of ${system:java.io.tmpdir} to /tmp/hive and this location is the new location for Hive storing all its temporary files.
 * Replace all occurrences of ${system:user.name} to ${user.name} which should be the user name you log in with
 * Replace all occurrences of /user/hive tp /user/hduser
 > You may want to use the nano's search (Ctrl-w with Enter) to find the targeted keyword, and replace them one by one.
 
-7. Edit the file ~/hive/bin/hive-config.sh with the the following lines 
+6. Edit the file ~/hive/bin/hive-config.sh with the the following lines 
 ~~~bash
   export HADOOP_HOME=/home/hduser/hadoop3
   export SPARK_HOME=/home/hduser/spark
@@ -64,13 +62,13 @@ $ cp ~/hive/conf/hive-default.xml.template ~/hive/conf/hive-site.xml
   export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
-8. Duplicate for the file ~/hive/conf/hive-env.sh 
+7. Duplicate for the file ~/hive/conf/hive-env.sh 
 ~~~bash
 $ cd ~/hive
 $ cp ~/hive/conf/hive-env.sh.template ~/hive/conf/hive-env.sh
 ~~~
 
-9. Edit the file ~/hive/conf/hive-env.sh with the the following lines 
+8. Edit the file ~/hive/conf/hive-env.sh with the the following lines 
 ~~~bash
   export HADOOP_HOME=/home/hduser/hadoop3
   export SPARK_HOME=/home/hduser/spark
@@ -85,8 +83,16 @@ $ cp ~/hive/conf/hive-env.sh.template ~/hive/conf/hive-env.sh
   export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
-10. Start both DFS and YARN services before create/alter those required Hive directories in the HDFS. Stop both service after done the directories creation
+9. Start both DFS and YARN services before create/alter those required Hive directories in the HDFS. 
 ~~~bash
+$ jps
+$ cd ~/hadoop3
+$ sbin/start-dfs.sh
+$ sbin/start-yarn.sh
+$ jps
+$ sbin/stop-yarn.sh
+$ sbin/stop-dfs.sh
+$ jps
 $ hdfs dfs -mkdir /tmp
 $ hdfs dfs -mkdir /tmp/hduser
 $ hdfs dfs -mkdir /user
@@ -100,34 +106,20 @@ $ hdfs dfs -chmod g+w /user/hduser
 $ hdfs dfs -chmod -R 775 /user/hduser/warehouse
 $ hdfs dfs -chmod 777 /user/hduser/lib
 ~~~
-> Tips to start-stop DFS and YARN services
-> ~~~bash
-> $ jps
-> $ cd ~/hadoop3
-> $ sbin/start-dfs.sh
-> $ sbin/start-yarn.sh
-> $ jps
-> $ sbin/stop-yarn.sh
-> $ sbin/stop-dfs.sh
-> $ jps
-> ~~~
 
-11. Change mode of access for hadoop's data and namenode, which are created in [Section E](wsl_hdoop.md). **Attention**: Stop both DFS and YARN services after this step.
+10. Change mode of access for hadoop's data and namenode, which are created in [Section E](wsl_hdoop.md). **Attention**: Stop both DFS and YARN services after this step.
 ~~~bash
 $ chmod -R g+w /home/hduser/hadoopData
 $ chmod -R g+w /home/hduser/hadoopName
+$ jps
+$ cd ~/hadoop3
+$ sbin/stop-yarn.sh
+$ sbin/stop-dfs.sh
+$ jps
 ~~~
-~~~
-> Tips to stop DFS and YARN services
-> ~~~bash
-> $ jps
-> $ cd ~/hadoop3
-> $ sbin/stop-yarn.sh
-> $ sbin/stop-dfs.sh
-> $ jps
-> ~~~
 
-12. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
+
+11. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
 ~~~bash
 $ cd ~
 $ find . -name log4j-slf4j-impl-*.jar
@@ -144,7 +136,7 @@ $ sudo apt install mysql-connector-j
 $ sudo systemctl status mysql
 ~~~
 
-2. Access the MySQL Shell, and create a dedicated Username (admin), Password (password) and new database metastore_db before grant permissions to the user admin.
+2. Access the MySQL Shell, and create a dedicated username (admin), password (password) and new database metastore_db before grant permissions to the user admin.
 ~~~bash
 $ sudo mysql
 mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
@@ -218,7 +210,7 @@ mysql> EXIT;
     </property>
 ~~~
 
-5. To allow Hive to connect to MySQL (metastore_db) through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. Then restart/start your hadoop, i.e. DFS and YARN services. **Warning: Note that your Hive SHOULD NOT running at this step.**
+5. To allow Hive to connect to MySQL (metastore_db) through JDBC, add the following lines to the file ~/hadoop3/etc/hadoop/core-site.xml of your Hadoop installation. **Warning: Note that your Hive and other services SHOULD NOT running at this step.**
  ~~~xml
  <configuration>
      <property>
@@ -249,8 +241,8 @@ $ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/hive/lib/
 export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-j-26.10.0.jar
 ~~~
 
-8. Use existing session (named as **session 1**) to start **HDFS**, **YARN**, **Kafka** and **HBase** services before ensuring the MySQL is running.
-> **Tips** to start DFS, YARN, Zookeeper, Kafka, HBase and HappyBase (optional) services. Note that a total of elevan (11) services can be observed eventually, included HappyBase and Jps
+8. Use existing session (named as **session 1**) to ensure the MySQL is running and start **HDFS**, **YARN**, **Kafka**, **HBase** and **Thrift** services.
+> **Tips**: Note that a total of eleven (11) services can be observed eventually.
 > ~~~bash
 > hduser@MyPC:~$ sudo systemctl status mysql
 > hduser@MyPC:~$
@@ -280,12 +272,12 @@ export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-j-26.10.0.jar
 $ cd ~
 $ java -cp home/hduser/hive/lib/*:/home/hduser/spark/jars/* org.apache.hive.beeline.HiveSchemaTool -initSchemaTo 4.1.0 -dbType mysql
 ~~~
-> **Attention**: Note that in the setup of Hive 4.1.0, you may have corrupted characters in file ~/hive/conf/hive-site.xml, which is inherited from its template (duplicated in Section M1), particularlly under the description of 'hive.txn.xlock.iow'. Just delete it if there is an error, and re-run above command
+> **Attention**: Note that in the setup of Hive 4.1.0, you may have corrupted characters in file ~/hive/conf/hive-site.xml, which is inherited from its template (duplicated in Section M1), particularlly under the description of 'hive.txn.xlock.iow'. Just delete it if there is an error, and re-run above command.
 
 
 ## M3. Install and Configure Tez [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1. Install and configure Derby
+1. Use the **session 1** to install and configure Tez.
 ~~~bash
 $ cd ~
 $ wget https://archive.apache.org/dist/tez/0.10.5/apache-tez-0.10.5-bin.tar.gz
@@ -293,11 +285,13 @@ $ tar -xzf apache-tez-0.10.5-bin.tar.gz
 $ mv apache-tez-0.10.5-bin tez 
 ~~~
 
-2. Make a directory named tez in the HDFS file system
+2. Make a directory named tez, and copy the necessary files into the HDFS file system.
 ~~~bash
 $ cd ~/tez
 $ hdfs dfs -mkdir tez
 $ hdfs dfs -put -f /home/hduser/tez/* /user/hduser/tez
+$ hdfs dfs -put /home/hduser/hive/lib/hive-exec-4.1.0.jar /user/hduser/tez
+$ ?? rm ~/tez/lib/slf4j-reload4j-1.7.36.jar
 ~~~
 
 3. In ~/.bashrc file, add the following lines at the end of the file.
@@ -313,15 +307,8 @@ else
 export HADOOP_CLASSPATH=${TEZ_CONF_DIR}:${TEZ_JARS}/*:${TEZ_JARS}/lib/*
 ~~~
 
-4. Create related directories in HDFS
-~~~bash
-$ ?? rm ~/tez/lib/slf4j-reload4j-1.7.36.jar
-$ hdfs dfs -mkdir /user/hduser/tez
-$ hdfs dfs -put /home/hduser/tez/* /user/hduser/tez/
-$ hdfs dfs -put /home/hduser/hive/lib/hive-exec-4.1.0.jar /user/hduser/tez
-~~~
 
-5. Create file /home/hduser/tez/conf/tez-site.xml, and add the following lines.
+4. Create file /home/hduser/tez/conf/tez-site.xml, and add the following lines.
 ~~~bash
 <configuration>
     <property>
@@ -335,7 +322,7 @@ $ hdfs dfs -put /home/hduser/hive/lib/hive-exec-4.1.0.jar /user/hduser/tez
 </configuration>
 ~~~
 
-6. Edit the file ~/hive/conf/hive-site.xml
+5. Edit the file ~/hive/conf/hive-site.xml
 ~~~bash
   <property>
     <name>hive.execution.engine</name>
