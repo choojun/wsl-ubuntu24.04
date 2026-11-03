@@ -24,7 +24,7 @@ If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon pro
 | [I. Spark and Visualisation](wsl_pyspark_viz.md) |  | 4.0.4 | 2.13.18 |  |  |  |  | 
 | [J. Kafka Installation and Configuration](wsl_kafka.md) |  |  |  | 4.3.1 |  |  |  | 
 | [K. HBase Installation and Configuration](wsl_hbase.md) |  |  |  |  | 3.0.0 |  |  | 
-| [L. HappyBase Installation and COnfiguration](wsl_happybase.md) |  |  |  |  |  | 1.2.0 |  | 
+| [L. HappyBase Installation and Configuration](wsl_happybase.md) |  |  |  |  |  | 1.2.0 |  | 
 | [M. Hive Installation and Configuration](wsl_hive.md) |  |  |  |  |  |  | 4.2.1 with Apache Tez 0.10.5 and MySQL 8.0.46 |
 > Needed Web browser, constant Internet connection, SSH and PDSH, Python 3.12.x
 >
