@@ -28,26 +28,9 @@ If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon pro
 | [M. Hive Installation and Configuration](wsl_hive.md) |  |  |  |  |  |  | 4.2.1 with Apache Tez 0.10.5 and MySQL 8.0.46 |
 > Needed Web browser, constant Internet connection, SSH and PDSH, Python 3.12.x
 >
-> **Optional**: Restore from the pre-setup WSL distro by downloading the required release from URL https://github.com/choojun/wsl/releases, and perform those steps in the section D (after identified your UBuntu version).
+> **Optional**: To restore from the pre-setup WSL distro, download the required release from the URL https://github.com/choojun/wsl/releases and follow the steps in Section D after identifying your Ubuntu version.
 
 
-### Experimental Version (not stable yet)
-
-| Requirement\Section |  [E](wsl_hadoop)  |  [F](wsl_hdfs_2) |  [G](wsl_pyspark_2) | [H](wsl_pyspark_ml_2)  |  [I](wsl_pyspark_viz_2)  |  [J](wsl_kafka_2)  |  [K](wsl_hbase_2)  |  [L](wsl_happybase_2)  |  [M](wsl_hive_2) |
-|---------------------|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|:--------------------:|
-| Hadoop              | 3.4.1 (> JDK8) | *1 | *1                  | *1 | *1 | *1                        | *1                   | *1     | *1        |
-| Spark               |                |    | 4.0.4 (must jdk17)  | *1 | *1 |                           | *1                   |        | *1        |
-| Scala               |                |    | Targeted on 2.13.x  |    |    | 2.13.x                    | Targeted on 2.13.x   |        |           |
-| Jupyter Lab         |                |    | *1                  | *1 | *1 |                           |                      |        |           |
-| Kafka               |                |    |                     |    |    | kafka_2.13-4.3.1 (jdk17)  | *1                   | *1     |           |
-| HBase               |                |    |                     |    |    |                           | 3.x (jdk17)          | *1     |           |
-| ?HappyBase          |                |    |                     |    |    |                           |                      | ?1.2.0 |           |
-| aiohappybase        |                |    |                     |    |    |                           |                      | 1.4.0  |           |
-| Derby               |                |    |                     |    |    |                           |                      |        | 10.16.x (jdk17) |
-| Hive                |                |    |                     |    |    |                           |                      |        | 4.2.1 (matched Hadoop 3.4.1) |
-
-> Needed WSL2, Web browser and Internet connection, SSH and PDSH, OpenJDK 17, Python 3.?.?
-> 
 -----------------------------------------------------------
 
 
