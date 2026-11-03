@@ -118,8 +118,12 @@ $ sbin/stop-dfs.sh
 $ jps
 ~~~
 
+11. Edit the ~/hadoop3/etc/hadoop/hadoop-env.sh file by including additional paths into the HADOOP_CLASSPATH as follows
+~~~bash
+export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*
+~~~
 
-11. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
+12. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
 ~~~bash
 $ cd ~
 $ find . -name log4j-slf4j-impl-*.jar
@@ -346,23 +350,17 @@ export HADOOP_CLASSPATH=${TEZ_CONF_DIR}:${TEZ_JARS}/*:${TEZ_JARS}/lib/*
     </property>
 ~~~
 
+
+
 ## M4. Running HiveServer2 and Beeline [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. HiveServer2 (HS2) is a service that enables clients to execute queries against Hive. HS2 supports multi-client concurrency and authentication. It is designed to provide better support for open API clients like JDBC and ODBC. Read more on HiveServer2 at URL https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Overview
 
 2. HiveServer2 supports a command shell Beeline that works with HiveServer2. It's a JDBC client that is based on the SQLLine CLI (http://sqlline.sourceforge.net/). Read more on Beeline at URL https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients
 
-3. Assume other neccessary services have been executed in the **session 1**.
+3. Assume other necessary services have been executed in the **session 1**, those from M1, M2 and M3.
 
-4. ?? Use another session (named as **session 2**) to edit the ~/hadoop3/etc/hadoop/hadoop-env.sh file by including additional paths into the HADOOP_CLASSPATH as follows
-~~~bash
- export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*
-
-xxxx export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/hduser/hive/lib/*:/hbase/lib/client-facing-thirdparty/*:/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/* 
-~~~
-> Comment out the above line after stopping HiveServer2 to prevent HBase errors in the next round.
-
-5. Switch back to shell **session 1**, and run the Hive over there. Leave the session running and DO NOT CLOSE the session after the execution of following command. 
+4. Use the shell **session 1**, and run the Hive over there. Leave the session running and DO NOT CLOSE the session after the execution of following command. 
 ~~~bash
 $ cd ~/hive
 $ cp  ~/hbase/lib/client-facing-thirdparty/opentelemetry-semconv-1.29.0-alpha.jar  ~/hbase/lib
@@ -377,24 +375,24 @@ $ bin/hiveserver2
 ~~~
 > To stop the Hive, use Ctrl-C.
 
-6. Switch back to shell **session 2**, and ensure an additional one service is observed using command jps, i.e. RunJar process before run Beeline shell. 
+5. Use a new shell **session 2**. Ensure that one additional service from HiveServer2 (i.e., the RunJar process) is visible when using the jps command before launching and logging into the Beeline shell using your MySQL credentials. 
 ~~~bash
 $ jps
 $ cd ~/hive
 $ bin/beeline
-Beeline version 2.3.9 by Apache Hive
+Beeline version 4.1.0 by Apache Hive
 beeline> !connect jdbc:hive2://
 Connecting to jdbc:hive2://
 Enter username for jdbc:hive2://: admin
-Enter password for jdbc:hive2://: password
-Connected to: Apache Hive (version 2.3.9)
-Driver: Hive JDBC (version 2.3.9)
+Enter password for jdbc:hive2://: ********
+Hive Session ID = ae91436a-bdad-431b-afd7-440e9fe20cdb
+Connected to: Apache Hive (version 4.1.0)
+Driver: Hive JDBC (version 4.1.0)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
 0: jdbc:hive2://>
-xxxx ignore it --> SET hive.metastore.disallow.incompatible.col.type.changes=false;
 ~~~
 > To stop the Beeline, use either command !q (after login) or Ctrl-c (before login).
-> Note that we always need to terminate the running RunJar service/s BEFORE re-run the HiveServer2.
+> Note that we always need to terminate the running RunJar service/s (if any) BEFORE re-run the HiveServer2.
 
 ## M5. Quick start with Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
@@ -418,11 +416,17 @@ xxxx ignore it --> SET hive.metastore.disallow.incompatible.col.type.changes=fal
 0: jdbc:hive2://> INSERT INTO choojunhive.employee VALUES (3,'Chong',21,'M');
 0: jdbc:hive2://> select * from choojunhive.employee;
 ~~~
-> Drop a table: DROP TABLE choojunhive.employee;
+
+4. Drop created table and database. 
+~~~bash
+0: jdbc:hive2://> DROP TABLE choojunhive.employee;
+0: jdbc:hive2://> DROP DATABASE choojunhive;
+0: jdbc:hive2://> show databases;
+~~~
 > xx try hdfs dfs -chmod -R 775 /user/hduser/warehouse
 > Note that our the table was defined with the EXTERNAL (by default), Hive only removes the table's schema and metadata from the Hive Metastore (i.e., in Derby). The underlying data files in HDFS (i.e., at location /user/hduser/warehouse/choojunhive/employee) are deliberately left intact to prevent accidental data loss. If you recreate an EXTERNAL table pointing to the same path (by default), the old data will reappear.
 > Manual remedy: Delete the HDFS directory (i.e., /user/hduser/warehouse/choojunhive/employee) manually after issue the command of drop table.
 
-4. Try out the Guided Tutorials as follows
+5. Try out the Guided Tutorials as follows
    * https://cwiki.apache.org/confluence/display/hive/tutorial
    * https://www.simplilearn.com/tutorials/hadoop-tutorial/hive
