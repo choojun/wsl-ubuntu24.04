@@ -13,7 +13,7 @@ Data engineering involves building systems to collect and utilize data. This dat
 | [D. Restore (Import) the Distro on WSL](wsl_restore.md) | ❌ | ✔ | ✔ |
 
 #### Note for Apple MacOS users
-If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install VMware Fusion Pro (Free for personal use - https://blogs.vmware.com/teamfusion/2024/05/fusion-pro-now-available-free-for-personal-use.html ) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
+If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install [VMware Fusion Pro](https://blogs.vmware.com/cloud-foundation/tag/desktop-hypervisor/) (Free for educational and personal use) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
 | Section (Tested with OpenJDK 17 - LTS) | Required Framework and Software |
 |---|---|
