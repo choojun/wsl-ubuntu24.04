@@ -17,16 +17,16 @@ If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon pro
 
 | Section (Tested with OpenJDK 17 - LTS) | Required Framework and Software |
 |---|---|
-| [E. Hadoop Installation and Configuration](wsl_hadoop.md) | Apache Hadoop 3.4.1 | 
-| [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | Apache Hadoop 3.4.1 | 
-| [G. Spark, PySpark Shell, Spark SQL and JupyterLab](wsl_pyspark.md) | Apache Spark 4.0.4 with Scala 2.13.18 | 
-| [H. Spark and Machine Learning](wsl_pyspark_ml.md) | Apache Spark 4.0.4 with Scala 2.13.18 |  
-| [I. Spark and Visualisation](wsl_pyspark_viz.md) | Apache Spark 4.0.4 with Scala 2.13.18 | 
-| [J. Kafka Installation and Configuration](wsl_kafka.md) | Apache Kafka 4.3.1 | 
-| [K. HBase Installation and Configuration](wsl_hbase.md) | Apache HBase 3.0.0 |
-| [L. HappyBase Installation and Configuration](wsl_happybase.md) | HappyBase 1.2.0 | 
-| [M. Hive Installation and Configuration](wsl_hive.md) | Apache Hive 4.2.1 with Apache Tez 0.10.5 and MySQL 8.0.46 |
-> Needed Web browser, constant Internet connection, SSH and PDSH, Python 3.12.x
+| [E. Hadoop Installation and Configuration](wsl_hadoop.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 | 
+| [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 | 
+| [G. Spark, PySpark Shell, Spark SQL and JupyterLab](wsl_pyspark.md) | [Apache Spark](https://spark.apache.org/) 4.0.4 with Scala 2.13.18 | 
+| [H. Spark and Machine Learning](wsl_pyspark_ml.md) | [Apache Spark](https://spark.apache.org/) 4.0.4 with Scala 2.13.18 |  
+| [I. Spark and Visualisation](wsl_pyspark_viz.md) | [Apache Spark](https://spark.apache.org/) 4.0.4 with Scala 2.13.18 | 
+| [J. Kafka Installation and Configuration](wsl_kafka.md) | [Apache Kafka](https://kafka.apache.org/) 4.3.1 | 
+| [K. HBase Installation and Configuration](wsl_hbase.md) | [Apache HBase](https://hbase.apache.org/) 3.0.0 |
+| [L. HappyBase Installation and Configuration](wsl_happybase.md) | [HappyBase](https://happybase.readthedocs.io/) 1.2.0 | 
+| [M. Hive Installation and Configuration](wsl_hive.md) | [Apache Hive](https://hive.apache.org/) 4.2.1 with Apache Tez 0.10.5 and MySQL 8.0.46 |
+> Needed Web browser, constant Internet connection, [SSH](https://en.wikipedia.org/wiki/Secure_Shell) and [PDSH](https://github.com/chaos/pdsh), [Python](https://www.python.org/) 3.12.x
 >
 > **Optional**: To restore from the pre-setup WSL distro, download the required release from the URL https://github.com/choojun/wsl/releases and follow the steps in Section D after identifying your Ubuntu version.
 
