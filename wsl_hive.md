@@ -10,11 +10,11 @@ Specifically, Apache Hive is a distributed, fault-tolerant data warehouse system
 
 1.	Login as **hduser**. Ensure that all services are stopped and check it by using the jps command before download and install Hive.
 ~~~bash
-$ cd ~
-$ jps
-$ wget https://archive.apache.org/dist/hive/hive-4.1.0/apache-hive-4.1.0-bin.tar.gz
-$ tar -xvzf apache-hive-4.1.0-bin.tar.gz
-$ mv apache-hive-4.1.0-bin hive
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ jps
+hduser@MyPC:~$ wget https://archive.apache.org/dist/hive/hive-4.1.0/apache-hive-4.1.0-bin.tar.gz
+hduser@MyPC:~$ tar -xvzf apache-hive-4.1.0-bin.tar.gz
+hduser@MyPC:~$ mv apache-hive-4.1.0-bin hive
 ~~~
 
 2. Edit the file ~/.bashrc with the the following lines.
@@ -32,16 +32,16 @@ export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 
 3. Re-load the environment.
 ~~~bash
-$ source ~/.bashrc
+hduser@MyPC:~$ source ~/.bashrc
 ~~~
 
 4. Duplicate for the file ~/hive/conf/hive-site.xml 
 ~~~bash
-$ cd ~/hive
-$ cp ~/hive/conf/hive-default.xml.template ~/hive/conf/hive-site.xml
+hduser@MyPC:~$ cd ~/hive
+hduser@MyPC:~/hive$ cp ~/hive/conf/hive-default.xml.template ~/hive/conf/hive-site.xml
 ~~~
 
-5. Edit the file ~/hive/conf/hive-site.xml
+5. Edit the file ~/hive/conf/hive-site.xml 
 * Replace all occurrences of ${system:java.io.tmpdir} to /tmp/hive and this location is the new location for Hive storing all its temporary files.
 * Replace all occurrences of ${system:user.name} to ${user.name} which should be the user name you log in with
 * Replace all occurrences of /user/hive tp /user/hduser
@@ -49,73 +49,70 @@ $ cp ~/hive/conf/hive-default.xml.template ~/hive/conf/hive-site.xml
 
 6. Edit the file ~/hive/bin/hive-config.sh with the the following lines 
 ~~~bash
-  export HADOOP_HOME=/home/hduser/hadoop3
-  export SPARK_HOME=/home/hduser/spark
-  export HBASE_HOME=/homehduser/hbase
-  export HADOOP_MAPRED_HOME=/home/hduser/hadoop3
-  export HADOOP_COMMON_HOME=/home/hduser/hadoop3
-  export HADOOP_HDFS_HOME=/home/hduser/hadoop3
-  export YARN_HOME=/home/hduser/hadoop3
-  export HIVE_HOME=/home/hduser/hive
-  export HIVE_CONF_DIR=/home/hduser/hive/conf
-  export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/*
-  export HIVE_CLASSPATH=/home/hduser/hive/lib/*
+export HADOOP_HOME=/home/hduser/hadoop3
+export SPARK_HOME=/home/hduser/spark
+export HBASE_HOME=/homehduser/hbase
+export HADOOP_MAPRED_HOME=/home/hduser/hadoop3
+export HADOOP_COMMON_HOME=/home/hduser/hadoop3
+export HADOOP_HDFS_HOME=/home/hduser/hadoop3
+export YARN_HOME=/home/hduser/hadoop3
+export HIVE_HOME=/home/hduser/hive
+export HIVE_CONF_DIR=/home/hduser/hive/conf
+export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/*
+export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
 7. Duplicate for the file ~/hive/conf/hive-env.sh 
 ~~~bash
-$ cd ~/hive
-$ cp ~/hive/conf/hive-env.sh.template ~/hive/conf/hive-env.sh
+hduser@MyPC:~$ cd ~/hive
+hduser@MyPC:~$ cp ~/hive/conf/hive-env.sh.template ~/hive/conf/hive-env.sh
 ~~~
 
 8. Edit the file ~/hive/conf/hive-env.sh with the the following lines 
 ~~~bash
-  export HADOOP_HOME=/home/hduser/hadoop3
-  export SPARK_HOME=/home/hduser/spark
-  export HBASE_HOME=/homehduser/hbase
-  export HADOOP_MAPRED_HOME=/home/hduser/hadoop3
-  export HADOOP_COMMON_HOME=/home/hduser/hadoop3
-  export HADOOP_HDFS_HOME=/home/hduser/hadoop3
-  export YARN_HOME=/home/hduser/hadoop3
-  export HIVE_HOME=/home/hduser/hive
-  export HIVE_CONF_DIR=/home/hduser/hive/conf
-  export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/*
-  export HIVE_CLASSPATH=/home/hduser/hive/lib/*
+export HADOOP_HOME=/home/hduser/hadoop3
+export SPARK_HOME=/home/hduser/spark
+export HBASE_HOME=/homehduser/hbase
+export HADOOP_MAPRED_HOME=/home/hduser/hadoop3
+export HADOOP_COMMON_HOME=/home/hduser/hadoop3
+export HADOOP_HDFS_HOME=/home/hduser/hadoop3
+export YARN_HOME=/home/hduser/hadoop3
+export HIVE_HOME=/home/hduser/hive
+export HIVE_CONF_DIR=/home/hduser/hive/conf
+export HADOOP_CLASSPATH=/home/hduser/hadoop3/share/hadoop/common/*:/home/hduser/hadoop3/share/hadoop/common/lib/*:/home/hduser/hadoop3/share/hadoop/client/*:/home/hduser/hadoop3/share/hadoop/hdfs/lib/*:/home/hduser/hadoop3/share/hadoop/hdfs/*:/home/hduser/hadoop3/share/hadoop/tools/lib/*:/home/hduser/hadoop3/share/hadoop/mapreduce/*:/home/hduser/hadoop3/share/hadoop/yarn/*:/home/hduser/hadoop3/share/hadoop/yarn/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/*:/home/hduser/hadoop3/share/hadoop/yarn/timelineservice/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/lib/*:/home/hduser/hadoop3/share/hadoop/yarn/csi/*
+export HIVE_CLASSPATH=/home/hduser/hive/lib/*
 ~~~
 
 9. Start both DFS and YARN services before create/alter those required Hive directories in the HDFS. 
 ~~~bash
-$ jps
-$ cd ~/hadoop3
-$ sbin/start-dfs.sh
-$ sbin/start-yarn.sh
-$ jps
-$ sbin/stop-yarn.sh
-$ sbin/stop-dfs.sh
-$ jps
-$ hdfs dfs -mkdir /tmp
-$ hdfs dfs -mkdir /tmp/hduser
-$ hdfs dfs -mkdir /user
-$ hdfs dfs -mkdir /user/hduser
-$ hdfs dfs -mkdir /user/hduser/warehouse
-$ hdfs dfs -mkdir /user/hduser/lib
-$ hdfs dfs -chmod g+w /tmp
-$ hdfs dfs -chmod g+w /tmp/hduser
-$ hdfs dfs -chmod 777 /user
-$ hdfs dfs -chmod g+w /user/hduser
-$ hdfs dfs -chmod -R 775 /user/hduser/warehouse
-$ hdfs dfs -chmod 777 /user/hduser/lib
+hduser@MyPC:~$ jps
+hduser@MyPC:~$ cd ~/hadoop3
+hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
+hduser@MyPC:~/hadoop3$ sbin/start-yarn.sh
+hduser@MyPC:~/hadoop3$ jps
+hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /tmp
+hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /tmp/hduser
+hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /user
+hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /user/hduser
+hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /user/hduser/warehouse
+hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /user/hduser/lib
+hduser@MyPC:~/hadoop3$ hdfs dfs -chmod g+w /tmp
+hduser@MyPC:~/hadoop3$ hdfs dfs -chmod g+w /tmp/hduser
+hduser@MyPC:~/hadoop3$ hdfs dfs -chmod 777 /user
+hduser@MyPC:~/hadoop3$ hdfs dfs -chmod g+w /user/hduser
+hduser@MyPC:~/hadoop3$ hdfs dfs -chmod -R 775 /user/hduser/warehouse
+hduser@MyPC:~/hadoop3$ hdfs dfs -chmod 777 /user/hduser/lib
 ~~~
 
 10. Change mode of access for hadoop's data and namenode, which are created in [Section E](wsl_hdoop.md). **Attention**: Stop both DFS and YARN services after this step.
 ~~~bash
-$ chmod -R g+w /home/hduser/hadoopData
-$ chmod -R g+w /home/hduser/hadoopName
-$ jps
-$ cd ~/hadoop3
-$ sbin/stop-yarn.sh
-$ sbin/stop-dfs.sh
-$ jps
+hduser@MyPC:~$ chmod -R g+w /home/hduser/hadoopData
+hduser@MyPC:~$ chmod -R g+w /home/hduser/hadoopName
+hduser@MyPC:~$ jps
+hduser@MyPC:~$ cd ~/hadoop3
+hduser@MyPC:~/hadoop3$ sbin/stop-yarn.sh
+hduser@MyPC:~/hadoop3$ sbin/stop-dfs.sh
+hduser@MyPC:~/hadoop3$ jps
 ~~~
 
 11. Edit the ~/hadoop3/etc/hadoop/hadoop-env.sh file by including additional paths into the HADOOP_CLASSPATH as follows
@@ -125,9 +122,9 @@ export HADOOP_CLASSPATH=/usr/lib/jvm/java-17-openjdk-amd64/lib/tools.jar:/home/h
 
 12. Find the targeted jar file. Delete the log4j-slf4j-impl-2.6.2.jar file if found multiple copies (optional)
 ~~~bash
-$ cd ~
-$ find . -name log4j-slf4j-impl-*.jar
-$ rm ~/hive/lib/log4j-slf4j-impl-2.24.3.jar
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ find . -name log4j-slf4j-impl-*.jar
+hduser@MyPC:~$ rm ~/hive/lib/log4j-slf4j-impl-2.24.3.jar
 ~~~
 > We delete the file log4j-slf4j-impl-2.24.3.jar because the similar file is also presented in the Hadoop directory, and it gives error to us occasionally
 
@@ -135,14 +132,15 @@ $ rm ~/hive/lib/log4j-slf4j-impl-2.24.3.jar
 
 1. Install MySQL Server, and verify that the service is up and running:
 ~~~bash
-$ sudo apt update
-$ sudo apt install mysql-connector-j
-$ sudo systemctl status mysql
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ sudo apt update
+hduser@MyPC:~$ sudo apt install mysql-connector-j
+hduser@MyPC:~$ sudo systemctl status mysql
 ~~~
 
 2. Access the MySQL Shell, and create a dedicated username (admin), password (password) and new database metastore_db before grant permissions to the user admin.
 ~~~bash
-$ sudo mysql
+hduser@MyPC:~$ sudo mysql
 mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';
 mysql> CREATE DATABASE metastore_db;
 mysql> GRANT ALL PRIVILEGES ON metastore_db.* TO 'admin'@'localhost';
@@ -152,7 +150,7 @@ mysql> EXIT;
 
 3. Test the new created credentials before next step.
 ~~~bash
-$ mysql -u admin -p
+hduser@MyPC:~$ mysql -u admin -p
 mysql> SHOW DATABASES;
 mysql> use metastore_db;
 mysql> show tables;
@@ -231,12 +229,12 @@ mysql> EXIT;
 
 6. To allow PySpark to connect to hive cluster, duplicate (by overwriting) the following files to destination Spark
 ~~~bash
-$ cp -f ~/hadoop3/etc/hadoop/core-site.xml ~/spark/conf/
-$ cp -f ~/hadoop3/etc/hadoop/hdfs-site.xml ~/spark/conf/
-$ cp -f ~/hive/conf/hive-site.xml ~/spark/conf/
+hduser@MyPC:~$ cp -f ~/hadoop3/etc/hadoop/core-site.xml ~/spark/conf/
+hduser@MyPC:~$ cp -f ~/hadoop3/etc/hadoop/hdfs-site.xml ~/spark/conf/
+hduser@MyPC:~$ cp -f ~/hive/conf/hive-site.xml ~/spark/conf/
 
-$ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/spark/jars/
-$ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/hive/lib/
+hduser@MyPC:~$ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/spark/jars/
+hduser@MyPC:~$ cp -f /usr/share/java/mysql-connector-j-26.10.0.jar ~/hive/lib/
 ~~~
 > **Attention**: ensure Hadoop, Spark, HBase and Hive are successfully installed **BEFORE** proceeding with this step. **You need to redo this step if ANY CHANGES on the involved their files in nearly future.**
 
@@ -273,8 +271,8 @@ export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-j-26.10.0.jar
 
 9. Use the **session 1** to run the following command to initialize MySQL as the Metastore database for Hive. It might take a few minutes. Please be patient while you wait for its completion
 ~~~bash
-$ cd ~
-$ java -cp home/hduser/hive/lib/*:/home/hduser/spark/jars/* org.apache.hive.beeline.HiveSchemaTool -initSchemaTo 4.1.0 -dbType mysql
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ java -cp home/hduser/hive/lib/*:/home/hduser/spark/jars/* org.apache.hive.beeline.HiveSchemaTool -initSchemaTo 4.1.0 -dbType mysql
 ~~~
 > **Attention**: Note that in the setup of Hive 4.1.0, you may have corrupted characters in file ~/hive/conf/hive-site.xml, which is inherited from its template (duplicated in Section M1), particularlly under the description of 'hive.txn.xlock.iow'. Just delete it if there is an error, and re-run above command.
 
@@ -283,19 +281,19 @@ $ java -cp home/hduser/hive/lib/*:/home/hduser/spark/jars/* org.apache.hive.beel
 
 1. Use the **session 1** to install and configure Tez.
 ~~~bash
-$ cd ~
-$ wget https://archive.apache.org/dist/tez/0.10.5/apache-tez-0.10.5-bin.tar.gz
-$ tar -xzf apache-tez-0.10.5-bin.tar.gz
-$ mv apache-tez-0.10.5-bin tez 
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ wget https://archive.apache.org/dist/tez/0.10.5/apache-tez-0.10.5-bin.tar.gz
+hduser@MyPC:~$ tar -xzf apache-tez-0.10.5-bin.tar.gz
+hduser@MyPC:~$ mv apache-tez-0.10.5-bin tez 
 ~~~
 
 2. Make a directory named tez, and copy the necessary files into the HDFS file system.
 ~~~bash
-$ cd ~/tez
-$ hdfs dfs -mkdir tez
-$ hdfs dfs -put -f /home/hduser/tez/* /user/hduser/tez
-$ hdfs dfs -put /home/hduser/hive/lib/hive-exec-4.1.0.jar /user/hduser/tez
-$ ?? rm ~/tez/lib/slf4j-reload4j-1.7.36.jar
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ hdfs dfs -mkdir tez
+hduser@MyPC:~$ hdfs dfs -put -f /home/hduser/tez/* /user/hduser/tez
+hduser@MyPC:~$ hdfs dfs -put /home/hduser/hive/lib/hive-exec-4.1.0.jar /user/hduser/tez
+hduser@MyPC:~$ ?? rm ~/tez/lib/slf4j-reload4j-1.7.36.jar
 ~~~
 
 3. In ~/.bashrc file, add the following lines at the end of the file.
@@ -362,24 +360,24 @@ export HADOOP_CLASSPATH=${TEZ_CONF_DIR}:${TEZ_JARS}/*:${TEZ_JARS}/lib/*
 
 4. Use the shell **session 1**, and run the Hive over there. Leave the session running and DO NOT CLOSE the session after the execution of following command. 
 ~~~bash
-$ cd ~/hive
-$ cp  ~/hbase/lib/client-facing-thirdparty/opentelemetry-semconv-1.29.0-alpha.jar  ~/hbase/lib
-$ cd ~/hive/lib
-$ rm log4j-slf4j-impl-2.24.3.jar
-$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-mapreduce/0.10.5/tez-mapreduce-0.10.5.jar
-$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-runtime-library/0.10.5/tez-runtime-library-0.10.5.jar
-$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-dag/0.10.5/tez-dag-0.10.5.jar
-$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-common/0.10.5/tez-common-0.10.5.jar
-$ cd ~/hive
-$ bin/hiveserver2
+hduser@MyPC:~$ cd ~/hive
+hduser@MyPC:~/hive$ cp ~/hbase/lib/client-facing-thirdparty/opentelemetry-semconv-1.29.0-alpha.jar  ~/hbase/lib
+hduser@MyPC:~/hive$ cd ~/hive/lib
+hduser@MyPC:~/hive/lib$ rm log4j-slf4j-impl-2.24.3.jar
+hduser@MyPC:~/hive/lib$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-mapreduce/0.10.5/tez-mapreduce-0.10.5.jar
+hduser@MyPC:~/hive/lib$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-runtime-library/0.10.5/tez-runtime-library-0.10.5.jar
+hduser@MyPC:~/hive/lib$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-dag/0.10.5/tez-dag-0.10.5.jar
+hduser@MyPC:~/hive/lib$ wget https://repo1.maven.org/maven2/org/apache/tez/tez-common/0.10.5/tez-common-0.10.5.jar
+hduser@MyPC:~/hive/lib$ cd ~/hive
+hduser@MyPC:~/hive$ bin/hiveserver2
 ~~~
 > To stop the Hive, use Ctrl-C.
 
 5. Use a new shell **session 2**. Ensure that one additional service from HiveServer2 (i.e., the RunJar process) is visible when using the jps command before launching and logging into the Beeline shell using your MySQL credentials. 
 ~~~bash
-$ jps
-$ cd ~/hive
-$ bin/beeline
+hduser@MyPC:~$ jps
+hduser@MyPC:~$ cd ~/hive
+hduser@MyPC:~/hive$ bin/beeline
 Beeline version 4.1.0 by Apache Hive
 beeline> !connect jdbc:hive2://
 Connecting to jdbc:hive2://
