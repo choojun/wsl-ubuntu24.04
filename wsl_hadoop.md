@@ -24,10 +24,12 @@ $ sudo adduser hduser
 $ sudo adduser student
 ~~~
 
-3. Grant the user sudo privileges
+3. Grant the user sudo privileges and set its home directory
 ~~~bash
 $ sudo usermod -aG sudo hduser
+$ sudo usermod -d /home/hduser -m -s /bin/bash hduser
 $ sudo usermod -aG sudo student
+$ sudo usermod -d /home/student -m -s /bin/bash student
 ~~~
 
 4.	Add hduser to the hadoop group
