@@ -15,7 +15,7 @@ If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon pro
 
 | Section (Tested with [OpenJDK](https://openjdk.org/) 17 LTS) | Required Framework and Software Combinations |
 |---|---|
-| [E. Hadoop Installation and Configuration](wsl_hadoop.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 | 
+| [E. Hadoop Installation and Configuration](wsl_hadoop.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 or 3.4.3 ? | 
 | [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 | 
 | [G. Spark, PySpark Shell, Spark SQL and JupyterLab](wsl_pyspark.md) | [Apache Spark](https://spark.apache.org/) 4.0.4 with Scala 2.13.18 | 
 | [H. Spark and Machine Learning](wsl_pyspark_ml.md) | [Apache Spark](https://spark.apache.org/) 4.0.4 with Scala 2.13.18 |  
