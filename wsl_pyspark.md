@@ -471,7 +471,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     ~~~bash
     hduser@MyPC:~/sparksql/data$ cd ~
     hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
-    (de-test-venv) hduserMyPC:~$ pip3 install reverse_geocoder
+    (de-test-venv) hduserMyPC:~$ pip3 install -U reverse_geocoder
     (de-test-venv) hduserMyPC:~$ pyspark
     Welcome to
           ____              __
@@ -566,7 +566,7 @@ Python virtual environments (venv) create a self-contained and isolated environm
     ~~~bash
     hduser@MyPC:~/sparksql/data$ cd ~
     hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
-    (de-test-venv) hduserMyPC:~$ pip3 install pyarrow
+    (de-test-venv) hduserMyPC:~$ pip3 install -U pyarrow
     ~~~
 
 4. Access JupyterLab with Web borser. From the output shown in your terminal, **copy and paste one of the URLs in a web browser**.
