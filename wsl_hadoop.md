@@ -297,6 +297,8 @@ hduser@MyPC:~$ ssh localhost
 > $ exit
 > ~~~
 
+5. Repeat the same steps 1 to 4 for user **student**.
+
 ## E7. Configure Pseudo-distributed Mode for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Ensure that you are login with the **hduser** 
