@@ -5,7 +5,7 @@ Data engineering involves building systems to collect and utilize data. This dat
 
 | Section (Tested with WSL2 and [Ubuntu](https://ubuntu.com/) 24.04 - LTS) | Windows 7 | Windows 10 | Windows 11 |
 |---|---|---|---|
-| [A. Remove/Setup WSL](wsl_setup.md) | ❌ | ✔ | ✔ |
+| [A. Remove/Setup WSL with Ubuntu](wsl_setup.md) | ❌ | ✔ | ✔ |
 | [B. Running Ubuntu on WSL](wsl_ubuntu.md) | ❌ | ✔ | ✔ |
 | [C. Backup the Distro on WSL](wsl_backup.md) | ❌ | ✔ | ✔ |
 | [D. Restore (Import) the Distro on WSL](wsl_restore.md) | ❌ | ✔ | ✔ |
