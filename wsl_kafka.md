@@ -30,7 +30,7 @@
 3. Download and setup the respective version of Kafka based on the installed version of Scala. The available Kafka versions may be found at the Kafka download page - https://kafka.apache.org/downloads
    ~~~bash
    hduser@MyPC:~$ cd ~
-   hduser@MyPC:~$ wget https://downloads.apache.org/kafka/4.3.1/kafka_2.13-4.3.1.tgz
+   hduser@MyPC:~$ wget https://archive.apache.org/dist/kafka/4.3.1/kafka_2.13-4.3.1.tgz
    hduser@MyPC:~$ tar -xvzf kafka_2.13-4.3.1.tgz  
    hduser@MyPC:~$ mv kafka_2.13-4.3.1 kafka
    hduser@MyPC:~$ chown hduser:hadoop -R kafka
