@@ -61,11 +61,9 @@ Python virtual environments (venv) create a self-contained and isolated environm
       $ sudo apt install python3-full
       $ sudo apt install jupyter-core
       $ python3 -m venv de-test/de-test-venv
-      $ de-test/de-test-venv/bin/python -m pip install -U --quiet pip wheel setuptools 
-      $ de-test/de-test-venv/bin/python -m pip install -U --quiet ipykernel
-      $ de-test/de-test-venv/bin/python -m pip install -U --quiet grpcio-status numpy pandas
-      $ de-test/de-test-venv/bin/python -m pip install -U --quiet pyspark==4.0.4
-      $ de-test/de-test-venv/bin/python -m pip install -U --quiet jupyterlab
+      $ de-test/de-test-venv/bin/python -m pip install -U pip wheel setuptools ipykernel grpcio-status numpy pandas
+      $ de-test/de-test-venv/bin/python -m pip install -U pyspark==4.0.4
+      $ de-test/de-test-venv/bin/python -m pip install -U jupyterlab
       $ de-test/de-test-venv/bin/python -m ipykernel install --user --name "de-test-venv" --display-name  "de-test-venv"
       ~~~
 
