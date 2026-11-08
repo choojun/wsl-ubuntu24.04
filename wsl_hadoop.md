@@ -14,36 +14,37 @@
 
 1.	Login with user **tarumt**, and create a new group named hadoop
 ~~~bash
-$ sudo addgroup hadoop
+tarumt@MyPC:~$ cd ~
+tarumt@MyPC:~$ sudo addgroup hadoop
 ~~~
 
 2.	Create a new user account named hduser (if applicable)
 Add the new user:
 ~~~bash
-$ sudo adduser hduser
-$ sudo adduser student
+tarumt@MyPC:~$ sudo adduser hduser
+tarumt@MyPC:~$ sudo adduser student
 ~~~
 
 3. Grant the user sudo privileges and set its home directory
 ~~~bash
-$ sudo usermod -aG sudo hduser
-$ sudo usermod -d /home/hduser -m -s /bin/bash hduser
-$ sudo usermod -aG sudo student
-$ sudo usermod -d /home/student -m -s /bin/bash student
+tarumt@MyPC:~$ sudo usermod -aG sudo hduser
+tarumt@MyPC:~$ sudo usermod -d /home/hduser -m -s /bin/bash hduser
+tarumt@MyPC:~$ sudo usermod -aG sudo student
+tarumt@MyPC:~$ sudo usermod -d /home/student -m -s /bin/bash student
 ~~~
 
 4.	Add hduser to the hadoop group
 ~~~bash
-$ sudo usermod -a -G hadoop hduser
-$ sudo usermod -a -G hadoop student
+tarumt@MyPC:~$ sudo usermod -a -G hadoop hduser
+tarumt@MyPC:~$ sudo usermod -a -G hadoop student
 ~~~
 
 5.	Switch to the user account hduser (if applicable)
 ~~~bash
-$ su - hduser
-$ exit
-$ su - student
-$ exit
+tarumt@MyPC:~$ su - hduser
+hduser@MyPC:~$ exit
+tarumt@MyPC:~$ su - student
+student@MyPC:~$ exit
 ~~~
 > If you want to go back to your original user session
 ~~~bash
@@ -56,19 +57,19 @@ $ exit
 
 2. Check if ssh has been installed
 ~~~bash
-$ service ssh status
+hduser@MyPC:~$ service ssh status
 ~~~
 > Ctrl-C to terminate the examination of ssh status.
 
 3. If ssh has not been installed, install ssh before examining its status
 ~~~bash
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt install ssh
-$ service ssh status
+hduser@MyPC:~$ sudo apt update
+hduser@MyPC:~$ sudo apt upgrade
+hduser@MyPC:~$ sudo apt install ssh
+hduser@MyPC:~$ service ssh status
 ~~~
 > Ctrl-C to terminate the examination of ssh status.
-> Test the ssh to localhost for created user, e.g. tarumt, hduser and student
+> Test the ssh to localhost for created user, e.g. **tarumt**, **hduser** and **student**
 > ~~~bash
 > $ ssh localhost
 > ~~~
@@ -79,31 +80,31 @@ $ service ssh status
 
 4. Install pdsh
 ~~~bash
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt install pdsh
+hduser@MyPC:~$ sudo apt update
+hduser@MyPC:~$ sudo apt upgrade
+hduser@MyPC:~$ sudo apt install pdsh
 ~~~
 
 5. Install Python (if necessary)
 ~~~bash
-$ python3 --version 
-$ sudo apt install software-properties-common
-$ sudo apt update
-$ sudo apt install python3
-$ sudo apt install python3-dev
-$ sudo apt install python3-wheel
-$ sudo apt install python3-full
+hduser@MyPC:~$ python3 --version 
+hduser@MyPC:~$ sudo apt install software-properties-common
+hduser@MyPC:~$ sudo apt update
+hduser@MyPC:~$ sudo apt install python3
+hduser@MyPC:~$ sudo apt install python3-dev
+hduser@MyPC:~$ sudo apt install python3-wheel
+hduser@MyPC:~$ sudo apt install python3-full
 ~~~
 
 6. Check current python versions and symlinks
 ~~~bash
-$ ls -l /usr/bin/python* 
+hduser@MyPC:~$ ls -l /usr/bin/python* 
 ~~~
 > Ensure that links are pointed to targeted version of Python as Step 5.
 
-7. Set environment variables by editing your ~/.bashrc file (for hduser):
+7. Set environment variables by editing your ~/.bashrc file (for **hduser**):
 ~~~bash
-$ nano ~/.bashrc
+hduser@MyPC:~$ nano ~/.bashrc
 ~~~
 
 8. In ~/.bashrc file, set Python 3 as the default python version, add the following command to set Python 3 as the default python version:
@@ -121,25 +122,25 @@ export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH
 
 10. Source the file:
 ~~~bash
-$ source ~/.bashrc
+hduser@MyPC:~$ source ~/.bashrc
 ~~~
 
 11. Install pip or upgrade pip (if necessary)
 ~~~bash
-$ sudo apt update
-$ sudo apt install python3-pip
-$ pip3 --version
+hduser@MyPC:~$ sudo apt update
+hduser@MyPC:~$ sudo apt install python3-pip
+hduser@MyPC:~$ pip3 --version
 ~~~~
 
 12. Check which Java version is installed in the distro
 ~~~bash
-$ java -version
+hduser@MyPC:~$ java -version
 ~~~
 
 13. Install targeted OpenJDK
 ~~~bash
-$ sudo apt-get install openjdk-17-jdk
-$ java -version
+hduser@MyPC:~$ sudo apt-get install openjdk-17-jdk
+hduser@MyPC:~$ java -version
 ~~~
 > After this, remember to check if the correct version of Java is installed.
 
@@ -154,32 +155,32 @@ Run the following commands from Ubuntu with user **hduser**
 
 1. Check if the SSH service is running
 ~~~bash
-$ service ssh status
+hduser@MyPC:~$ service ssh status
 ~~~
 > Ctrl-C to terminate the examination of ssh status.
 
 2. Start SSH
 ~~~bash
-$ sudo service ssh start
+hduser@MyPC:~$ sudo service ssh start
 ~~~
 > Note that WSL does not automatic start sshd (SSH daemon) occasionally. Please start the sshd manually
 
 3. Install the ufw and open the SSH port (if necessary)
 ~~~bash
-$ sudo apt update
-$ sudo apt install ufw -y
-$ sudo ufw allow ssh
+hduser@MyPC:~$ sudo apt update
+hduser@MyPC:~$ sudo apt install ufw -y
+hduser@MyPC:~$ sudo ufw allow ssh
 ~~~
 > Ubuntu comes with a firewall configuration tool, known as UFW. If the firewall is enabled on your system, make sure to open the targeted SSH port, i.e. port 22.
 
 4. Reload SSH
 ~~~bash
-$ sudo /etc/init.d/ssh reload
+hduser@MyPC:~$ sudo /etc/init.d/ssh reload
 ~~~
 
 5. Modify pdsh’s default rcmd to ssh, by checking your pdsh default rcmd rsh:
 ~~~bash
-$ pdsh -q -w localhost
+hduser@MyPC:~$ pdsh -q -w localhost
 ~~~
 
 6. Modify pdsh’s default rcmd to ssh, **by adding** the following command to **~/.bashrc** file (for **hduser**)
@@ -190,7 +191,7 @@ export PDSH_RCMD_TYPE=ssh
 
 7. Run the following command to ensure the settings applied.
 ~~~bash
-$ source ~/.bashrc
+hduser@MyPC:~$ source ~/.bashrc
 ~~~
 
 
@@ -201,7 +202,7 @@ Run the following commands from Ubuntu with user **hduser**
 
 1. Edit the /etc/sysctl.conf file with the following command.
 ~~~bash
-$ sudo nano /etc/sysctl.conf
+hduser@MyPC:~$ sudo nano /etc/sysctl.conf
 ~~~
 
 2. Add the following lines to the end of the sysctl.conf file:
@@ -215,12 +216,12 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 
 3. To reload the /etc/sysctl.conf settings, issue the following command.
 ~~~bash
-$ sudo sysctl -p
+hduser@MyPC:~$ sudo sysctl -p
 ~~~
 
 4. Check if IPv6 has been successfully disabled
 ~~~bash
-$ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
+hduser@MyPC:~$ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 ~~~
 > 0 means IPv6 is enabled; **1 means IPv6 is disabled**.
 
@@ -228,7 +229,7 @@ $ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 
    - Create (with root privileges) the file /etc/rc.local 
    ~~~bash
-   $ sudo nano /etc/rc.local
+   hduser@MyPC:~$ sudo nano /etc/rc.local
    ~~~
    - Insert the following into the file /etc/rc.local:
    ~~~bash
@@ -239,7 +240,7 @@ $ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
    ~~~
    - Make the file executable
    ~~~bash
-   sudo chmod 755 /etc/rc.local
+   hduser@MyPC:~$ sudo chmod 755 /etc/rc.local
    ~~~
 
 
@@ -250,21 +251,21 @@ $ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 2. Download the Hadoop binary by finding the appropriate Hadoop binary from the Hadoop releases page.
 > We will use Hadoop 3.4.1 to avoid problems with HBase in a later practical. Read more at URL https://hbase.apache.org/book.html#hadoop
 ~~~bash
-$ cd ~
-$ wget https://downloads.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ wget https://downloads.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz
 ~~~
 > Or, you may copy the downloaded tar.gz file manually to destination ~/hduser/
 
 3.	Untar the file
 ~~~bash
-$ tar -xvzf hadoop-3.4.1.tar.gz
+hduser@MyPC:~$ tar -xvzf hadoop-3.4.1.tar.gz
 ~~~
 
 4.	Rename the folder as hadoop3
 ~~~bash
-$ mv hadoop-3.4.1 hadoop3
-$ sudo chown -R hduser:hadoop hadoop3
-$ sudo chmod g+w -R hadoop3
+hduser@MyPC:~$ mv hadoop-3.4.1 hadoop3
+hduser@MyPC:~$ sudo chown -R hduser:hadoop hadoop3
+hduser@MyPC:~$ sudo chmod g+w -R hadoop3
 ~~~
 
 ## E6. Configure passphraseless ssh for Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
@@ -282,14 +283,14 @@ $ sudo chmod g+w -R hadoop3
 
 4. To ssh to localhost without a passphrase, run the following command to initialize your private and public keys:
 ~~~bash
-$ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-$ chmod 0600 ~/.ssh/authorized_keys
+hduser@MyPC:~$ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+hduser@MyPC:~$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+hduser@MyPC:~$ chmod 0600 ~/.ssh/authorized_keys
 ~~~
 
 4. Test the configuration
 ~~~bash
-$ ssh localhost
+hduser@MyPC:~$ ssh localhost
 ~~~
 > Remember to exit the ssh by issuing the following command.
 > ~~~bash
@@ -310,16 +311,16 @@ $ ssh localhost
 
 3. Source the file:
  ~~~bash
- $ source ~/.bashrc
+ hduser@MyPC:~$ source ~/.bashrc
  ~~~
 
 4. Change directory to the Hadoop folder
  ~~~bash
- $ cd ~
- $ cd hadoop3
+ hduser@MyPC:~$ cd ~
+ hduser@MyPC:~$ cd hadoop3
  ~~~
 
-5. Edit the etc/hadoop/hadoop-env.sh file by adding the following environment variables at the end of file
+5. Edit the ~/hadoop3/etc/hadoop/hadoop-env.sh file by adding the following environment variables at the end of file
  ~~~bash
  # Add Java 17 compatibility opens flags for Hadoop
  export HADOOP_OPTS="$HADOOP_OPTS --add-opens=java.base/java.lang=ALL-UNNAMED"
@@ -336,11 +337,11 @@ $ ssh localhost
 
 6. Verify if the installation was successful
  ~~~bash
- $ hadoop
+ hduser@MyPC:~/hadoop3$ hadoop
  ~~~
  > Running the above command should display various options.
 
-7. Edit the etc/hadoop/core-site.xml file by adding the following configuration.
+7. Edit the ~/hadoop3/etc/hadoop/core-site.xml file by adding the following configuration.
  ~~~xml
     <configuration>
        <property>
@@ -351,7 +352,7 @@ $ ssh localhost
  ~~~
  > Remember to save the edited file by ctrl-x.
 
-8. Edit the etc/hadoop/hdfs-site.xml file by adding the following configuration.
+8. Edit the ~/hadoop3/etc/hadoop/hdfs-site.xml file by adding the following configuration.
  ~~~xml
     <configuration>
        <property>
@@ -376,7 +377,7 @@ $ ssh localhost
  ~~~
  > Remember to save the edited file by ctrl-x.
 
-9. Edit the etc/hadoop/mapred-site.xml file by adding the following configuration.
+9. Edit the ~/hadoop3/etc/hadoop/mapred-site.xml file by adding the following configuration.
  ~~~xml
     <configuration>
        <property>
@@ -399,7 +400,7 @@ $ ssh localhost
  ~~~
  > Remember to save the edited file by ctrl-x.
 
-10. Edit the etc/hadoop/yarn-site.xml file by adding the following configuration.
+10. Edit the ~/hadoop3/etc/hadoop/yarn-site.xml file by adding the following configuration.
  ~~~xml
     <configuration>
       <property>
@@ -426,7 +427,7 @@ $ ssh localhost
  ~~~
  > Remember to save the edited file by ctrl-x.
 
-11. Edit the etc/hadoop/yarn-env.sh file by adding the following configuration.
+11. Edit the ~/hadoop3/etc/hadoop/yarn-env.sh file by adding the following configuration.
  ~~~bash
  # Force YARN to pass modular opens flags to its JVM instances
  export YARN_OPTS="$YARN_OPTS --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED"
@@ -437,17 +438,17 @@ $ ssh localhost
 
 12. Format the namenode 
  ~~~bash
- $ bin/hdfs namenode -format
+ hduser@MyPC:~/hadoop3$ bin/hdfs namenode -format
  ~~~
  > Running the above command should display information on formating the namenode of Hadoop with installed Java. You should observe the namenode formated and **terminated without any error**. 
 
 13. Start the Distributed File System (DFS) service
  ~~~bash
- $ sbin/start-dfs.sh
+ hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
  ~~~
  > Start the NameNode and DataNode daemons
  ~~~bash
- $ jps
+ hduser@MyPC:~/hadoop3$ jps
  ~~~
  > Check the status. If the NameNode and DataNode services are initiated successfully, you should see these four processes
  > ~~~
@@ -460,11 +461,11 @@ $ ssh localhost
 
 14. Start the Yet Another Resource Negotiator (YARN) service
  ~~~bash
- $ sbin/start-yarn.sh
+ hduser@MyPC:~/hadoop3$ sbin/start-yarn.sh
  ~~~
  > Start the Yarn daemon
  ~~~bash
- $ jps
+ hduser@MyPC:~/hadoop3$ jps
  ~~~
  > Check the status. If the Yarn services are initiated successfully, you should see a total of six processes (included these two).
  > ~~~
@@ -475,9 +476,9 @@ $ ssh localhost
 
 15. Create HDFS directories required to execute MapReduce jobs for all created users, e.g. hduser and student
  ~~~bash
- $ hdfs dfs -mkdir /user
- $ hdfs dfs -mkdir /user/hduser
- $ hdfs dfs -mkdir /user/student
+ hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /user
+ hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /user/hduser
+ hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir /user/student
  ~~~
 
 ## E8. Run a sample MapReduce Job in Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
@@ -486,18 +487,18 @@ $ ssh localhost
 
 2. Copy the input files into the distributed file system
 ~~~bash
-$ hdfs dfs -mkdir input
-$ hdfs dfs -put etc/hadoop/*.xml input
+hduser@MyPC:~/hadoop3$ hdfs dfs -mkdir input
+hduser@MyPC:~/hadoop3$ hdfs dfs -put etc/hadoop/*.xml input
 ~~~
 
 3. Run a MapReduce job from an example
 ~~~bash
-$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.4.1.jar grep input output 'dfs[a-z.]+'
+hduser@MyPC:~/hadoop3$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.4.1.jar grep input output 'dfs[a-z.]+'
 ~~~
 
 4. View the output files on the distributed system
 ~~~bash
-$ hdfs dfs -cat output/*
+hduser@MyPC:~/hadoop3$ hdfs dfs -cat output/*
 Output:
 1      dfsadmin
 1      dfs.replication
@@ -507,11 +508,11 @@ Output:
 
 5. Stop all the daemons
 ~~~bash
-$ cd ~
-$ cd hadoop3
-$ sbin/stop-yarn.sh
-$ sbin/stop-dfs.sh
-$ jps
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ cd hadoop3
+hduser@MyPC:~/hadoop3$ sbin/stop-yarn.sh
+hduser@MyPC:~/hadoop3$ sbin/stop-dfs.sh
+hduser@MyPC:~/hadoop3$ jps
 ~~~
 
 6. Logout from the hduser account and your tarumt account.
@@ -522,20 +523,20 @@ $ jps
 
 1. Login as **hduser** or switch account to **hduser**
 ~~~bash
-$ su - hduser
+tarumt@MyPC:~$ su - hduser
 ~~~
 
 2. Start ssh,
 ~~~bash
-$ sudo service ssh start
+hduser@MyPC:~$ sudo service ssh start
 ~~~
 
 3. Start the HDFS service
 ~~~bash
-$ cd ~
-$ cd hadoop3
-$ sbin/start-dfs.sh
-$ jps
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ cd hadoop3
+hduser@MyPC:~/hadoop3$ sbin/start-dfs.sh
+hduser@MyPC:~/hadoop3$ jps
 ~~~
 > Suppose you need to observe at least four (4) services, including both NameNode and DataNode, as stated in step 12 of G7. Otherwise, you may need to reformat the HDFS NameNode. Wait for the format process to complete without errors before proceeding. Note that formatting the NameNode will result in loss of all data files in HDFS. You also need to recreate the directory /user and its sub-directory /user/hduser after starting the HDFS service and before moving on to the next steps.
 >  ~~~bash
@@ -548,10 +549,10 @@ $ jps
 
 4. Start the YARN service
 ~~~bash
-$ cd ~
-$ cd hadoop3
-$ sbin/start-yarn.sh
-$ jps
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ cd hadoop3
+hduser@MyPC:~/hadoop3$ sbin/start-yarn.sh
+hduser@MyPC:~/hadoop3$ jps
 ~~~
 > Suppose you need to observe at least six (6) services in the total, refer steps 12 and 13 of G7.
 
@@ -564,21 +565,21 @@ $ su - hduser
 
 2. Stop the YARN service
 ~~~bash
-$ cd ~
-$ cd hadoop3
-$ sbin/stop-yarn.sh
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~$ cd hadoop3
+hduser@MyPC:~/hadoop3$ sbin/stop-yarn.sh
 ~~~
 
 3. Stop the HDFS service
 ~~~bash
-$ cd ~
-$ cd hadoop3
-$ sbin/stop-dfs.sh
+hduser@MyPC:~$ cd ~
+hduser@MyPC:~ cd hadoop3
+hduser@MyPC:~/hadoop3$ sbin/stop-dfs.sh
 ~~~
 > Issue command top to examine all expected services terminated, and use Ctrl-c to exit from command top
 
 4. Exit from your user account(s) 
 ~~~bash
-exit
+$ exit
 ~~~
 
