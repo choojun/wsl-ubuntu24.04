@@ -13,7 +13,7 @@ Data engineering involves building systems to collect and utilize data. This dat
 #### Note for Apple MacOS users
 If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install [VMware Fusion Pro](https://blogs.vmware.com/cloud-foundation/tag/desktop-hypervisor/) (Free for educational and personal use) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
-| Section (Tested with [OpenJDK](https://openjdk.org/) 17 LTS) | Required Framework and Software |
+| Section (Tested with [OpenJDK](https://openjdk.org/) 17 LTS) | Required Framework and Software Combinations |
 |---|---|
 | [E. Hadoop Installation and Configuration](wsl_hadoop.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 | 
 | [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 | 
