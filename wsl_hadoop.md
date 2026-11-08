@@ -281,7 +281,7 @@ hduser@MyPC:~$ sudo chmod g+w -R hadoop3
 > $ exit
 > ~~~
 
-4. To ssh to localhost without a passphrase, run the following command to initialize your private and public keys:
+3. To ssh to localhost without a passphrase, run the following command to initialize your private and public keys:
 ~~~bash
 hduser@MyPC:~$ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 hduser@MyPC:~$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
@@ -440,7 +440,9 @@ hduser@MyPC:~$ ssh localhost
 
 12. Format the namenode 
  ~~~bash
+ hduser@MyPC:~/hadoop3$ ls ~/
  hduser@MyPC:~/hadoop3$ bin/hdfs namenode -format
+ hduser@MyPC:~/hadoop3$ ls ~/
  ~~~
  > Running the above command should display information on formating the namenode of Hadoop with installed Java. You should observe the namenode formated and **terminated without any error**. 
 
