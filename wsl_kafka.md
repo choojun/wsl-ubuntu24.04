@@ -1,6 +1,6 @@
 ![kafka](https://github.com/choojun/choojun.github.io/assets/6356054/9e24ef13-f41f-4d8a-a731-889cdb9f76df)
 
-# J. Kafka Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+# J. Kafka [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1. Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications. Kafka has three key capabilities under a distributed, highly scalable, elastic, fault-tolerant, and secure manner, as listed as follow
    * To publish (write) and subscribe to (read) streams of events, including continuous import/export of your data from other systems
