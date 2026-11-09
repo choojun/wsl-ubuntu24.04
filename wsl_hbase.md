@@ -48,7 +48,7 @@ HBase has many features which supports both linear and modular scaling. HBase cl
 
 ## K2. Configure HBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1. Stop (if running) the Kafka, YARN and HDFS services.
+1. Stop all services (if running), specifically Kafka, YARN and HDFS.
    ~~~bash
    hduser@MyPC:~$ cd ~/kafka
    hduser@MyPC:~/kafka$ bin/kafka-server-stop.sh
