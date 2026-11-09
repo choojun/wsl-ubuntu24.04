@@ -3,7 +3,7 @@
 
 Data engineering involves building systems to collect and utilize data. This data typically supports subsequent analysis and data science, often incorporating machine learning. Making data usable generally requires significant computational resources, storage, and processing. In essence, data engineering is the design and development of systems that allow individuals to gather and analyze raw data from diverse sources and formats. This website provides a one-stop setup and configuration for the system using Microsoft WSL. Hereby, the website has also incorporated a suite of distributed-ready open source software and guided exploration through selected application samples in the following setup sections.
 
-| Setup Section (Tested with WSL2 and [Ubuntu](https://ubuntu.com/) 24.04 - LTS) | Windows 7 | Windows 10 | Windows 11 |
+| Section (Tested with WSL2 and [Ubuntu](https://ubuntu.com/) 24.04 - LTS) | Windows 7 | Windows 10 | Windows 11 |
 |---|---|---|---|
 | [A. Remove/Setup WSL with Ubuntu](wsl_setup.md) | ❌ | ✔ | ✔ |
 | [B. Running Ubuntu on WSL](wsl_ubuntu.md) | ❌ | ✔ | ✔ |
@@ -13,7 +13,7 @@ Data engineering involves building systems to collect and utilize data. This dat
 #### Note for Apple MacOS users
 If you are using Apple machines (MacBooks and iMacs with Intel/Apple Silicon processor), you may need to install [VMware Fusion Pro](https://blogs.vmware.com/cloud-foundation/tag/desktop-hypervisor/) (Free for educational and personal use) to virtualize Ubuntu 24.04.x. You can find the specific 24.04.x installer at https://ubuntu.com/download/alternative-downloads. After completing the Ubuntu setup, follow the same instructions in Sections E to Z to set up the required environment.
 
-| Section (Tested with [OpenJDK](https://openjdk.org/) 17 LTS) | Required Framework and Software Combinations |
+| Setup Section (Tested with [OpenJDK](https://openjdk.org/) 17 LTS) | Required Framework and Software Combinations |
 |---|---|
 | [E. Hadoop](wsl_hadoop.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 or 3.4.3 ? E5-2, E8-3| 
 | [F. HDFS File Operations and MapReduce](wsl_hdfs.md) | [Apache Hadoop](https://hadoop.apache.org/) 3.4.1 | 
