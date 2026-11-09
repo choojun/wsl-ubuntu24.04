@@ -351,8 +351,11 @@ HBase has many features which supports both linear and modular scaling. HBase cl
 1. Inserting values into tables. Put a cell value at a specified table/row/column (and optionally timestamp) coordinates. Note that HBase does not support insertion of multiple columns in a single statement. Put values into table 'ns1:t2'.
    ~~~bash
    hbase> put 'ns1:t2', 'key1', 'cf1:name', 'John'
-   hbase> put 'ns1:t2', 'key1', 'cf1:id', 19191919  
-   hbase> put 'ns1:t2', 'key1', 'cf2:city', 'London' 
+   hbase> scan 'ns1:t2'
+   hbase> put 'ns1:t2', 'key1', 'cf1:id', 19191919
+   hbase> scan 'ns1:t2'
+   hbase> put 'ns1:t2', 'key1', 'cf2:city', 'London'
+   hbase> scan 'ns1:t2'
    hbase> put 'ns1:t2', 'key1', 'cf2:country', 'UK'  
    hbase> scan 'ns1:t2'
    ~~~
@@ -360,8 +363,11 @@ HBase has many features which supports both linear and modular scaling. HBase cl
 2. Put values into table 'emp'.
    ~~~bash
    hbase> put 'emp', '1001', 'personal data:name', 'Thor'
+   hbase> scan 'emp'
    hbase> put 'emp', '1001', 'personal data:city', 'Kuala Lumpur'
+   hbase> scan 'emp'
    hbase> put 'emp', '1001', 'professional data:designation', 'manager'
+   hbase> scan 'emp'
    hbase> put 'emp', '1001', 'professional data:email', 'thor@mail.abc.com'
    hbase> scan 'emp'
    ~~~
