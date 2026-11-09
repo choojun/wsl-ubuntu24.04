@@ -1,6 +1,6 @@
 ![hive](https://github.com/choojun/choojun.github.io/assets/6356054/18bc2a47-52bc-4e0c-a0c2-5c373b9db3d3)
 
-# M. Hive Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+# M. Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 Let's recap what we have learned so far. We have completed the setup for both [Apache Spark](wsl_spark.md) and [Hadoop MapReduce](wsl_hdfs.md), which are two distinct Big Data frameworks. The former is a high-performance in-memory data-processing engine, while the latter is a mature batch-processing platform operating at petabyte scale. Note that **Apache Hive** and [Apache HBase](wsl_hbase.md) serve very different purposes. Apache Hive is a distributed data warehouse system providing a SQL-like interface for MapReduce jobs, whereas [Apache HBase](wsl_hbase.md) is a distributed NoSQL key-value database running on [Hadoop](wsl_hadoop.md).
 
