@@ -331,6 +331,7 @@ HBase has many features which supports both linear and modular scaling. HBase cl
 7. Delete the  column family 'cf3' of the table 'ns1:t2''.
    ~~~bash
    hbase> alter 'ns1:t2', NAME=>'cf3', METHOD=>'delete'
+   hbase> describe 'ns1:t2'
    ~~~
 
    Delete the  column family 'cf4' of the table 'ns1:t2'.
@@ -342,6 +343,7 @@ HBase has many features which supports both linear and modular scaling. HBase cl
 8. Change the maximum number of versions of the columns in a column family.
    ~~~bash
    hbase> alter 'emp', {NAME=>'personal data', VERSIONS=>5}
+   hbase> describe 'ns1:t2'
    ~~~
 
 ## K6.  Data Manipulation Language (DML) Commands [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
