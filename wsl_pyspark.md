@@ -8,7 +8,7 @@
 4. [sparksql.zip](https://github.com/choojun/choojun.github.io/files/14238380/sparksql.zip)
 
 
-## G1. Installation and Configuration [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+## G1. Install and Configure Spark [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
 1.	Login as **hduser**. Ensure that the SSH, DFS, and YARN services are started sequentially. Then, examine them using the jps command
 
