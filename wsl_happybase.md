@@ -1,12 +1,12 @@
 ![happybase](https://github.com/choojun/choojun.github.io/assets/6356054/b4fa6fea-61a0-44e4-b62e-a97584cfe798)
 
-# L. HappyBase with HBase Thift [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+# L. HappyBase with HBase Thrift [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. HappyBase is a developer-friendly Python library to interact with Apache HBase. Note that Apache HBase is written in Java and natively provides a Java client API. However, if our application is written in a non-Java language (like Python, C++, or Node.js) and we want to read or write data to HBase without using Java, we use the HBase Thrift.
 2. To explore the HappyBase and its API, read more at URLs https://happybase.readthedocs.io/en/latest/ and https://happybase.readthedocs.io/en/latest/user.html . They should provide you with enough information to get you started.
 
 
-## L1. Setup HappyBase and HBase Thift [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## L1. Setup HappyBase and HBase Thrift [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. Login as **hduser**, and we may access Hbase using Python. We use the HappyBase’ Python library, which accesses Hbase using a Thrift gateway. Then, Install HappyBase, and verify the installed packages with the following commands
    ~~~bash
@@ -22,7 +22,8 @@
    - YARN
    - Kafka
    - HBase
-   > Note that a total of ten (10) services can be observed.
+   - Then, HBase Thrift
+   > Note that a total of eleven (11) services can be observed.
 
 3. Start up the **Thrift** service at port 9090 to run at the background
    ~~~bash
