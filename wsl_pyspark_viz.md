@@ -12,7 +12,7 @@
 ~~~bash
 hduser@MyPC:~$ cd ~
 hduser@MyPC:~$ source de-test/de-test-venv/bin/activate
-(de-test-venv) hduserMyPC@MyPC:~$ pip install seaborn
+(de-test-venv) hduserMyPC@MyPC:~$ pip install -U seaborn
 ~~~
 
 2. Make a copy of the C:\de\Visualization folder in the local hduser’s home directory with appropriate file ownership .
