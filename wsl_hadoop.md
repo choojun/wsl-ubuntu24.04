@@ -1,6 +1,7 @@
 ![hadoop](https://github.com/choojun/choojun.github.io/assets/6356054/0233d690-e03c-4699-a0e9-e9f932139de3)
 
 # E. Hadoop [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
+Hadoop is an open-source software framework for the distributed storage and parallel processing of massive datasets across clusters of computers
 
 1. Throughout our practical, we will assume that the Hadoop user name is **hduser**.
 2. The first time that you launch your WSL Linux distro, you will be prompted to create a default user account. You may choose to either 
