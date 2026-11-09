@@ -8,7 +8,7 @@ Specifically, Apache Hive is a distributed, fault-tolerant data warehouse system
 
 ## M1. Install and Configure Hive [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)]()
 
-1.	Login as **hduser**. Ensure that all services are stopped and check it by using the jps command before download and install Hive.
+1.	Login as **hduser**. Ensure that **ALL SERVICES ARE STOPPED**, and check it by using the jps command before download and install Hive.
 ~~~bash
 hduser@MyPC:~$ cd ~
 hduser@MyPC:~$ jps
