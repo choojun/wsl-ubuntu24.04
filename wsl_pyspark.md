@@ -127,6 +127,8 @@ Python virtual environments (venv) create a self-contained and isolated environm
    ~~~
    >
    > To minimize the verbosity of Spark , you need to configure the settings of log4j after duplicating the template file (optional).
+   >
+   >To visit the Web UI, paste the given URL in any web browser for previewing.
    ~~~bash
    $ cp $SPARK_HOME/conf/log4j2.properties.template $SPARK_HOME/conf/log4j2.properties
    ~~~
