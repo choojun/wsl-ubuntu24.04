@@ -6,7 +6,7 @@
 2. To explore the HappyBase and its API, read more at URLs https://happybase.readthedocs.io/en/latest/ and https://happybase.readthedocs.io/en/latest/user.html . They should provide you with enough information to get you started.
 
 
-## L1. Install HappyBase [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
+## L1. Setup HappyBase and HBase Thift [![home](https://github.com/choojun/choojun.github.io/assets/6356054/947da4b4-f259-4b82-8961-07ca48b2811a)](wsl)
 
 1. Login as **hduser**, and we may access Hbase using Python. We use the HappyBase’ Python library, which accesses Hbase using a Thrift gateway. Then, Install HappyBase, and verify the installed packages with the following commands
    ~~~bash
